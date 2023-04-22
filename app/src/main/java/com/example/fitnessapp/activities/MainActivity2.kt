@@ -1,9 +1,10 @@
-package com.example.fitnessapp
+package com.example.fitnessapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.example.fitnessapp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
