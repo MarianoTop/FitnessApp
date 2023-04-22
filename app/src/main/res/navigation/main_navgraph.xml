@@ -9,7 +9,11 @@
         android:id="@+id/entrenamientoHomeFragment"
         android:name="com.example.fitnessapp.fragments.EntrenamientoHomeFragment"
         android:label="fragment_entrenamiento_home"
-        tools:layout="@layout/fragment_entrenamiento_home" />
+        tools:layout="@layout/fragment_entrenamiento_home" >
+        <action
+            android:id="@+id/action_entrenamientoHomeFragment_to_previsualizacionEjercicioFragment"
+            app:destination="@id/previsualizacionEjercicioFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nutricionHomeFragment"
         android:name="com.example.fitnessapp.fragments.NutricionHomeFragment"
@@ -20,4 +24,9 @@
         android:name="com.example.fitnessapp.fragments.PerfilHomeFragment"
         android:label="fragment_perfil_home"
         tools:layout="@layout/fragment_perfil_home" />
+    <fragment
+        android:id="@+id/previsualizacionEjercicioFragment"
+        android:name="com.example.fitnessapp.fragments.PrevisualizacionEjercicioFragment"
+        android:label="fragment_previsualizacion_ejercicio"
+        tools:layout="@layout/fragment_previsualizacion_ejercicio" />
 </navigation>
