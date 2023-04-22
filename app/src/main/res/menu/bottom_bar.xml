@@ -5,15 +5,12 @@
         android:id="@+id/entrenamientoHomeFragment"
         android:icon="@drawable/iconentrenamiento"
         android:title="Entrenamiento" />
-
     <item
         android:id="@+id/nutricionHomeFragment"
         android:icon="@drawable/iconnutricion"
-        android:title="Nutricion"
-        />
+        android:title="Nutricion" />
     <item
         android:id="@+id/perfilHomeFragment"
         android:icon="@drawable/iconperfil"
         android:title="Perfil" />
-
 </menu>
