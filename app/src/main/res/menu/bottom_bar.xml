@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/entrenamientoHomeFragment"
+        android:icon="@drawable/iconentrenamiento"
+        android:title="Entrenamiento" />
+
+    <item
+        android:id="@+id/rutinaAlimenticiaHomeFragment"
+        android:icon="@drawable/iconrutinaalimenticia"
+        android:title="Rutina Alimenticia"
+        />
+    <item
+        android:id="@+id/perfilHomeFragment"
+        android:icon="@drawable/iconperfil"
+        android:title="Perfil" />
+
+</menu>
