@@ -7,9 +7,9 @@
         android:title="Entrenamiento" />
 
     <item
-        android:id="@+id/rutinaAlimenticiaHomeFragment"
-        android:icon="@drawable/iconrutinaalimenticia"
-        android:title="Rutina Alimenticia"
+        android:id="@+id/nutricionHomeFragment"
+        android:icon="@drawable/iconnutricion"
+        android:title="Nutricion"
         />
     <item
         android:id="@+id/perfilHomeFragment"

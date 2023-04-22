@@ -11,10 +11,10 @@
         android:label="fragment_entrenamiento_home"
         tools:layout="@layout/fragment_entrenamiento_home" />
     <fragment
-        android:id="@+id/rutinaAlimenticiaHomeFragment"
-        android:name="com.example.fitnessapp.fragments.RutinaAlimenticiaHomeFragment"
+        android:id="@+id/nutricionHomeFragment"
+        android:name="com.example.fitnessapp.fragments.NutricionHomeFragment"
         android:label="fragment_rutina_alimenticia_home"
-        tools:layout="@layout/fragment_rutina_alimenticia_home" />
+        tools:layout="@layout/fragment_nutricion_home" />
     <fragment
         android:id="@+id/perfilHomeFragment"
         android:name="com.example.fitnessapp.fragments.PerfilHomeFragment"
