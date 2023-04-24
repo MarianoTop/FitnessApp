@@ -10,27 +10,18 @@
         android:label="fragment_ejercicio_comienza"
         tools:layout="@layout/fragment_ejercicio_comienza" />
     <fragment
-        android:id="@+id/ejercicioFragment1"
-        android:name="com.example.fitnessapp.fragments.EjercicioFragment1"
-        android:label="fragment_ejercicio_fragment1"
-        tools:layout="@layout/fragment_ejercicio_fragment1" />
-    <fragment
         android:id="@+id/reporteFinEntrenamientoFragment"
         android:name="com.example.fitnessapp.fragments.ReporteFinEntrenamientoFragment"
         android:label="fragment_reporte_fin_entrenamiento"
-        tools:layout="@layout/fragment_reporte_fin_entrenamiento" >
-        <action
-            android:id="@+id/action_reporteFinEntrenamientoFragment_to_main_navgraph"
-            app:destination="@id/main_navgraph" />
-    </fragment>
-    <include app:graph="@navigation/main_navgraph" />
-        android:id="@+id/ejercicioFragment"
-        android:name="com.example.fitnessapp.fragments.EjercicioFragment"
-        android:label="fragment_ejercicio"
-        tools:layout="@layout/fragment_ejercicio" />
+        tools:layout="@layout/fragment_reporte_fin_entrenamiento" />
     <fragment
         android:id="@+id/ejercicioDescansoFragment"
         android:name="com.example.fitnessapp.fragments.EjercicioDescansoFragment"
         android:label="fragment_ejercicio_descanso"
         tools:layout="@layout/fragment_ejercicio_descanso" />
+    <fragment
+        android:id="@+id/ejercicioFragment"
+        android:name="com.example.fitnessapp.fragments.EjercicioFragment"
+        android:label="fragment_ejercicio"
+        tools:layout="@layout/fragment_ejercicio" />
 </navigation>

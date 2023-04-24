@@ -53,8 +53,8 @@ class ReporteFinEntrenamientoFragment : Fragment() {
         super.onStart()
 
         btnTerminar.setOnClickListener(){
-            val action = ReporteFinEntrenamientoFragmentDirections.actionReporteFinEntrenamientoFragmentToMainNavgraph()
-            findNavController().navigate(action)
+            // val action = ReporteFinEntrenamientoFragmentDirections.action...()
+            // findNavController().navigate(action)
         }
     }
 
