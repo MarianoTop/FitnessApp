@@ -22,27 +22,6 @@
         app:layout_constraintGuide_begin="105dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="181dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="261dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="343dp" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,6 +37,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerEjercicios"
+            android:layout_width="326dp"
+            android:layout_height="311dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
@@ -86,50 +74,6 @@
         app:layout_constraintVertical_bias="0.589" />
 
     <TextView
-        android:id="@+id/lblTxtExercise1"
-        android:layout_width="119dp"
-        android:layout_height="42dp"
-        android:text="DescEjerc1"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
-
-    <TextView
-        android:id="@+id/lblTxtExercise2"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:text="DescEjerc2"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
-
-    <TextView
-        android:id="@+id/lblTxtExercise3"
-        android:layout_width="125dp"
-        android:layout_height="44dp"
-        android:text="DescEjercicio3"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
-
-    <TextView
-        android:id="@+id/lblTxtExercise4"
-        android:layout_width="125dp"
-        android:layout_height="43dp"
-        android:text="DescEjerc4"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
-
-    <TextView
         android:id="@+id/qtyRepetition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -146,47 +90,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="186dp" />
-
-    <ImageView
-        android:id="@+id/imageEjerc1"
-        android:layout_width="79dp"
-        android:layout_height="63dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        tools:src="@tools:sample/avatars" />
-
-    <ImageView
-        android:id="@+id/imageEjerc2"
-        android:layout_width="79dp"
-        android:layout_height="62dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
-        tools:src="@tools:sample/avatars" />
-
-    <ImageView
-        android:id="@+id/imageEjerc3"
-        android:layout_width="74dp"
-        android:layout_height="53dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4"
-        tools:src="@tools:sample/avatars" />
-
-    <ImageView
-        android:id="@+id/imageEjerc4"
-        android:layout_width="76dp"
-        android:layout_height="63dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
-        tools:src="@tools:sample/avatars" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
