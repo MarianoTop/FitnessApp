@@ -28,5 +28,24 @@
         android:id="@+id/previsualizacionEjercicioFragment"
         android:name="com.example.fitnessapp.fragments.PrevisualizacionEjercicioFragment"
         android:label="fragment_previsualizacion_ejercicio"
-        tools:layout="@layout/fragment_previsualizacion_ejercicio" />
+        tools:layout="@layout/fragment_previsualizacion_ejercicio" >
+        <action
+            android:id="@+id/action_previsualizacionEjercicioFragment_to_ejercicioComienzaFragment"
+            app:destination="@id/ejercicioComienzaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ejercicioComienzaFragment"
+        android:name="com.example.fitnessapp.fragments.EjercicioComienzaFragment"
+        android:label="fragment_ejercicio_comienza"
+        tools:layout="@layout/fragment_ejercicio_comienza" />
+    <fragment
+        android:id="@+id/ejercicioFragment"
+        android:name="com.example.fitnessapp.fragments.EjercicioFragment"
+        android:label="fragment_ejercicio"
+        tools:layout="@layout/fragment_ejercicio" />
+    <fragment
+        android:id="@+id/ejercicioDescansoFragment"
+        android:name="com.example.fitnessapp.fragments.EjercicioDescansoFragment"
+        android:label="fragment_ejercicio_descanso"
+        tools:layout="@layout/fragment_ejercicio_descanso" />
 </navigation>
