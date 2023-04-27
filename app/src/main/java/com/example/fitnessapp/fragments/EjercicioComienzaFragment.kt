@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import com.example.fitnessapp.R
 
 class EjercicioComienzaFragment : Fragment() {
@@ -38,6 +39,11 @@ class EjercicioComienzaFragment : Fragment() {
         textImage.text = "Ejercicio a realizar"
 
         return v
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity()).get(EjercicioComienzaFragmentViewModel::class.java)
     }
 
 }

@@ -9,5 +9,14 @@
         android:id="@+id/logInFragment1"
         android:name="com.example.fitnessapp.fragments.LogInFragment1"
         android:label="fragment_log_in_fragment1"
-        tools:layout="@layout/fragment_log_in_fragment1" />
+        tools:layout="@layout/fragment_log_in_fragment1" >
+        <action
+            android:id="@+id/action_logInFragment1_to_mainActivity2"
+            app:destination="@id/mainActivity2" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity2"
+        android:name="com.example.fitnessapp.activities.MainActivity2"
+        android:label="activity_main2"
+        tools:layout="@layout/activity_main2" />
 </navigation>
