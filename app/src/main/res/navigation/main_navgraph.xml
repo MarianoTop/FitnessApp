@@ -11,8 +11,8 @@
         android:label="fragment_entrenamiento_home"
         tools:layout="@layout/fragment_entrenamiento_home" >
         <action
-            android:id="@+id/action_entrenamientoHomeFragment_to_previsualizacionEjercicioFragment"
-            app:destination="@id/previsualizacionEjercicioFragment" />
+            android:id="@+id/action_entrenamientoHomeFragment_to_rutinaFragment"
+            app:destination="@id/rutinaFragment" />
     </fragment>
     <fragment
         android:id="@+id/nutricionHomeFragment"
@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_previsualizacionEjercicioFragment_to_ejercicioComienzaFragment"
             app:destination="@id/ejercicioComienzaFragment" />
+        <argument
+            android:name="RutinaEntity"
+            app:argType="com.example.fitnessapp.entities.Rutina" />
     </fragment>
     <fragment
         android:id="@+id/ejercicioComienzaFragment"
@@ -48,4 +51,16 @@
         android:name="com.example.fitnessapp.fragments.EjercicioDescansoFragment"
         android:label="fragment_ejercicio_descanso"
         tools:layout="@layout/fragment_ejercicio_descanso" />
+    <fragment
+        android:id="@+id/rutinaFragment"
+        android:name="com.example.fitnessapp.fragments.RutinaFragment"
+        android:label="fragment_rutina"
+        tools:layout="@layout/fragment_rutina" >
+        <argument
+            android:name="SemanaEntity"
+            app:argType="com.example.fitnessapp.entities.Semana" />
+        <action
+            android:id="@+id/action_rutinaFragment_to_previsualizacionEjercicioFragment"
+            app:destination="@id/previsualizacionEjercicioFragment" />
+    </fragment>
 </navigation>

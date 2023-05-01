@@ -52,8 +52,8 @@ class PrevisualizacionEjercicioFragment : Fragment() {
          }
 
 
-
-        adapter= EjercicioAdapter(contextSent,repository.ejercicios)
+        var rutina = PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).RutinaEntity
+        adapter= EjercicioAdapter(contextSent,rutina.ejercicios)
         recyclerEjercicios.layoutManager=LinearLayoutManager(context)
         recyclerEjercicios.adapter=adapter
 

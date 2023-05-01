@@ -1,6 +1,5 @@
 package com.example.fitnessapp.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,25 +29,30 @@ class EntrenamientoHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         v = inflater.inflate(R.layout.fragment_entrenamiento_home, container, false)
-        btnNavPrev =v.findViewById(R.id.btnNavPrevisualization)
+       // btnNavPrev =v.findViewById(R.id.btnNavPrevisualization)
         recyclerView = v.findViewById(R.id.recyclerViewSemana)
         return v
     }
 
     override fun onStart() {
         super.onStart()
-        semanaAdapter = SemanaAdapter(semanaList.semanas)
+        semanaAdapter = SemanaAdapter(semanaList.semanas){position ->
+            //Snackbar.make(v, "Click en ${semanaList.semanas[position].id}", Snackbar.LENGTH_SHORT).show();
+            val action = EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToRutinaFragment(semanaList.semanas[position])
+            findNavController().navigate(action)
+        }
         recyclerView.layoutManager = LinearLayoutManager(context);
         recyclerView.adapter = semanaAdapter;
+
+        /*
         btnNavPrev.setOnClickListener {
-
-
-
-            val action =EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment()
+            val action =EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment(
+                semanaList.semanas[position]
+            )
             findNavController().navigate(action)
 
 
-        }
+        }*/
     }
 
 }

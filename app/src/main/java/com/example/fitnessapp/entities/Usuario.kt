@@ -1,7 +1,9 @@
 package com.example.fitnessapp.entities
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import java.sql.Timestamp
-
+@Parcelize
 data class Usuario(
     var id: Long,
     var nombre: String,
@@ -17,4 +19,4 @@ data class Usuario(
     var diasDeEntrenamiento: MutableList<Boolean>
 
 
-)
+) : Parcelable

@@ -4,13 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Semana
 
 
 //El adaptador recibe una lista de elementos e implementa de la clase RecyclerView.Adapter
-class SemanaAdapter(var semanaList : MutableList<Semana>) : RecyclerView.Adapter<SemanaAdapter.SemanaHolder>(){
+class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) -> Unit) : RecyclerView.Adapter<SemanaAdapter.SemanaHolder>(){
 
     //El holder se encarga de iteractuar con el xml del item. Recibe un item.
     class SemanaHolder(v : View) : RecyclerView.ViewHolder(v){
@@ -22,7 +23,11 @@ class SemanaAdapter(var semanaList : MutableList<Semana>) : RecyclerView.Adapter
 
         fun setSemanaNumero(id : Long){
             val txtNumero : TextView = view.findViewById(R.id.textView5);
-            txtNumero.text = id.toString();
+            txtNumero.text = "Semana N°" + id.toString();
+        }
+
+        fun getCard() : CardView {
+            return view.findViewById(R.id.cardViewSemana)
         }
 
     }
@@ -36,6 +41,9 @@ class SemanaAdapter(var semanaList : MutableList<Semana>) : RecyclerView.Adapter
     //Acá se realiza el binding entre el modelo y la vista. Este método itera sobre la lista.
     override fun onBindViewHolder(holder: SemanaHolder, position: Int) {
         holder.setSemanaNumero(semanaList[position].id)
+        holder.getCard().setOnClickListener {
+            onClick(position)
+        }
     }
 
     //Devuelve el tamaño de la vista. Copio y pego.
