@@ -58,7 +58,7 @@ class EjercicioAdapter(private val context: Context, var ejercicios: MutableList
 
     override fun onBindViewHolder(holder: EjercicioHolder, position: Int) {
         holder.setImage(ejercicios[position].image,context)
-        holder.setExerciseDescription(ejercicios[position].description)
+        holder.setExerciseDescription(ejercicios[position].description+ " x"+ejercicios[position].cantidad)
     }
 
     override fun getItemCount(): Int {
