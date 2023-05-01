@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_previsualizacionEjercicioFragment_to_ejercicioComienzaFragment"
             app:destination="@id/ejercicioComienzaFragment" />
+        <argument
+            android:name="rutina"
+            app:argType="com.example.fitnessapp.entities.Rutina" />
     </fragment>
     <fragment
         android:id="@+id/ejercicioComienzaFragment"

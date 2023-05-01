@@ -49,23 +49,20 @@ class PrevisualizacionEjercicioFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
-
         viewModel.cantRepeticiones.observe(viewLifecycleOwner, Observer { result ->
             txtCantRepeticiones.text= "cantidad de repeticiones: ${result.toString()}"
         })
 
+        val Rutina = PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).rutina
+
+        viewModel.setEjercicios(Rutina.ejercicios)
 
 
         lateinit var contextSent :Context
-
          if(context!=null){
              contextSent= context as Context
          }
-
-
-
-        adapter= EjercicioAdapter(contextSent,viewModel.repository.ejercicios)
+        adapter= EjercicioAdapter(contextSent,viewModel.getEjercicios())
         recyclerEjercicios.layoutManager=LinearLayoutManager(context)
         recyclerEjercicios.adapter=adapter
 

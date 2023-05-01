@@ -1,5 +1,9 @@
 package com.example.fitnessapp.entities
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Ejercicio(
     var id: Long,
     var image: String,
@@ -9,4 +13,4 @@ data class Ejercicio(
     var paraGanarPeso: Int,
     var grupoMuscular: String,
     var subGrupoMuscular: String
-)
+):Parcelable

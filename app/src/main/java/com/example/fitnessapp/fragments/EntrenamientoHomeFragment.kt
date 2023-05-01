@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
+import com.example.fitnessapp.entities.Ejercicio
+import com.example.fitnessapp.entities.EjercicioRepository
+import com.example.fitnessapp.entities.Rutina
 
 class EntrenamientoHomeFragment : Fragment() {
 
@@ -16,6 +19,9 @@ class EntrenamientoHomeFragment : Fragment() {
     lateinit var  btnNavPrev : Button
 
     private lateinit var viewModel: EntrenamientoHomeViewModel
+    var repository: EjercicioRepository= EjercicioRepository()
+    var rutina: Rutina= Rutina(1,repository.ejercicios,"piernas")
+
 
 
     override fun onCreateView(
@@ -34,7 +40,7 @@ class EntrenamientoHomeFragment : Fragment() {
 
 
 
-            val action =EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment()
+            val action =EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment(rutina)
             findNavController().navigate(action)
 
 
