@@ -13,7 +13,7 @@ data class Usuario(
     var genero:String,
     var reporteSemanal: Int,
     var reporteMensual: Int,
-    var hora: Timestamp,
+    var hora: String,
     var diasDeEntrenamiento: MutableList<Boolean>
 
 
