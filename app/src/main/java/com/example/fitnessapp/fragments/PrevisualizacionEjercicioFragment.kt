@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +30,11 @@ class PrevisualizacionEjercicioFragment : Fragment() {
     lateinit var txtCantRepeticiones : TextView
     lateinit var  btnNavEjercicio : Button
 
+    private lateinit var viewModel: PrevisualizacionEjercicioViewModel
+    companion object {
+        fun newInstance() = PrevisualizacionEjercicioFragment()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,7 +50,12 @@ class PrevisualizacionEjercicioFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        txtCantRepeticiones.text="cantidad de repeticiones: 400"
+
+        viewModel.cantRepeticiones.observe(viewLifecycleOwner, Observer { result ->
+            txtCantRepeticiones.text= "cantidad de repeticiones: ${result.toString()}"
+        })
+
+
 
         lateinit var contextSent :Context
 
@@ -57,12 +69,12 @@ class PrevisualizacionEjercicioFragment : Fragment() {
         recyclerEjercicios.layoutManager=LinearLayoutManager(context)
         recyclerEjercicios.adapter=adapter
 
-     /*   val decoration = DividerItemDecoration(context,LinearLayoutManager(context).orientation)
-        decoration.setDrawable(ColorDrawable( resources.getColor(R.color.white)));
-        recyclerEjercicios.addItemDecoration(decoration)*/
+    }
 
-
-
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(PrevisualizacionEjercicioViewModel::class.java)
+        // TODO: Use the ViewModel
     }
 
 
