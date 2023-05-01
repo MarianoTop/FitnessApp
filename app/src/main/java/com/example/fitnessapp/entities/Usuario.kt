@@ -3,7 +3,7 @@ package com.example.fitnessapp.entities
 import java.sql.Timestamp
 
 data class Usuario(
-    var id: Int,
+    var id: Long,
     var nombre: String,
     var contraseña: String,
     var peso: Double,
