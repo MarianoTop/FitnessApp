@@ -22,7 +22,7 @@ import com.example.fitnessapp.entities.EjercicioRepository
 class PrevisualizacionEjercicioFragment : Fragment() {
 
     lateinit var v: View
-    var repository: EjercicioRepository = EjercicioRepository()
+
     lateinit var recyclerEjercicios : RecyclerView
     lateinit var adapter: EjercicioAdapter
 
@@ -65,7 +65,7 @@ class PrevisualizacionEjercicioFragment : Fragment() {
 
 
 
-        adapter= EjercicioAdapter(contextSent,repository.ejercicios)
+        adapter= EjercicioAdapter(contextSent,viewModel.repository.ejercicios)
         recyclerEjercicios.layoutManager=LinearLayoutManager(context)
         recyclerEjercicios.adapter=adapter
 

@@ -13,6 +13,7 @@ class PrevisualizacionEjercicioViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 
     val cantRepeticiones= MutableLiveData<Int>()
+    var repository: EjercicioRepository = EjercicioRepository()
 
     init{
         changeCantRepeticiones(500)
