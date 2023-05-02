@@ -4,6 +4,7 @@ import java.sql.Timestamp
 
 data class Usuario(
     var id: Long,
+    var email : String,
     var nombre: String,
     var contraseña: String,
     var peso: Double,
