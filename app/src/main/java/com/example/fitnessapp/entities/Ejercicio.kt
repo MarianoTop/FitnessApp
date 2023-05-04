@@ -9,9 +9,9 @@ data class Ejercicio(
     var image: String,
     var description :String,
     var cantidad: Int,
+    var calorias: Double,
     var paraBajarPeso: Int,
     var paraGanarPeso: Int,
     var grupoMuscular: String,
-    var subGrupoMuscular: String,
-    var caloriasQuemadas: Double
+    var subGrupoMuscular: String
 ):Parcelable
