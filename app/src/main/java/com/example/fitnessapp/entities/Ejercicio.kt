@@ -12,5 +12,6 @@ data class Ejercicio(
     var paraBajarPeso: Int,
     var paraGanarPeso: Int,
     var grupoMuscular: String,
-    var subGrupoMuscular: String
+    var subGrupoMuscular: String,
+    var caloriasQuemadas: Double
 ):Parcelable
