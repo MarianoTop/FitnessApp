@@ -7,5 +7,8 @@ import kotlinx.parcelize.Parcelize
 data class Rutina(
     var id: Long,
     var ejercicios: MutableList<Ejercicio>,
-    var grupoMuscular: String
+    var grupoMuscular: String,
+    var finalizada: Boolean,
+    var esDescanso: Boolean,
+    var faltoEjercicio: Boolean
 ):Parcelable

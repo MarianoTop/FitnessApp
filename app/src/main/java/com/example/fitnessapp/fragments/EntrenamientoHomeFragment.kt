@@ -20,7 +20,7 @@ class EntrenamientoHomeFragment : Fragment() {
 
     private lateinit var viewModel: EntrenamientoHomeViewModel
     var repository: EjercicioRepository= EjercicioRepository()
-    var rutina: Rutina= Rutina(1,repository.ejercicios,"piernas")
+    var rutina: Rutina= Rutina(1,repository.ejercicios,"piernas",false, false,false)
 
 
 
