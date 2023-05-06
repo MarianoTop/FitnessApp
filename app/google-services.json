@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "606269046827",
+    "project_id": "fitcia-app",
+    "storage_bucket": "fitcia-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606269046827:android:52b78a54ab70e456e1ea6e",
+        "android_client_info": {
+          "package_name": "com.example.fitnessapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606269046827-pj60pi1hfamm25mk81lch3he9huf0d7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA45YwYYpI1xZq6Zdr20JFV9BOtF_8ZOpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606269046827-pj60pi1hfamm25mk81lch3he9huf0d7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606269046827:android:d95615972bd483c1e1ea6e",
+        "android_client_info": {
+          "package_name": "com.fitcia.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606269046827-pj60pi1hfamm25mk81lch3he9huf0d7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA45YwYYpI1xZq6Zdr20JFV9BOtF_8ZOpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606269046827-pj60pi1hfamm25mk81lch3he9huf0d7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
