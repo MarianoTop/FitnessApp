@@ -18,5 +18,4 @@ data class Usuario(
     var nivelFisico: MutableList<Boolean>, // 0(Bajo), 1(Medio), 2(Alto)
     var diasDeEntrenamiento: MutableList<Boolean>
 
-
 )
