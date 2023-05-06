@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
+import com.example.fitnessapp.entities.Sesion
 
 class ReporteFinEntrenamientoFragment : Fragment() {
 
@@ -25,6 +27,12 @@ class ReporteFinEntrenamientoFragment : Fragment() {
     lateinit var textCalorias : TextView
     lateinit var textDuracion : TextView
     lateinit var btnTerminar : Button
+    lateinit var sesion : Sesion
+    var totalTiempo : Double = 0.0
+    var totalCalorias : Double = 0.0
+    val sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+    // val db = firebase.firestore / ACTIVAR ESTO CUANDO TENGAMOS CONEXIÓN CON LA BD
+    // val sesiones = db.collection("sesiones") / ACTIVAR ESTO CUADNO TENGAMOS CONEXIÓN CON LA BD
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,10 +60,48 @@ class ReporteFinEntrenamientoFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        // Seteamos la rutina en completada
+        sharedViewModel.rutina.completado = 1
+
+        // Se despliega en pantalla el total de calorías y el tiempo total de duración de rutina
+        totalTiempo = sharedViewModel.totalTiempo
+        totalCalorias = sharedViewModel.totalCalorias
+        textCalorias.text = totalCalorias.toString()
+        textDuracion.text = totalTiempo.toString()
+
+        // Instanciamos nuevo objeto Sesión con los datos de la rutina terminada
+        sesion = Sesion(usuario = sharedViewModel.usuario, rutina = sharedViewModel.rutina, duracionSesion = totalTiempo.toString(), caloriasQuemadas = totalCalorias)
+
+        // Agregamos objeto Sesión a la colección sesiones de la BD
+        // Al hacer add() se genera ID único
+        // Descomentar este código cuando la conexión con la BD esté hecha
+        /*
+        sesiones.add(sesion)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "Sesion agregada con el id: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error al agregar sesión", e)
+            }
+        */
+
+        // Navegación de vuelta a EntrenamientoHomeFragment
+        // HAY QUE PROBARLO CUANDO LUCHO GOBO TERMINE FRAGMENTS DE EJERCICIO
+
         btnTerminar.setOnClickListener(){
-            // val action = ReporteFinEntrenamientoFragmentDirections.action...()
-            // findNavController().navigate(action)
+
+            val fragmentManager = requireActivity().supportFragmentManager
+            val fragmentName = "EntrenamientoHomeFragment"
+            var backStackEntry = fragmentManager.getBackStackEntryAt(0)
+
+            for (i in 0 until fragmentManager.backStackEntryCount) {
+                if (fragmentManager.getBackStackEntryAt(i).name == fragmentName) {
+                    backStackEntry = fragmentManager.getBackStackEntryAt(i - 1)
+                    break
+                }
+            }
         }
+
     }
 
 }
