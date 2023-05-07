@@ -15,7 +15,7 @@ class SemanaUtils {
         var dateFormayDay: SimpleDateFormat = SimpleDateFormat("EEEE")
 
 
-        fun getFechaActual(): String {
+        fun getFechaActualFormateada(): String {
 
             return dateFormat.format(Date())
         }
@@ -37,7 +37,7 @@ class SemanaUtils {
 
             while (contador < semana.rutinas.size && !semanaIncompleta) {
 
-                if (isRutinaDescansoOrFinalizada(semana.rutinas[contador])) {
+                if (isRutinaDescansoOrFinalizadaOrFalto(semana.rutinas[contador])) {
                     contador++
                 } else {
                     semanaIncompleta = true
@@ -47,57 +47,77 @@ class SemanaUtils {
             return posicion
         }
 
-        fun isRutinaDescansoOrFinalizada(rutina: Rutina): Boolean {
-            return rutina.esDescanso || rutina.finalizada
+        fun isRutinaDescansoOrFinalizadaOrFalto(rutina: Rutina): Boolean {
+            return rutina.esDescanso || rutina.finalizada || rutina.faltoEjercicio
         }
 
-        /**  Monday is 1, Sunday is 7. */
+        /**  Sunday is 1, Saturady is 7. */
         fun obtenerDia(date: Date): Int {
             val calendar = Calendar.getInstance()
             calendar.time = date
             return calendar.get(Calendar.DAY_OF_WEEK)
         }
 
-        fun validarSemana(semana :Semana){
+        fun validarSemana(semana: Semana) {
 
-            val fechaActual= Date()
-            val fechaSemana= Date(semana.fechaInicio.time)
+            val fechaActual = Date()
+            val fechaSemana = Date(semana.fechaInicio.time)
             val c = Calendar.getInstance()
-            c.time=fechaSemana
+            c.time = fechaSemana
 
 
             var contador: Int = 0
-            var laFechaEsMayor=false
+            var laFechaEsMayor = false
 
 
-            while (contador < semana.rutinas.size && !laFechaEsMayor){
-              var fechaRutina=c.time
+            while (contador < semana.rutinas.size && !laFechaEsMayor) {
+                var fechaRutina = c.time
 
-                if(fechaActual.after(fechaRutina)){
-                    validarRutina(semana.rutinas[contador])
+                if (fechaActual.after(fechaRutina)) {
+                    esAusente(semana.rutinas[contador])
 
-                }else{
-                    laFechaEsMayor=true
+                } else {
+                    laFechaEsMayor = true
                 }
-                c.add(Calendar.DATE,1)
+                c.add(Calendar.DAY_OF_YEAR, 1)
             }
-
-
 
 
         }
 
-        fun validarRutina(rutina:Rutina  ){
+        fun esAusente(rutina: Rutina) {
 
-            if(!isRutinaDescansoOrFinalizada(rutina) && !rutina.faltoEjercicio){
-                rutina.faltoEjercicio=true
+            if (rutina.esDescanso || rutina.finalizada) {
+
+            } else {
+                rutina.faltoEjercicio = true
             }
 
+        }
+
+        fun obtenerFechaDiaLunesDeLaSemana(date: Date): Date {
+
+            val c = Calendar.getInstance()
+            c.time = date
+
+            while (c.get(Calendar.DAY_OF_WEEK) != 2) {
+                c.add(Calendar.DAY_OF_YEAR, -1)
+            }
+
+            return c.time
         }
     }
 }
 
-fun main(args: Array<String>){
+fun main(args: Array<String>) {
 
-    println(SemanaUtils.getFechaActual())
+
+    val c = Calendar.getInstance()
+    c.set(Calendar.YEAR,2023)
+    c.set(Calendar.MONTH,Calendar.MAY)
+    c.set(Calendar.DAY_OF_MONTH,1)
+
+
+    println(Date())
+    println(SemanaUtils.obtenerFechaDiaLunesDeLaSemana(c.time))
 }
