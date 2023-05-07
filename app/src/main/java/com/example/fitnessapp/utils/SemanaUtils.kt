@@ -115,9 +115,11 @@ fun main(args: Array<String>) {
     val c = Calendar.getInstance()
     c.set(Calendar.YEAR,2023)
     c.set(Calendar.MONTH,Calendar.MAY)
-    c.set(Calendar.DAY_OF_MONTH,1)
+    c.set(Calendar.DAY_OF_MONTH,24)
 
 
-    println(Date())
-    println(SemanaUtils.obtenerFechaDiaLunesDeLaSemana(c.time))
+    val hoy =Date()
+
+    //println(Date())
+    println(SemanaUtils.getFechaActualFormateada())
 }
