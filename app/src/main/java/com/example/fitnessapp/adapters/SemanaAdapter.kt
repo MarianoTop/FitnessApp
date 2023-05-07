@@ -10,9 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Ejercicio
 import com.example.fitnessapp.entities.Semana
+import com.google.android.material.snackbar.Snackbar
 
 //El adaptador recibe una lista de elementos e implementa de la clase RecyclerView.Adapter
-class SemanaAdapter(var semanaList : MutableList<Ejercicio>, var onClick : (Int) -> Unit) : RecyclerView.Adapter<SemanaAdapter.SemanaHolder>(){
+class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) -> Unit) : RecyclerView.Adapter<SemanaAdapter.SemanaHolder>(){
 
     //El holder se encarga de iteractuar con el xml del item. Recibe un item.
     class SemanaHolder(v : View) : RecyclerView.ViewHolder(v){
@@ -50,9 +51,16 @@ class SemanaAdapter(var semanaList : MutableList<Ejercicio>, var onClick : (Int)
 
     //Acá se realiza el binding entre el modelo y la vista. Este método itera sobre la lista.
     override fun onBindViewHolder(holder: SemanaHolder, position: Int) {
-        holder.getIniciarEjercicioButton().setOnClickListener {
-            onClick(position)
+
+        if(semanaList[position].estaFinalizada){
+           // Snackbar.make(v, "Click en ${repository.ejercicios[position].description}", Snackbar.LENGTH_SHORT).show();
+
+        }else{
+            holder.getIniciarEjercicioButton().setOnClickListener {
+                onClick(position)
+            }
         }
+
     /*
     holder.setAnimeName(animesList[position].name)
         holder.getCard().setOnClickListener {

@@ -16,6 +16,8 @@ import com.example.fitnessapp.adapters.SemanaAdapter
 import com.example.fitnessapp.entities.Ejercicio
 import com.example.fitnessapp.entities.EjercicioRepository
 import com.example.fitnessapp.entities.Rutina
+import com.example.fitnessapp.entities.SemanaRepository
+import com.example.fitnessapp.utils.SemanaUtils
 import com.google.android.material.snackbar.Snackbar
 
 class EntrenamientoHomeFragment : Fragment() {
@@ -24,8 +26,9 @@ class EntrenamientoHomeFragment : Fragment() {
     //lateinit var  btnStartExcercise : Button
 
     private lateinit var viewModel: EntrenamientoHomeViewModel
-    var repository: EjercicioRepository= EjercicioRepository()
-    var rutina: Rutina= Rutina(1,repository.ejercicios,"piernas",false, false,false)
+    //var repository: EjercicioRepository= EjercicioRepository()
+    var repositorySemanas: SemanaRepository=SemanaRepository()
+    //var rutina: Rutina= Rutina(1,repository.ejercicios,"piernas",false, false,false)
     lateinit var semanaAdapter : SemanaAdapter;
     lateinit var recyclerView: RecyclerView;
 
@@ -43,9 +46,12 @@ class EntrenamientoHomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        semanaAdapter = SemanaAdapter(repository.ejercicios){position ->
+        semanaAdapter = SemanaAdapter(repositorySemanas.semanas){position ->
             //Snackbar.make(v, "Click en ${repository.ejercicios[position].description}", Snackbar.LENGTH_SHORT).show();
-            val action =EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment(rutina)
+
+            var posicionRutinaAEnviar = SemanaUtils.obtenerRutinaPorHacer(repositorySemanas.semanas[position])
+            println(posicionRutinaAEnviar)
+            val action =EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment(repositorySemanas.semanas[position].rutinas[posicionRutinaAEnviar])
             findNavController().navigate(action)
         };
         recyclerView.layoutManager = LinearLayoutManager(context);

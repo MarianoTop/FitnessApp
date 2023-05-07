@@ -14,14 +14,14 @@ class RutinaRepository {
     init {
 
         rutinas= mutableListOf( )
-        rutinas.add(Rutina(1,   repositoryEjercicios1.ejercicios, "Piernas",false,
+        rutinas.add(Rutina(1,   repositoryEjercicios1.ejercicios, "Piernas",true,
         true,false) )
         rutinas.add(Rutina(2,   repositoryEjercicios2.ejercicios, "Brazos",false,
             true,false) )
         rutinas.add(Rutina(3,   repositoryEjercicios3.ejercicios, "Pecho",false,
             false,true) )
-        rutinas.add(Rutina(4,   repositoryEjercicios4.ejercicios, "Espalda",false,
-            true,false) )
+        rutinas.add(Rutina(4,   repositoryEjercicios4.ejercicios, "Espalda",true,
+            false,false) )
         rutinas.add(Rutina(5,   repositoryEjercicios5.ejercicios, "Piernas",false,
             false,false) )
         rutinas.add(Rutina(6,   repositoryEjercicios6.ejercicios, "Gluteos",false,

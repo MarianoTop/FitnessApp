@@ -16,13 +16,13 @@ class SemanaRepository {
 
         val c = Calendar.getInstance()
         c.set(Calendar.YEAR,2023)
-        c.set(Calendar.MONTH, Calendar.MAY)
-        c.set(Calendar.DAY_OF_MONTH,1)
+        c.set(Calendar.MONTH, Calendar.APRIL)
+        c.set(Calendar.DAY_OF_MONTH,24)
 
        var dateAPasar = c.time
 
 
-        semanas.add(Semana(1,repositoryRutina1.rutinas,usuario,false, Timestamp(dateAPasar.time)))
+        semanas.add(Semana(1,repositoryRutina1.rutinas,usuario,true, Timestamp(dateAPasar.time)))
 
         val d = Calendar.getInstance()
         d.set(Calendar.YEAR,2023)
@@ -31,7 +31,7 @@ class SemanaRepository {
 
         var dateAPasar2 = d.time
 
-        semanas.add(Semana(2,repositoryRutina1.rutinas,usuario,false, Timestamp(dateAPasar2.time)))
+        semanas.add(Semana(2,repositoryRutina2.rutinas,usuario,false, Timestamp(dateAPasar2.time)))
 
 
     }
