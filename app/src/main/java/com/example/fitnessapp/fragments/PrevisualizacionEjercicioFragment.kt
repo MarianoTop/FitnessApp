@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
@@ -41,6 +42,8 @@ class PrevisualizacionEjercicioFragment : Fragment() {
         recyclerEjercicios=v.findViewById(R.id.recyclerEjercicios)
 
         txtCantRepeticiones=v.findViewById(R.id.qtyRepetition)
+
+        btnNavEjercicio=v.findViewById(R.id.buttonNavFromPrev)
         return v
     }
 
@@ -64,6 +67,11 @@ class PrevisualizacionEjercicioFragment : Fragment() {
         recyclerEjercicios.layoutManager=LinearLayoutManager(context)
         recyclerEjercicios.adapter=adapter
 
+
+        btnNavEjercicio.setOnClickListener{
+            val action=PrevisualizacionEjercicioFragmentDirections.actionPrevisualizacionEjercicioFragmentToReporteFinEntrenamientoFragment()
+            findNavController().navigate(action)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

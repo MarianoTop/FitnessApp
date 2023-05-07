@@ -35,6 +35,9 @@
         <argument
             android:name="rutina"
             app:argType="com.example.fitnessapp.entities.Rutina" />
+        <action
+            android:id="@+id/action_previsualizacionEjercicioFragment_to_reporteFinEntrenamientoFragment"
+            app:destination="@id/reporteFinEntrenamientoFragment" />
     </fragment>
     <fragment
         android:id="@+id/ejercicioComienzaFragment"
@@ -51,4 +54,9 @@
         android:name="com.example.fitnessapp.fragments.EjercicioDescansoFragment"
         android:label="fragment_ejercicio_descanso"
         tools:layout="@layout/fragment_ejercicio_descanso" />
+    <fragment
+        android:id="@+id/reporteFinEntrenamientoFragment"
+        android:name="com.example.fitnessapp.fragments.ReporteFinEntrenamientoFragment"
+        android:label="fragment_reporte_fin_entrenamiento"
+        tools:layout="@layout/fragment_reporte_fin_entrenamiento" />
 </navigation>

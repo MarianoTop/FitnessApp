@@ -49,7 +49,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonNavFromPrev"
         android:layout_width="208dp"
         android:layout_height="52dp"
         android:backgroundTint="#AE2323"
@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:text="CantidadRepeticiones"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNavFromPrev"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
