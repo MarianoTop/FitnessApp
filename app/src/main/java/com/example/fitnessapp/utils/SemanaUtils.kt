@@ -74,7 +74,7 @@ class SemanaUtils {
                 var fechaRutina = c.time
 
                 if (fechaActual.after(fechaRutina)) {
-                    esAusente(semana.rutinas[contador])
+                    validarAusente(semana.rutinas[contador])
 
                 } else {
                     laFechaEsMayor = true
@@ -85,7 +85,7 @@ class SemanaUtils {
 
         }
 
-        fun esAusente(rutina: Rutina) {
+        fun validarAusente(rutina: Rutina) {
 
             if (rutina.esDescanso || rutina.finalizada) {
 
@@ -121,5 +121,5 @@ fun main(args: Array<String>) {
     val hoy =Date()
 
     //println(Date())
-    println(SemanaUtils.getFechaActualFormateada())
+    println(SemanaUtils.obtenerFechaDiaLunesDeLaSemana(hoy))
 }

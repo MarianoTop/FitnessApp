@@ -1,5 +1,6 @@
 package com.example.fitnessapp.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +9,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
-import com.example.fitnessapp.entities.Ejercicio
 import com.example.fitnessapp.entities.Semana
-import com.google.android.material.snackbar.Snackbar
 
 //El adaptador recibe una lista de elementos e implementa de la clase RecyclerView.Adapter
 class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) -> Unit) : RecyclerView.Adapter<SemanaAdapter.SemanaHolder>(){
@@ -41,6 +40,10 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
             return view.findViewById(R.id.btnIniciarEjercicio)
         }
 
+        fun getTxtLunes () : TextView {
+            return view.findViewById(R.id.txtRutina0)
+        }
+
     }
 
     //Se instancia el holder. Se copia y pega y se modifica con el contexto en que trabajo.
@@ -51,6 +54,15 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
 
     //Acá se realiza el binding entre el modelo y la vista. Este método itera sobre la lista.
     override fun onBindViewHolder(holder: SemanaHolder, position: Int) {
+
+        semanaList[position].rutinas
+
+        if(true){
+            var textLunes =holder.getTxtLunes()
+            textLunes.setBackgroundColor(Color.BLUE)
+        }
+
+
 
         if(semanaList[position].estaFinalizada){
            // Snackbar.make(v, "Click en ${repository.ejercicios[position].description}", Snackbar.LENGTH_SHORT).show();
