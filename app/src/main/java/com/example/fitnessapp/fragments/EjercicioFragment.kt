@@ -8,17 +8,20 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.fitnessapp.R
 
 class EjercicioFragment : Fragment() {
 
     lateinit var v : View
 
-    private lateinit var viewModel: EjercicioViewModel
+    private val sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
     lateinit var textTitle : TextView
     lateinit var textNameExercise : TextView
-    lateinit var textContadorOrRep : TextView // VER QUE ONDA...
+    lateinit var textContadorOrRep : TextView // REVISAR...
     lateinit var imageExercise : ImageView
     lateinit var btnNext : Button
 
@@ -34,9 +37,6 @@ class EjercicioFragment : Fragment() {
         imageExercise = v.findViewById(R.id.imageExercise1)
         btnNext = v.findViewById(R.id.btnNext)
 
-        textTitle.text = "Ejercicio 01/00"
-        textNameExercise.text = "Nombre Ejercicio"
-        textContadorOrRep.text = "X10" // VER COMO USAR ESTO...
         btnNext.text = "Listo"
 
         return v
@@ -45,11 +45,27 @@ class EjercicioFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        val posActual = sharedViewModel.posActual
+        val ejercicioActual = sharedViewModel.rutina.ejercicios[posActual]
+
+        textTitle.text = "Ejercicio " + {posActual+1}
+        textNameExercise.text = ejercicioActual.description
+        textContadorOrRep.text = "X" + ejercicioActual.cantidad.toString()
+
+        Glide
+            .with(this)
+            .load(ejercicioActual.image)
+            .into(imageExercise);
+
+
         btnNext.setOnClickListener {
-            // val action = Screen1FragmentDirections.actionScreen1FragmentToMainNavgraph()
-            // findNavController().navigate(action)
-            // NO FUNCIONA - ES COPY-PASTE
+
+            sharedViewModel.incrementarPos()
+
+             val action = EjercicioFragmentDirections.actionEjercicioFragmentToEjercicioDescansoFragment()
+             findNavController().navigate(action)
         }
 
     }
+
 }

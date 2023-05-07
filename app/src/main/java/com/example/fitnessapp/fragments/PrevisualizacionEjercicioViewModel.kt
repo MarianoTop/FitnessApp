@@ -11,7 +11,6 @@ import com.example.fitnessapp.entities.Ejercicio
 import com.example.fitnessapp.entities.EjercicioRepository
 
 class PrevisualizacionEjercicioViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
 
     val cantRepeticiones= MutableLiveData<Int>()
     private lateinit  var ejercicios: MutableList<Ejercicio>

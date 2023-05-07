@@ -40,15 +40,38 @@
         android:id="@+id/ejercicioComienzaFragment"
         android:name="com.example.fitnessapp.fragments.EjercicioComienzaFragment"
         android:label="fragment_ejercicio_comienza"
-        tools:layout="@layout/fragment_ejercicio_comienza" />
+        tools:layout="@layout/fragment_ejercicio_comienza" >
+        <argument
+            android:name="rutina"
+            app:argType="com.example.fitnessapp.entities.Rutina" />
+        <action
+            android:id="@+id/action_ejercicioComienzaFragment_to_ejercicioFragment"
+            app:destination="@id/ejercicioFragment" />
+    </fragment>
     <fragment
         android:id="@+id/ejercicioFragment"
         android:name="com.example.fitnessapp.fragments.EjercicioFragment"
         android:label="fragment_ejercicio"
-        tools:layout="@layout/fragment_ejercicio" />
+        tools:layout="@layout/fragment_ejercicio" >
+        <action
+            android:id="@+id/action_ejercicioFragment_to_ejercicioDescansoFragment"
+            app:destination="@id/ejercicioDescansoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/ejercicioDescansoFragment"
         android:name="com.example.fitnessapp.fragments.EjercicioDescansoFragment"
         android:label="fragment_ejercicio_descanso"
-        tools:layout="@layout/fragment_ejercicio_descanso" />
+        tools:layout="@layout/fragment_ejercicio_descanso" >
+        <action
+            android:id="@+id/action_ejercicioDescansoFragment_to_ejercicioFragment"
+            app:destination="@id/ejercicioFragment" />
+        <action
+            android:id="@+id/action_ejercicioDescansoFragment_to_reporteFinEntrenamientoFragment"
+            app:destination="@id/reporteFinEntrenamientoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reporteFinEntrenamientoFragment"
+        android:name="com.example.fitnessapp.fragments.ReporteFinEntrenamientoFragment"
+        android:label="fragment_reporte_fin_entrenamiento"
+        tools:layout="@layout/fragment_reporte_fin_entrenamiento" />
 </navigation>

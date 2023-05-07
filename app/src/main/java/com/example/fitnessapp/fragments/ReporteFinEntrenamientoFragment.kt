@@ -17,8 +17,6 @@ class ReporteFinEntrenamientoFragment : Fragment() {
 
     lateinit var v : View
 
-    private lateinit var viewModel: ReporteFinEntrenamientoViewModel
-
     lateinit var imageLogo : ImageView
     lateinit var textTitle : TextView
     lateinit var textDia : TextView

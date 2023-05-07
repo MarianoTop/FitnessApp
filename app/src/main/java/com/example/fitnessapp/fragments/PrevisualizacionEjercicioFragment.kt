@@ -11,12 +11,14 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.adapters.EjercicioAdapter
 import com.example.fitnessapp.entities.EjercicioRepository
+import com.example.fitnessapp.entities.Rutina
 
 
 class PrevisualizacionEjercicioFragment : Fragment() {
@@ -44,6 +46,8 @@ class PrevisualizacionEjercicioFragment : Fragment() {
         recyclerEjercicios=v.findViewById(R.id.recyclerEjercicios)
 
         txtCantRepeticiones=v.findViewById(R.id.qtyRepetition)
+
+        btnNavEjercicio = v.findViewById(R.id.button)
         return v
     }
 
@@ -65,6 +69,11 @@ class PrevisualizacionEjercicioFragment : Fragment() {
         adapter= EjercicioAdapter(contextSent,viewModel.getEjercicios())
         recyclerEjercicios.layoutManager=LinearLayoutManager(context)
         recyclerEjercicios.adapter=adapter
+
+        btnNavEjercicio.setOnClickListener {
+            val action = PrevisualizacionEjercicioFragmentDirections.actionPrevisualizacionEjercicioFragmentToEjercicioComienzaFragment(Rutina)
+            findNavController().navigate(action)
+        }
 
     }
 
