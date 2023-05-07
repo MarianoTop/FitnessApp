@@ -1,7 +1,6 @@
 package com.example.fitnessapp.fragments
 
 import android.content.Context
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +10,10 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.adapters.EjercicioAdapter
-import com.example.fitnessapp.entities.EjercicioRepository
 
 
 class PrevisualizacionEjercicioFragment : Fragment() {
@@ -53,9 +50,10 @@ class PrevisualizacionEjercicioFragment : Fragment() {
             txtCantRepeticiones.text= "cantidad de repeticiones: ${result.toString()}"
         })
 
-        val Rutina = PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).rutina
+        val rutina = PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).rutina
 
-        viewModel.setEjercicios(Rutina.ejercicios)
+        viewModel.setRutinaAPasar(rutina)
+        viewModel.setEjercicios(rutina.ejercicios)
 
 
         lateinit var contextSent :Context
