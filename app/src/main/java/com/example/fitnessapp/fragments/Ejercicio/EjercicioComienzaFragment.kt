@@ -1,4 +1,4 @@
-package com.example.fitnessapp.fragments
+package com.example.fitnessapp.fragments.Ejercicio
 
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -10,10 +10,11 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.fitnessapp.R
+import com.example.fitnessapp.fragments.Ejercicio.EjercicioComienzaFragmentDirections
+import com.example.fitnessapp.fragments.PrevisualizacionEjercicioFragmentArgs
 
 class EjercicioComienzaFragment : Fragment() {
 
@@ -54,7 +55,10 @@ class EjercicioComienzaFragment : Fragment() {
 
         startTimeCounter()
 
-        sharedViewModel.asignarRutina(PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).rutina)
+        sharedViewModel.asignarRutina(
+            PrevisualizacionEjercicioFragmentArgs.fromBundle(
+                requireArguments()
+            ).rutina)
 
         val posActual = sharedViewModel.posActual
         val ejercicioActual = sharedViewModel.ejercActual()
@@ -72,7 +76,8 @@ class EjercicioComienzaFragment : Fragment() {
 
                 sharedViewModel.guardarTiempoInicio()
 
-                val action = EjercicioComienzaFragmentDirections.actionEjercicioComienzaFragmentToEjercicioFragment()
+                val action =
+                    EjercicioComienzaFragmentDirections.actionEjercicioComienzaFragmentToEjercicioFragment()
                 findNavController().navigate(action)
             }
         }
@@ -80,7 +85,7 @@ class EjercicioComienzaFragment : Fragment() {
     }
 
     private fun startTimeCounter() {
-        object : CountDownTimer(1000,1000) {
+        object : CountDownTimer(5000,1000) {
             override fun onTick(millisUntilFinished: Long) {
                 textContador.text = counter.toString()
                 counter--

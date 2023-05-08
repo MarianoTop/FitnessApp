@@ -1,4 +1,4 @@
-package com.example.fitnessapp.fragments
+package com.example.fitnessapp.fragments.Ejercicio
 
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -10,10 +10,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.fitnessapp.R
+import com.example.fitnessapp.fragments.Ejercicio.EjercicioFragmentDirections
 
 class EjercicioFragment : Fragment() {
 
@@ -70,7 +70,8 @@ class EjercicioFragment : Fragment() {
             sharedViewModel.sumaCalorias()
             sharedViewModel.incrementarPos()
 
-             val action = EjercicioFragmentDirections.actionEjercicioFragmentToEjercicioDescansoFragment()
+             val action =
+                 EjercicioFragmentDirections.actionEjercicioFragmentToEjercicioDescansoFragment()
              findNavController().navigate(action)
         }
 

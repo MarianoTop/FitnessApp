@@ -1,4 +1,4 @@
-package com.example.fitnessapp.fragments
+package com.example.fitnessapp.fragments.Ejercicio
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,10 +9,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Sesion
+import com.example.fitnessapp.fragments.Ejercicio.ReporteFinEntrenamientoFragmentDirections
 
 class ReporteFinEntrenamientoFragment : Fragment() {
 
@@ -91,7 +91,8 @@ class ReporteFinEntrenamientoFragment : Fragment() {
 
         btnTerminar.setOnClickListener(){
 
-            val action = ReporteFinEntrenamientoFragmentDirections.actionReporteFinEntrenamientoFragmentToEntrenamientoHomeFragment()
+            val action =
+                ReporteFinEntrenamientoFragmentDirections.actionReporteFinEntrenamientoFragmentToEntrenamientoHomeFragment()
             findNavController().navigate(action)
 
             /*

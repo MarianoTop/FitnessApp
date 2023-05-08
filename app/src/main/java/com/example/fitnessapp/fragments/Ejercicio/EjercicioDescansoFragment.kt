@@ -1,6 +1,5 @@
-package com.example.fitnessapp.fragments
+package com.example.fitnessapp.fragments.Ejercicio
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
@@ -14,6 +13,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.fitnessapp.R
+import com.example.fitnessapp.fragments.Ejercicio.EjercicioDescansoFragmentDirections
 
 class EjercicioDescansoFragment : Fragment() {
 
@@ -93,10 +93,12 @@ class EjercicioDescansoFragment : Fragment() {
                     sharedViewModel.rutinaCompletada()
                     sharedViewModel.guardarTiempoFin()
 
-                    val action = EjercicioDescansoFragmentDirections.actionEjercicioDescansoFragmentToReporteFinEntrenamientoFragment()
+                    val action =
+                        EjercicioDescansoFragmentDirections.actionEjercicioDescansoFragmentToReporteFinEntrenamientoFragment()
                     findNavController().navigate(action)
                 } else {
-                    val action = EjercicioDescansoFragmentDirections.actionEjercicioDescansoFragmentToEjercicioFragment()
+                    val action =
+                        EjercicioDescansoFragmentDirections.actionEjercicioDescansoFragmentToEjercicioFragment()
                     findNavController().navigate(action)
                 }
             }
@@ -105,7 +107,7 @@ class EjercicioDescansoFragment : Fragment() {
     }
 
     private fun startTimeCounter() {
-        object : CountDownTimer(1000,1000) {
+        object : CountDownTimer(15000,1000) {
         override fun onTick(millisUntilFinished: Long) {
             textContador.text = counter.toString()
             counter--

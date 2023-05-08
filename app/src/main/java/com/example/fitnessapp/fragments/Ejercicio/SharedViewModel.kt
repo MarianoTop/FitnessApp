@@ -1,4 +1,4 @@
-package com.example.fitnessapp.fragments
+package com.example.fitnessapp.fragments.Ejercicio
 
 import androidx.lifecycle.ViewModel
 import com.example.fitnessapp.entities.Ejercicio

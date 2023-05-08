@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/ejercicioComienzaFragment"
-        android:name="com.example.fitnessapp.fragments.EjercicioComienzaFragment"
+        android:name="com.example.fitnessapp.fragments.Ejercicio.EjercicioComienzaFragment"
         android:label="fragment_ejercicio_comienza"
         tools:layout="@layout/fragment_ejercicio_comienza" >
         <argument
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/ejercicioFragment"
-        android:name="com.example.fitnessapp.fragments.EjercicioFragment"
+        android:name="com.example.fitnessapp.fragments.Ejercicio.EjercicioFragment"
         android:label="fragment_ejercicio"
         tools:layout="@layout/fragment_ejercicio" >
         <action
@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/ejercicioDescansoFragment"
-        android:name="com.example.fitnessapp.fragments.EjercicioDescansoFragment"
+        android:name="com.example.fitnessapp.fragments.Ejercicio.EjercicioDescansoFragment"
         android:label="fragment_ejercicio_descanso"
         tools:layout="@layout/fragment_ejercicio_descanso" >
         <action
@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/reporteFinEntrenamientoFragment"
-        android:name="com.example.fitnessapp.fragments.ReporteFinEntrenamientoFragment"
+        android:name="com.example.fitnessapp.fragments.Ejercicio.ReporteFinEntrenamientoFragment"
         android:label="fragment_reporte_fin_entrenamiento"
         tools:layout="@layout/fragment_reporte_fin_entrenamiento" >
         <action
