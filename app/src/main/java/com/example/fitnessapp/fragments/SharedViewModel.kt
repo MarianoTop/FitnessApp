@@ -1,5 +1,6 @@
 package com.example.fitnessapp.fragments
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.fitnessapp.entities.Ejercicio
 import com.example.fitnessapp.entities.Rutina
@@ -17,6 +18,10 @@ class SharedViewModel : ViewModel() {
     var posActual : Int = 0
     var horaInicio : Long = 0
     var horaFin : Long = 0
+
+    fun asignarRutina(rutina: Rutina) {
+        this.rutina = rutina
+    }
 
     fun resetearPos() {
         posActual = 0

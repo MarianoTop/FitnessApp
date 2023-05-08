@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.fitnessapp.R
@@ -18,7 +19,7 @@ class EjercicioDescansoFragment : Fragment() {
 
     lateinit var v : View
 
-    private lateinit var sharedViewModel : SharedViewModel
+    private val sharedViewModel : SharedViewModel by activityViewModels()
 
     lateinit var textTitle : TextView
     lateinit var textDescanso : TextView
@@ -56,15 +57,9 @@ class EjercicioDescansoFragment : Fragment() {
 
         val posActual = sharedViewModel.posActual
         val ejercicioAnterior = sharedViewModel.ejercAnterior()
-        val ejercicioActual = sharedViewModel.ejercActual()
-        textTitle.text = "Ejercicio " + (posActual+1)
-
-        Glide
-            .with(this)
-            .load(ejercicioActual.image)
-            .into(imageExercise);
 
         if (posActual.toString() == sharedViewModel.cantEjercicios()) {
+            textTitle.text = "Ejercicio terminados"
             textImage.text = "Ultimo ejercicio realizado"
 
             Glide
@@ -73,6 +68,16 @@ class EjercicioDescansoFragment : Fragment() {
                 .into(imageExercise);
 
             buttonFinDescanso.text = "Finalizar"
+        } else {
+
+            textTitle.text = "Ejercicio " + (posActual+1)
+            val ejercicioActual = sharedViewModel.ejercActual()
+
+            Glide
+                .with(this)
+                .load(ejercicioActual.image)
+                .into(imageExercise);
+
         }
 
         buttonFinDescanso.setOnClickListener {
@@ -105,11 +110,6 @@ class EjercicioDescansoFragment : Fragment() {
         override fun onFinish() {
             textContador.text = "0"
         }
-    }.start()
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        sharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+        }.start()
     }
 }

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -18,7 +19,7 @@ class EjercicioComienzaFragment : Fragment() {
 
     lateinit var v : View
 
-    private lateinit var sharedViewModel : SharedViewModel
+    private val sharedViewModel : SharedViewModel by activityViewModels()
 
     lateinit var textTitle : TextView
     lateinit var textStart : TextView
@@ -53,7 +54,7 @@ class EjercicioComienzaFragment : Fragment() {
 
         startTimeCounter()
 
-        sharedViewModel.rutina = PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).rutina
+        sharedViewModel.asignarRutina(PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).rutina)
 
         val posActual = sharedViewModel.posActual
         val ejercicioActual = sharedViewModel.ejercActual()
@@ -89,11 +90,6 @@ class EjercicioComienzaFragment : Fragment() {
                 textContador.text = "0"
             }
         }.start()
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        sharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
     }
 
 

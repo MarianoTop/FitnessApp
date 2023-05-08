@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -17,7 +18,7 @@ class EjercicioFragment : Fragment() {
 
     lateinit var v : View
 
-    private lateinit var sharedViewModel : SharedViewModel
+    private val sharedViewModel : SharedViewModel by activityViewModels()
 
     lateinit var textTitle : TextView
     lateinit var textNameExercise : TextView
@@ -57,21 +58,14 @@ class EjercicioFragment : Fragment() {
             .load(ejercicioActual.image)
             .into(imageExercise);
 
-
         btnNext.setOnClickListener {
 
             sharedViewModel.sumaCalorias()
-
             sharedViewModel.incrementarPos()
 
              val action = EjercicioFragmentDirections.actionEjercicioFragmentToEjercicioDescansoFragment()
              findNavController().navigate(action)
         }
 
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        sharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
     }
 }
