@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.adapters.EjercicioAdapter
 import com.example.fitnessapp.entities.Ejercicio
 import com.example.fitnessapp.entities.EjercicioRepository
+import com.example.fitnessapp.entities.Rutina
 
 class PrevisualizacionEjercicioViewModel : ViewModel() {
 
     val cantRepeticiones= MutableLiveData<Int>()
     private lateinit  var ejercicios: MutableList<Ejercicio>
+    private lateinit var rutinaAPasar: Rutina
 
     init{
         changeCantRepeticiones(500)
@@ -25,8 +27,17 @@ class PrevisualizacionEjercicioViewModel : ViewModel() {
         this.ejercicios=ejercicios
     }
 
+    fun getRutinaAPasar (): Rutina{
+        return rutinaAPasar
+    }
+
+    fun setRutinaAPasar (rutinaAPasar: Rutina){
+        this.rutinaAPasar=rutinaAPasar
+    }
+
     fun getEjercicios (): MutableList<Ejercicio>{
         return ejercicios
     }
+
 
 }
