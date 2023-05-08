@@ -48,7 +48,7 @@ class EjercicioFragment : Fragment() {
         val posActual = sharedViewModel.posActual
         val ejercicioActual = sharedViewModel.ejercActual()
 
-        textTitle.text = "Ejercicio " + posActual+1
+        textTitle.text = "Ejercicio " + (posActual+1)
         textNameExercise.text = ejercicioActual.description
         textContadorOrRep.text = "X" + ejercicioActual.cantidad.toString()
 
