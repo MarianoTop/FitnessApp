@@ -18,16 +18,16 @@ class EjercicioDescansoFragment : Fragment() {
 
     lateinit var v : View
 
-    private val sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+    private lateinit var sharedViewModel : SharedViewModel
 
     lateinit var textTitle : TextView
     lateinit var textDescanso : TextView
-    lateinit var textContador : TextView // VER QUE ONDA...
+    lateinit var textContador : TextView
     lateinit var textImage : TextView
     lateinit var imageExercise : ImageView
     lateinit var buttonFinDescanso : Button
 
-    var counter = 0
+    var counter = 15
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,31 +46,18 @@ class EjercicioDescansoFragment : Fragment() {
         textImage.text = "Siguiente ejercicio"
         buttonFinDescanso.text = "Listo"
 
-        fun startTimeCounter(view : View) {                                         // PROBANDO COMO FUNCIONA
-            object : CountDownTimer(100000,1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    textContador.text = counter.toString()
-                    counter++
-                }
-
-                override fun onFinish() {
-                    textContador.text = "0"
-                }
-            }.start()
-        }
-
         return v
     }
 
     override fun onStart() {
         super.onStart()
 
-        sharedViewModel.rutina = PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).rutina
+        startTimeCounter()
 
         val posActual = sharedViewModel.posActual
-        val ejercicioAnterior = sharedViewModel.rutina.ejercicios[posActual-1]
-        val ejercicioActual = sharedViewModel.rutina.ejercicios[posActual]
-        textTitle.text = "Ejercicio " + {posActual+1}
+        val ejercicioAnterior = sharedViewModel.ejercAnterior()
+        val ejercicioActual = sharedViewModel.ejercActual()
+        textTitle.text = "Ejercicio " + (posActual+1)
 
         Glide
             .with(this)
@@ -93,8 +80,9 @@ class EjercicioDescansoFragment : Fragment() {
             if (textContador.text == "0") {
                 if (posActual.toString() == sharedViewModel.cantEjercicios()) {
                     sharedViewModel.resetearPos()
-                    sharedViewModel.rutina.finalizada = true
-                    sharedViewModel.rutina.completado = 1
+                    sharedViewModel.rutinaFinalizada()
+                    sharedViewModel.rutinaCompletada()
+                    sharedViewModel.guardarTiempoFin()
 
                     val action = EjercicioDescansoFragmentDirections.actionEjercicioDescansoFragmentToReporteFinEntrenamientoFragment()
                     findNavController().navigate(action)
@@ -107,4 +95,21 @@ class EjercicioDescansoFragment : Fragment() {
 
     }
 
+    private fun startTimeCounter() {
+        object : CountDownTimer(15000,1000) {
+        override fun onTick(millisUntilFinished: Long) {
+            textContador.text = counter.toString()
+            counter--
+        }
+
+        override fun onFinish() {
+            textContador.text = "0"
+        }
+    }.start()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        sharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+    }
 }

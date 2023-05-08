@@ -1,6 +1,5 @@
 package com.example.fitnessapp.fragments
 
-import android.content.IntentSender.OnFinished
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
@@ -19,16 +18,16 @@ class EjercicioComienzaFragment : Fragment() {
 
     lateinit var v : View
 
-    private val sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+    private lateinit var sharedViewModel : SharedViewModel
 
     lateinit var textTitle : TextView
     lateinit var textStart : TextView
-    lateinit var textContador : TextView // VER QUE ONDA...
+    lateinit var textContador : TextView
     lateinit var textImage : TextView
     lateinit var imageExercise : ImageView
     lateinit var buttonComenzar : Button
 
-    var counter = 0
+    var counter = 5
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,31 +45,20 @@ class EjercicioComienzaFragment : Fragment() {
         textStart.text = "Comienza en"
         textImage.text = "Ejercicio a realizar"
         buttonComenzar.text = "Comenzar"
-
-        fun startTimeCounter(view : View) {                                         // PROBANDO COMO FUNCIONA
-            object : CountDownTimer(60000,1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    textContador.text = counter.toString()
-                    counter++
-                }
-
-                override fun onFinish() {
-                    textContador.text = "0"
-                }
-            }.start()
-        }
-
         return v
     }
 
     override fun onStart() {
         super.onStart()
 
+        startTimeCounter()
+
         sharedViewModel.rutina = PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).rutina
 
         val posActual = sharedViewModel.posActual
-        val ejercicioActual = sharedViewModel.rutina.ejercicios[posActual]
-        textTitle.text = "Ejercicio " + {posActual+1}
+        val ejercicioActual = sharedViewModel.ejercActual()
+
+        textTitle.text = "Ejercicio " + (posActual+1)
 
         Glide
             .with(this)
@@ -80,11 +68,33 @@ class EjercicioComienzaFragment : Fragment() {
         buttonComenzar.setOnClickListener {
 
             if (textContador.text == "0") {
+
+                sharedViewModel.guardarTiempoInicio()
+
                 val action = EjercicioComienzaFragmentDirections.actionEjercicioComienzaFragmentToEjercicioFragment()
                 findNavController().navigate(action)
             }
         }
 
-        }
+    }
+
+    private fun startTimeCounter() {
+        object : CountDownTimer(5000,1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                textContador.text = counter.toString()
+                counter--
+            }
+
+            override fun onFinish() {
+                textContador.text = "0"
+            }
+        }.start()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        sharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+    }
+
 
     }

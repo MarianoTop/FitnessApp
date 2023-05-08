@@ -17,11 +17,11 @@ class EjercicioFragment : Fragment() {
 
     lateinit var v : View
 
-    private val sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+    private lateinit var sharedViewModel : SharedViewModel
 
     lateinit var textTitle : TextView
     lateinit var textNameExercise : TextView
-    lateinit var textContadorOrRep : TextView // REVISAR...
+    lateinit var textContadorOrRep : TextView
     lateinit var imageExercise : ImageView
     lateinit var btnNext : Button
 
@@ -46,9 +46,9 @@ class EjercicioFragment : Fragment() {
         super.onStart()
 
         val posActual = sharedViewModel.posActual
-        val ejercicioActual = sharedViewModel.rutina.ejercicios[posActual]
+        val ejercicioActual = sharedViewModel.ejercActual()
 
-        textTitle.text = "Ejercicio " + {posActual+1}
+        textTitle.text = "Ejercicio " + posActual+1
         textNameExercise.text = ejercicioActual.description
         textContadorOrRep.text = "X" + ejercicioActual.cantidad.toString()
 
@@ -60,6 +60,8 @@ class EjercicioFragment : Fragment() {
 
         btnNext.setOnClickListener {
 
+            sharedViewModel.sumaCalorias()
+
             sharedViewModel.incrementarPos()
 
              val action = EjercicioFragmentDirections.actionEjercicioFragmentToEjercicioDescansoFragment()
@@ -68,4 +70,8 @@ class EjercicioFragment : Fragment() {
 
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        sharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+    }
 }
