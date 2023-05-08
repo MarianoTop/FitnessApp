@@ -29,6 +29,7 @@ class EjercicioDescansoFragment : Fragment() {
     lateinit var buttonFinDescanso : Button
 
     var counter = 15
+    var counterGlobal : Double = 0.0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +54,9 @@ class EjercicioDescansoFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        counterGlobal = sharedViewModel.totalTiempo
+
+        duracionEntrenamiento()
         startTimeCounter()
 
         val posActual = sharedViewModel.posActual
@@ -112,4 +116,18 @@ class EjercicioDescansoFragment : Fragment() {
         }
         }.start()
     }
+
+    private fun duracionEntrenamiento() {
+        object : CountDownTimer(99999999,1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                sharedViewModel.totalTiempo =+ counterGlobal.toDouble()
+                counterGlobal++
+            }
+
+            override fun onFinish() {
+                sharedViewModel.totalTiempo = counterGlobal.toDouble()
+            }
+        }.start()
+    }
+
 }

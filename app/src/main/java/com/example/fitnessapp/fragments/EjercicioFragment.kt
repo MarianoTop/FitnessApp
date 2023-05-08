@@ -1,6 +1,7 @@
 package com.example.fitnessapp.fragments
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,8 @@ class EjercicioFragment : Fragment() {
     lateinit var imageExercise : ImageView
     lateinit var btnNext : Button
 
+    var counterGlobal : Double = 0.0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,6 +48,10 @@ class EjercicioFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        counterGlobal = sharedViewModel.totalTiempo
+
+        duracionEntrenamiento()
 
         val posActual = sharedViewModel.posActual
         val ejercicioActual = sharedViewModel.ejercActual()
@@ -68,4 +75,18 @@ class EjercicioFragment : Fragment() {
         }
 
     }
+
+    private fun duracionEntrenamiento() {
+        object : CountDownTimer(99999999,1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                sharedViewModel.totalTiempo =+ counterGlobal.toDouble()
+                counterGlobal++
+            }
+
+            override fun onFinish() {
+                sharedViewModel.totalTiempo = counterGlobal.toDouble()
+            }
+        }.start()
+    }
+
 }
