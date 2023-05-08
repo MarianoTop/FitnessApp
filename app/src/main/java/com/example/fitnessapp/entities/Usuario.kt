@@ -15,7 +15,7 @@ data class Usuario(
     var reporteSemanal: Int,
     var reporteMensual: Int,
     //var hora: Timestamp,
-    //var nivelFisico: MutableList<Boolean>, // 0(Bajo), 1(Medio), 2(Alto)
+    //var nivelFisico: MutableList<Boolean>, // 0(Bajo), 1(Medio), 2(Alto)   // ESTA ASI PARA TESTEAR FUNCIONALIDAD.
     //var diasDeEntrenamiento: MutableList<Boolean>?
 
 )

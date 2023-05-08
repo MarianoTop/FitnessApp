@@ -18,8 +18,6 @@ class ReporteFinEntrenamientoFragment : Fragment() {
 
     lateinit var v : View
 
-    private lateinit var viewModel: ReporteFinEntrenamientoViewModel
-
     lateinit var imageLogo : ImageView
     lateinit var textTitle : TextView
     lateinit var textDia : TextView
@@ -31,7 +29,9 @@ class ReporteFinEntrenamientoFragment : Fragment() {
     lateinit var sesion : Sesion
     var totalTiempo : Int = 0
     var totalCalorias : Double = 0.0
+
     private val sharedViewModel : SharedViewModel by activityViewModels()
+
     // val db = firebase.firestore / ACTIVAR ESTO CUANDO TENGAMOS CONEXIÓN CON LA BD
     // val sesiones = db.collection("sesiones") / ACTIVAR ESTO CUADNO TENGAMOS CONEXIÓN CON LA BD
 
@@ -52,7 +52,7 @@ class ReporteFinEntrenamientoFragment : Fragment() {
 
         textTitle.text = "Entrenamiento Finalizado"
         textInfo1.text = "Calorias Quemadas"
-        textInfo2.text = "Duracion"
+        textInfo2.text = "Duracion (seg)"
         btnTerminar.text = "Terminar"
 
         return v

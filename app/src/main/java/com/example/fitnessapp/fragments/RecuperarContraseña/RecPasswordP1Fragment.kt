@@ -9,15 +9,16 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
-import com.example.fitnessapp.fragments.IniciarSesionFragmentDirections
+import com.example.fitnessapp.fragments.Registro.SharedRegistrarseViewModel
 
 class RecPasswordP1Fragment : Fragment() {
 
     lateinit var v : View
 
-    private lateinit var viewModel: RecPasswordP1ViewModel
+    private val sharedViewModel : SharedRecPasswordViewModel by activityViewModels()
 
     lateinit var textTitle : TextView
     lateinit var editTextEmail : EditText
@@ -38,13 +39,6 @@ class RecPasswordP1Fragment : Fragment() {
 
         return v
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RecPasswordP1ViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
     override fun onStart() {
         super.onStart()
 

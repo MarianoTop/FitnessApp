@@ -80,7 +80,7 @@ class EjercicioComienzaFragment : Fragment() {
     }
 
     private fun startTimeCounter() {
-        object : CountDownTimer(5000,1000) {
+        object : CountDownTimer(1000,1000) {
             override fun onTick(millisUntilFinished: Long) {
                 textContador.text = counter.toString()
                 counter--

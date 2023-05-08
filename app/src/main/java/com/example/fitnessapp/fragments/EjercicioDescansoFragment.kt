@@ -105,7 +105,7 @@ class EjercicioDescansoFragment : Fragment() {
     }
 
     private fun startTimeCounter() {
-        object : CountDownTimer(15000,1000) {
+        object : CountDownTimer(1000,1000) {
         override fun onTick(millisUntilFinished: Long) {
             textContador.text = counter.toString()
             counter--
