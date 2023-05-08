@@ -45,6 +45,7 @@ class EjercicioComienzaFragment : Fragment() {
 
         textStart.text = "Comienza en"
         textImage.text = "Ejercicio a realizar"
+        buttonComenzar.text = "Comenzar"
 
         fun startTimeCounter(view : View) {                                         // PROBANDO COMO FUNCIONA
             object : CountDownTimer(60000,1000) {

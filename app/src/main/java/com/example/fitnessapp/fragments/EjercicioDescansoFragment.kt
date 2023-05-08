@@ -44,6 +44,7 @@ class EjercicioDescansoFragment : Fragment() {
 
         textDescanso.text = "Descanso"
         textImage.text = "Siguiente ejercicio"
+        buttonFinDescanso.text = "Listo"
 
         fun startTimeCounter(view : View) {                                         // PROBANDO COMO FUNCIONA
             object : CountDownTimer(100000,1000) {
@@ -67,6 +68,7 @@ class EjercicioDescansoFragment : Fragment() {
         sharedViewModel.rutina = PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).rutina
 
         val posActual = sharedViewModel.posActual
+        val ejercicioAnterior = sharedViewModel.rutina.ejercicios[posActual-1]
         val ejercicioActual = sharedViewModel.rutina.ejercicios[posActual]
         textTitle.text = "Ejercicio " + {posActual+1}
 
@@ -75,17 +77,28 @@ class EjercicioDescansoFragment : Fragment() {
             .load(ejercicioActual.image)
             .into(imageExercise);
 
+        if (posActual.toString() == sharedViewModel.cantEjercicios()) {
+            textImage.text = "Ultimo ejercicio realizado"
+
+            Glide
+                .with(this)
+                .load(ejercicioAnterior.image) //
+                .into(imageExercise);
+
+            buttonFinDescanso.text = "Finalizar"
+        }
+
         buttonFinDescanso.setOnClickListener {
 
             if (textContador.text == "0") {
                 if (posActual.toString() == sharedViewModel.cantEjercicios()) {
                     sharedViewModel.resetearPos()
+                    sharedViewModel.rutina.finalizada = true
+                    sharedViewModel.rutina.completado = 1
 
                     val action = EjercicioDescansoFragmentDirections.actionEjercicioDescansoFragmentToReporteFinEntrenamientoFragment()
                     findNavController().navigate(action)
                 } else {
-                    sharedViewModel.incrementarPos()
-
                     val action = EjercicioDescansoFragmentDirections.actionEjercicioDescansoFragmentToEjercicioFragment()
                     findNavController().navigate(action)
                 }
