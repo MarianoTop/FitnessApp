@@ -1,17 +1,14 @@
 package com.example.fitnessapp.fragments
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.fitnessapp.entities.Ejercicio
 import com.example.fitnessapp.entities.Rutina
 import com.example.fitnessapp.entities.Usuario
-import java.text.SimpleDateFormat
-import java.util.*
 
 class SharedViewModel : ViewModel() {
 
     lateinit var rutina : Rutina
-    lateinit var usuario : Usuario
+    var usuario : Usuario = Usuario(1, "test@gmail.com", "test", "test", 90.0, 180.0, 80, 21, "Masculino", 1, 0)
 
     var totalCalorias : Double = 0.0
     var totalTiempo : Double = 0.0
@@ -52,7 +49,7 @@ class SharedViewModel : ViewModel() {
 
     fun sumaCalorias() {
         var ejercActual = ejercActual()
-        totalCalorias =+ ejercActual.calorias * ejercActual.cantidad
+        totalCalorias += ejercActual.calorias * ejercActual.cantidad
     }
 
     fun guardarTiempoInicio() {

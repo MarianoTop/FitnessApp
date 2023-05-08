@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
@@ -26,9 +27,9 @@ class ReporteFinEntrenamientoFragment : Fragment() {
     lateinit var textDuracion : TextView
     lateinit var btnTerminar : Button
     lateinit var sesion : Sesion
-    var totalTiempo : Double = 0.0
+    var totalTiempo : Int = 0
     var totalCalorias : Double = 0.0
-    val sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+    private val sharedViewModel : SharedViewModel by activityViewModels()
     // val db = firebase.firestore / ACTIVAR ESTO CUANDO TENGAMOS CONEXIÓN CON LA BD
     // val sesiones = db.collection("sesiones") / ACTIVAR ESTO CUADNO TENGAMOS CONEXIÓN CON LA BD
 
@@ -49,7 +50,7 @@ class ReporteFinEntrenamientoFragment : Fragment() {
 
         textTitle.text = "Entrenamiento Finalizado"
         textInfo1.text = "Calorias Quemadas"
-        textInfo2.text = "Duracion"
+        textInfo2.text = "Duracion (seg)"
         btnTerminar.text = "Terminar"
 
         return v
@@ -62,7 +63,7 @@ class ReporteFinEntrenamientoFragment : Fragment() {
         sharedViewModel.rutina.completado = 1
 
         // Se despliega en pantalla el total de calorías y el tiempo total de duración de rutina
-        totalTiempo = sharedViewModel.totalTiempo
+        totalTiempo = (sharedViewModel.totalTiempo / 1000).toInt()
         totalCalorias = sharedViewModel.totalCalorias
         textCalorias.text = totalCalorias.toString()
         textDuracion.text = totalTiempo.toString()
@@ -88,6 +89,10 @@ class ReporteFinEntrenamientoFragment : Fragment() {
 
         btnTerminar.setOnClickListener(){
 
+            val action = ReporteFinEntrenamientoFragmentDirections.actionReporteFinEntrenamientoFragmentToEntrenamientoHomeFragment()
+            findNavController().navigate(action)
+
+            /*
             val fragmentManager = requireActivity().supportFragmentManager
             val fragmentName = "EntrenamientoHomeFragment"
             var backStackEntry = fragmentManager.getBackStackEntryAt(0)
@@ -98,6 +103,8 @@ class ReporteFinEntrenamientoFragment : Fragment() {
                     break
                 }
             }
+
+             */
         }
 
     }

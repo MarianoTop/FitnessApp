@@ -73,5 +73,9 @@
         android:id="@+id/reporteFinEntrenamientoFragment"
         android:name="com.example.fitnessapp.fragments.ReporteFinEntrenamientoFragment"
         android:label="fragment_reporte_fin_entrenamiento"
-        tools:layout="@layout/fragment_reporte_fin_entrenamiento" />
+        tools:layout="@layout/fragment_reporte_fin_entrenamiento" >
+        <action
+            android:id="@+id/action_reporteFinEntrenamientoFragment_to_entrenamientoHomeFragment"
+            app:destination="@id/entrenamientoHomeFragment" />
+    </fragment>
 </navigation>
