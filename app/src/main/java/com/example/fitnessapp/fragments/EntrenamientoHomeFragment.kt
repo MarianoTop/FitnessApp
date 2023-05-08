@@ -1,6 +1,5 @@
 package com.example.fitnessapp.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,20 +8,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
-import com.example.fitnessapp.entities.Ejercicio
 import com.example.fitnessapp.entities.EjercicioRepository
 import com.example.fitnessapp.entities.Rutina
 
-class EntrenamientoHomeFragment : Fragment() {
+class EntrenamientoHomeFragment() : Fragment() {
 
     lateinit var v : View
     lateinit var  btnNavPrev : Button
 
     private lateinit var viewModel: EntrenamientoHomeViewModel
     var repository: EjercicioRepository= EjercicioRepository()
-    var rutina: Rutina= Rutina(1,repository.ejercicios,"piernas")
-
-
+    var rutina: Rutina= Rutina(1,repository.ejercicios,"piernas",false, false,false, completado=0, totalCalorias= 0.0)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
