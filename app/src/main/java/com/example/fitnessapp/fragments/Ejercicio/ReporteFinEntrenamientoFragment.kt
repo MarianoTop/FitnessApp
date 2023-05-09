@@ -13,6 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Sesion
 import com.example.fitnessapp.fragments.Ejercicio.ReporteFinEntrenamientoFragmentDirections
+import java.sql.Timestamp
+import java.util.*
 
 class ReporteFinEntrenamientoFragment : Fragment() {
 
@@ -70,8 +72,10 @@ class ReporteFinEntrenamientoFragment : Fragment() {
         textCalorias.text = totalCalorias.toString()
         textDuracion.text = totalTiempo.toString()
 
+
         // Instanciamos nuevo objeto Sesión con los datos de la rutina terminada
-        sesion = Sesion(usuario = sharedViewModel.usuario, rutina = sharedViewModel.rutina, duracionSesion = totalTiempo.toString(), caloriasQuemadas = totalCalorias)
+        sesion = Sesion("1",usuario = sharedViewModel.usuario, rutina = sharedViewModel.rutina, duracionSesion = totalTiempo.toString(), caloriasQuemadas = totalCalorias)
+
 
         // Agregamos objeto Sesión a la colección sesiones de la BD
         // Al hacer add() se genera ID único

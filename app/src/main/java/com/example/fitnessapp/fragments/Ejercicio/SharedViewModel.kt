@@ -4,11 +4,21 @@ import androidx.lifecycle.ViewModel
 import com.example.fitnessapp.entities.Ejercicio
 import com.example.fitnessapp.entities.Rutina
 import com.example.fitnessapp.entities.Usuario
+import java.sql.Timestamp
+import java.util.*
 
 class SharedViewModel : ViewModel() {
 
     lateinit var rutina : Rutina
-    var usuario : Usuario = Usuario(1, "test@gmail.com", "test", "test", 90.0, 180.0, 80, 21, "Masculino", 1, 0)
+    var diasDeEntrenamiento =mutableListOf(true,false,false,true,true,false,true)
+
+    init {
+
+    }
+
+    var mytime= Timestamp(Date().time)
+    var usuario : Usuario = Usuario("1", "test@gmail.com", "test", "test", 90.0, 180.0, 80, 21, "Masculino", 1, 0,mytime,
+    0,diasDeEntrenamiento)
 
     var totalCalorias : Double = 0.0
     var totalTiempo : Double = 0.0

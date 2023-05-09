@@ -18,7 +18,7 @@ class EntrenamientoHomeFragment() : Fragment() {
 
     private lateinit var viewModel: EntrenamientoHomeViewModel
     var repository: EjercicioRepository= EjercicioRepository()
-    var rutina: Rutina= Rutina(1,repository.ejercicios,"piernas",false, false,false, completado=0, totalCalorias= 0.0)
+    var rutina: Rutina= Rutina("1",repository.ejercicios,"piernas",false, false,false, completado=0, totalCalorias= 0.0)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

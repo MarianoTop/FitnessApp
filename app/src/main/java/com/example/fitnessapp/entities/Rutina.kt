@@ -5,9 +5,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Rutina(
-    var id: Long,
+    var id: String,
     var ejercicios: MutableList<Ejercicio>,
     var grupoMuscular: String,
+    // Hay que eliminar los tres de abajo y refactorizar codigo
     var finalizada: Boolean,
     var esDescanso: Boolean,
     var faltoEjercicio: Boolean,

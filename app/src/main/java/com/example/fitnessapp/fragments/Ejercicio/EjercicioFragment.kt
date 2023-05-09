@@ -13,7 +13,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.fitnessapp.R
-import com.example.fitnessapp.fragments.Ejercicio.EjercicioFragmentDirections
 
 class EjercicioFragment : Fragment() {
 
@@ -57,7 +56,7 @@ class EjercicioFragment : Fragment() {
         val ejercicioActual = sharedViewModel.ejercActual()
 
         textTitle.text = "Ejercicio " + (posActual+1)
-        textNameExercise.text = ejercicioActual.description
+        textNameExercise.text = ejercicioActual.nombre
         textContadorOrRep.text = "X" + ejercicioActual.cantidad.toString()
 
         Glide

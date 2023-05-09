@@ -5,13 +5,13 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Ejercicio(
-    var id: Long,
+    var id: String,
     var image: String,
-    var description :String,
+    var nombre :String,
     var cantidad: Int,
     var calorias: Double,
-    var paraBajarPeso: Int,
-    var paraGanarPeso: Int,
+    var bajarPeso: Boolean,
+    var ganarMasa: Boolean,
     var grupoMuscular: String,
     var subGrupoMuscular: String
 ):Parcelable
