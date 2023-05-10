@@ -2,6 +2,6 @@ package com.example.fitnessapp.fragments
 
 import androidx.lifecycle.ViewModel
 
-class EjercicioComienzaFragmentViewModel : ViewModel() {
+class InicioFragmentViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

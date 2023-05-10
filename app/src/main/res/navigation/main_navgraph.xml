@@ -18,12 +18,29 @@
         android:id="@+id/nutricionHomeFragment"
         android:name="com.example.fitnessapp.fragments.NutricionHomeFragment"
         android:label="fragment_rutina_alimenticia_home"
-        tools:layout="@layout/fragment_nutricion_home" />
+        tools:layout="@layout/fragment_nutricion_home" >
+        <action
+            android:id="@+id/action_nutricionHomeFragment_to_desayunosFragment"
+            app:destination="@id/desayunosFragment" />
+        <action
+            android:id="@+id/action_nutricionHomeFragment_to_almuerzosFragment"
+            app:destination="@id/almuerzosFragment" />
+        <action
+            android:id="@+id/action_nutricionHomeFragment_to_meriendasFragment"
+            app:destination="@id/meriendasFragment" />
+        <action
+            android:id="@+id/action_nutricionHomeFragment_to_cenasFragment"
+            app:destination="@id/cenasFragment" />
+    </fragment>
     <fragment
         android:id="@+id/perfilHomeFragment"
         android:name="com.example.fitnessapp.fragments.PerfilHomeFragment"
         android:label="fragment_perfil_home"
-        tools:layout="@layout/fragment_perfil_home" />
+        tools:layout="@layout/fragment_perfil_home" >
+        <action
+            android:id="@+id/action_perfilHomeFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
     <fragment
         android:id="@+id/previsualizacionEjercicioFragment"
         android:name="com.example.fitnessapp.fragments.PrevisualizacionEjercicioFragment"
@@ -32,20 +49,96 @@
         <action
             android:id="@+id/action_previsualizacionEjercicioFragment_to_ejercicioComienzaFragment"
             app:destination="@id/ejercicioComienzaFragment" />
+        <argument
+            android:name="rutina"
+            app:argType="com.example.fitnessapp.entities.Rutina" />
     </fragment>
     <fragment
         android:id="@+id/ejercicioComienzaFragment"
-        android:name="com.example.fitnessapp.fragments.EjercicioComienzaFragment"
+        android:name="com.example.fitnessapp.fragments.Ejercicio.EjercicioComienzaFragment"
         android:label="fragment_ejercicio_comienza"
-        tools:layout="@layout/fragment_ejercicio_comienza" />
+        tools:layout="@layout/fragment_ejercicio_comienza" >
+        <argument
+            android:name="rutina"
+            app:argType="com.example.fitnessapp.entities.Rutina" />
+        <action
+            android:id="@+id/action_ejercicioComienzaFragment_to_ejercicioFragment"
+            app:destination="@id/ejercicioFragment" />
+    </fragment>
     <fragment
         android:id="@+id/ejercicioFragment"
-        android:name="com.example.fitnessapp.fragments.EjercicioFragment"
+        android:name="com.example.fitnessapp.fragments.Ejercicio.EjercicioFragment"
         android:label="fragment_ejercicio"
-        tools:layout="@layout/fragment_ejercicio" />
+        tools:layout="@layout/fragment_ejercicio" >
+        <action
+            android:id="@+id/action_ejercicioFragment_to_ejercicioDescansoFragment"
+            app:destination="@id/ejercicioDescansoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/ejercicioDescansoFragment"
-        android:name="com.example.fitnessapp.fragments.EjercicioDescansoFragment"
+        android:name="com.example.fitnessapp.fragments.Ejercicio.EjercicioDescansoFragment"
         android:label="fragment_ejercicio_descanso"
-        tools:layout="@layout/fragment_ejercicio_descanso" />
+        tools:layout="@layout/fragment_ejercicio_descanso" >
+        <action
+            android:id="@+id/action_ejercicioDescansoFragment_to_ejercicioFragment"
+            app:destination="@id/ejercicioFragment" />
+        <action
+            android:id="@+id/action_ejercicioDescansoFragment_to_reporteFinEntrenamientoFragment"
+            app:destination="@id/reporteFinEntrenamientoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reporteFinEntrenamientoFragment"
+        android:name="com.example.fitnessapp.fragments.Ejercicio.ReporteFinEntrenamientoFragment"
+        android:label="fragment_reporte_fin_entrenamiento"
+        tools:layout="@layout/fragment_reporte_fin_entrenamiento" >
+        <action
+            android:id="@+id/action_reporteFinEntrenamientoFragment_to_entrenamientoHomeFragment"
+            app:destination="@id/entrenamientoHomeFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.fitnessapp.activities.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/comidaEspecificaFragment"
+        android:name="com.example.fitnessapp.fragments.NutricionComidas.ComidaEspecificaFragment"
+        android:label="fragment_comida_especifica"
+        tools:layout="@layout/fragment_comida_especifica" />
+    <fragment
+        android:id="@+id/desayunosFragment"
+        android:name="com.example.fitnessapp.fragments.NutricionComidas.DesayunosFragment"
+        android:label="fragment_desayunos"
+        tools:layout="@layout/fragment_desayunos" >
+        <action
+            android:id="@+id/action_desayunosFragment_to_comidaEspecificaFragment"
+            app:destination="@id/comidaEspecificaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/almuerzosFragment"
+        android:name="com.example.fitnessapp.fragments.NutricionComidas.AlmuerzosFragment"
+        android:label="fragment_almuerzos"
+        tools:layout="@layout/fragment_almuerzos" >
+        <action
+            android:id="@+id/action_almuerzosFragment_to_comidaEspecificaFragment"
+            app:destination="@id/comidaEspecificaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/meriendasFragment"
+        android:name="com.example.fitnessapp.fragments.NutricionComidas.MeriendasFragment"
+        android:label="fragment_meriendas"
+        tools:layout="@layout/fragment_meriendas" >
+        <action
+            android:id="@+id/action_meriendasFragment_to_comidaEspecificaFragment"
+            app:destination="@id/comidaEspecificaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cenasFragment"
+        android:name="com.example.fitnessapp.fragments.NutricionComidas.CenasFragment"
+        android:label="fragment_cenas"
+        tools:layout="@layout/fragment_cenas" >
+        <action
+            android:id="@+id/action_cenasFragment_to_comidaEspecificaFragment"
+            app:destination="@id/comidaEspecificaFragment" />
+    </fragment>
 </navigation>

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Ejercicio
-import com.example.fitnessapp.fragments.PrevisualizacionEjercicioFragment
 
 class EjercicioAdapter(private val context: Context, var ejercicios: MutableList<Ejercicio> ): RecyclerView.Adapter<EjercicioAdapter.EjercicioHolder>(){
 
@@ -58,7 +57,7 @@ class EjercicioAdapter(private val context: Context, var ejercicios: MutableList
 
     override fun onBindViewHolder(holder: EjercicioHolder, position: Int) {
         holder.setImage(ejercicios[position].image,context)
-        holder.setExerciseDescription(ejercicios[position].description)
+        holder.setExerciseDescription(ejercicios[position].nombre+ " x"+ejercicios[position].cantidad)
     }
 
     override fun getItemCount(): Int {

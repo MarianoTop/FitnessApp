@@ -9,24 +9,33 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.adapters.EjercicioAdapter
 import com.example.fitnessapp.entities.EjercicioRepository
+import com.example.fitnessapp.entities.Rutina
 
 
 class PrevisualizacionEjercicioFragment : Fragment() {
 
     lateinit var v: View
-    var repository: EjercicioRepository = EjercicioRepository()
+
     lateinit var recyclerEjercicios : RecyclerView
     lateinit var adapter: EjercicioAdapter
 
 
     lateinit var txtCantRepeticiones : TextView
     lateinit var  btnNavEjercicio : Button
+
+    private lateinit var viewModel: PrevisualizacionEjercicioViewModel
+    companion object {
+        fun newInstance() = PrevisualizacionEjercicioFragment()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,32 +46,41 @@ class PrevisualizacionEjercicioFragment : Fragment() {
         recyclerEjercicios=v.findViewById(R.id.recyclerEjercicios)
 
         txtCantRepeticiones=v.findViewById(R.id.qtyRepetition)
+
+        btnNavEjercicio = v.findViewById(R.id.button)
         return v
     }
 
     override fun onStart() {
         super.onStart()
+        viewModel.cantRepeticiones.observe(viewLifecycleOwner, Observer { result ->
+            txtCantRepeticiones.text= "cantidad de repeticiones: ${result.toString()}"
+        })
 
-        txtCantRepeticiones.text="cantidad de repeticiones: 400"
+        val Rutina = PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).rutina
+
+        viewModel.setEjercicios(Rutina.ejercicios)
+
 
         lateinit var contextSent :Context
-
          if(context!=null){
              contextSent= context as Context
          }
-
-
-
-        adapter= EjercicioAdapter(contextSent,repository.ejercicios)
+        adapter= EjercicioAdapter(contextSent,viewModel.getEjercicios())
         recyclerEjercicios.layoutManager=LinearLayoutManager(context)
         recyclerEjercicios.adapter=adapter
 
-     /*   val decoration = DividerItemDecoration(context,LinearLayoutManager(context).orientation)
-        decoration.setDrawable(ColorDrawable( resources.getColor(R.color.white)));
-        recyclerEjercicios.addItemDecoration(decoration)*/
+        btnNavEjercicio.setOnClickListener {
+            val action = PrevisualizacionEjercicioFragmentDirections.actionPrevisualizacionEjercicioFragmentToEjercicioComienzaFragment(Rutina)
+            findNavController().navigate(action)
+        }
 
+    }
 
-
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(PrevisualizacionEjercicioViewModel::class.java)
+        // TODO: Use the ViewModel
     }
 
 
