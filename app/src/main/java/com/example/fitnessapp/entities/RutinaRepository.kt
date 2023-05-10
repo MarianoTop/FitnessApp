@@ -14,19 +14,19 @@ class RutinaRepository {
     init {
 
         rutinas= mutableListOf( )
-        rutinas.add(Rutina("1", repositoryEjercicios1.ejercicios, "Piernas",true,
+        rutinas.add(Rutina("1", repositoryEjercicios1.ejercicios, mutableListOf(), "Piernas",true,
         true,false,1,1.0)  )
-        rutinas.add(Rutina("2",   repositoryEjercicios2.ejercicios, "Brazos",false,
+        rutinas.add(Rutina("2",   repositoryEjercicios2.ejercicios, mutableListOf(), "Brazos",false,
             true,false,1,1.0 ) )
-        rutinas.add(Rutina("3",   repositoryEjercicios3.ejercicios, "Pecho",false,
+        rutinas.add(Rutina("3",   repositoryEjercicios3.ejercicios, mutableListOf(),"Pecho",false,
             false,true,1,1.0) )
-        rutinas.add(Rutina("4",   repositoryEjercicios4.ejercicios, "Espalda",true,
+        rutinas.add(Rutina("4",   repositoryEjercicios4.ejercicios, mutableListOf(),"Espalda",true,
             false,false,1,1.0) )
-        rutinas.add(Rutina("5",   repositoryEjercicios5.ejercicios, "Piernas",false,
+        rutinas.add(Rutina("5",   repositoryEjercicios5.ejercicios, mutableListOf(),"Piernas",false,
             false,false,1,1.0) )
-        rutinas.add(Rutina("6",   repositoryEjercicios6.ejercicios, "Gluteos",false,
+        rutinas.add(Rutina("6",   repositoryEjercicios6.ejercicios, mutableListOf(),"Gluteos",false,
             false,false,1,1.0) )
-        rutinas.add(Rutina("7",   repositoryEjercicios7.ejercicios, "Pecho",false,
+        rutinas.add(Rutina("7",   repositoryEjercicios7.ejercicios, mutableListOf(),"Pecho",false,
             true,false,1,1.0))
     }
 }

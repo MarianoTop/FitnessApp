@@ -14,4 +14,7 @@ data class Ejercicio(
     var ganarMasa: Boolean,
     var grupoMuscular: String,
     var subGrupoMuscular: String
-):Parcelable
+):Parcelable {
+    constructor() : this("", "", "", 0, 0.0, false, false, "", "")
+
+}
