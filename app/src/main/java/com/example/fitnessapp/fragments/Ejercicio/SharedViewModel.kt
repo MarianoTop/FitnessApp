@@ -2,6 +2,7 @@ package com.example.fitnessapp.fragments.Ejercicio
 
 import androidx.lifecycle.ViewModel
 import com.example.fitnessapp.entities.Ejercicio
+import com.example.fitnessapp.entities.EstadoRutina
 import com.example.fitnessapp.entities.Rutina
 import com.example.fitnessapp.entities.Usuario
 import java.sql.Timestamp
@@ -50,11 +51,11 @@ class SharedViewModel : ViewModel() {
     }
 
     fun rutinaFinalizada() {
-        rutina.finalizada = true
+        rutina.estado = EstadoRutina.COMPLETADA.value
     }
 
     fun rutinaCompletada() {
-        rutina.completado = 1
+        rutina.estado = EstadoRutina.COMPLETADA.value
     }
 
     fun sumaCalorias() {

@@ -14,11 +14,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Sesion
-import com.example.fitnessapp.fragments.Ejercicio.ReporteFinEntrenamientoFragmentDirections
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.sql.Timestamp
-import java.util.*
 
 class ReporteFinEntrenamientoFragment : Fragment() {
 
@@ -68,7 +65,7 @@ class ReporteFinEntrenamientoFragment : Fragment() {
         super.onStart()
 
         // Seteamos la rutina en completada
-        sharedViewModel.rutina.completado = 1
+        sharedViewModel.rutina.estado = 1
 
         // Se despliega en pantalla el total de calorías y el tiempo total de duración de rutina
         totalTiempo = (sharedViewModel.totalTiempo / 1000).toInt()
