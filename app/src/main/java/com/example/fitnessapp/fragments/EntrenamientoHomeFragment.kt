@@ -21,6 +21,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import java.time.LocalDate
+import java.util.*
 
 class EntrenamientoHomeFragment : Fragment() {
 
@@ -48,17 +50,24 @@ class EntrenamientoHomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        var semanas : MutableList<Semana> = arrayListOf()
+        val manager = ManagerRutinas()
+        //var semanaCreada = false
+
+        val semanas : MutableList<Semana> = arrayListOf()
         db.collection("semanas").get().addOnSuccessListener {snapshot ->
             if(snapshot != null) {
                 for(semana in snapshot) {
-                    var semanaObj : Semana = semana.toObject()
+                    val semanaObj : Semana = semana.toObject()
                     db.collection("usuarios").whereEqualTo("id", semanaObj.usuarioId).get().addOnSuccessListener {usuarioBase ->
                         if(usuarioBase != null) {
                             for(usuario in usuarioBase) {
                                 semanaObj.usuario = usuario.toObject()
-                                println(semanaObj.usuario)
                             }
+                            //if(!semanaCreada)
+                            //{
+                                //manager.crearSemana(semanaObj.usuario,  Date(20230515))
+                                //semanaCreada = true
+                            //}
                         }
                     }.addOnFailureListener { exception ->
                         Log.w(ContentValues.TAG, "Error getting documents: ", exception)
@@ -66,11 +75,13 @@ class EntrenamientoHomeFragment : Fragment() {
                     db.collection("rutinas").whereIn("id", semanaObj.rutinasId).get().addOnSuccessListener {rutinasObtenidas ->
                         if(rutinasObtenidas != null) {
                             for(rutina in rutinasObtenidas) {
-                                var rutinaObj : Rutina = rutina.toObject()
+                                val rutinaObj : Rutina = rutina.toObject()
                                 db.collection("ejercicios").whereIn("id", rutinaObj.ejerciciosId).get().addOnSuccessListener {ejerciciosObtenidos ->
                                     if(ejerciciosObtenidos != null) {
                                         for(ejercicio in ejerciciosObtenidos) {
-                                            rutinaObj.ejercicios.add(ejercicio.toObject())
+                                            val ejercicioObj : Ejercicio = ejercicio.toObject()
+                                            ejercicioObj.cantidad = manager.calcularCantidadDeRepeticiones(ejercicioObj, semanaObj.usuario)
+                                            rutinaObj.ejercicios.add(ejercicioObj)
                                             println(rutina)
                                         }
                                     }
@@ -90,17 +101,20 @@ class EntrenamientoHomeFragment : Fragment() {
                 semanaAdapter = SemanaAdapter(semanas) { position ->
                     //Snackbar.make(v, "Click en ${repository.ejercicios[position].description}", Snackbar.LENGTH_SHORT).show();
 
-                    var posicionRutinaAEnviar = SemanaUtils.obtenerRutinaPorHacer(semanas[position])
+                    val posicionRutinaAEnviar = SemanaUtils.obtenerRutinaPorHacer(semanas[position])
                     println("posicion enviada: " + posicionRutinaAEnviar)
                     val action =EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment(semanas[position].rutinas[posicionRutinaAEnviar])
                     findNavController().navigate(action)
                 };
                 recyclerView.layoutManager = LinearLayoutManager(context);
                 recyclerView.adapter = semanaAdapter;
+
             }
         }.addOnFailureListener { exception ->
             Log.w(ContentValues.TAG, "Error getting documents: ", exception)
         }
+
+
 
         /*
         btnStartExcercise.setOnClickListener {
