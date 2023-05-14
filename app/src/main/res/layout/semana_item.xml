@@ -14,9 +14,10 @@
         android:background="#979393">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/txtViewMartes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/circulo_gris"
             android:text="M"
             android:textSize="40dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
@@ -40,9 +41,10 @@
             app:layout_constraintVertical_bias="0.4" />
 
         <TextView
+            android:id="@+id/txtViewLunes"
             android:layout_width="60dp"
             android:layout_height="59dp"
-            android:background="@drawable/circulo_rojo"
+            android:background="@drawable/circulo_gris"
             android:gravity="center"
             android:text="L"
             android:textSize="40dp"
@@ -52,7 +54,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/txtViewMiercoles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="M"
@@ -63,6 +65,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
         <TextView
+            android:id="@+id/txtViewDomingo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="D"
@@ -73,6 +76,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
         <TextView
+            android:id="@+id/txtViewViernes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="V"
@@ -83,6 +87,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
         <TextView
+            android:id="@+id/txtViewX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="X"
@@ -93,7 +98,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/txtViewJueves"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="J"
@@ -104,6 +109,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
         <TextView
+            android:id="@+id/txtViewSabado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="S"
