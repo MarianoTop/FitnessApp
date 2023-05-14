@@ -9,6 +9,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Ejercicio
+import com.example.fitnessapp.entities.Rutina
 import com.example.fitnessapp.entities.Semana
 import com.google.android.material.snackbar.Snackbar
 
@@ -50,6 +51,22 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
             txtView.text = "Semana " + numeroDeSemana;
         }
 
+        fun getTxtViewLunes () : TextView {
+            return view.findViewById(R.id.txtViewLunes);
+        }
+
+        fun getTxtViewMartes () : TextView {
+            return view.findViewById(R.id.txtViewMartes);
+        }
+
+        fun setColorFondo(rutina : Rutina, txtViewDia : TextView){
+            if(rutina.finalizada){
+                txtViewDia.setBackgroundResource(R.drawable.circulo_rojo);
+            }else if(rutina.esDescanso){
+                txtViewDia.setBackgroundResource(R.drawable.circulo_azul);
+            }
+        }
+
     }
 
     //Se instancia el holder. Se copia y pega y se modifica con el contexto en que trabajo.
@@ -62,6 +79,8 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
     override fun onBindViewHolder(holder: SemanaHolder, position: Int) {
 
         holder.setTituloSemana(position + 1);
+        holder.setColorFondo(semanaList[position].rutinas[0], holder.getTxtViewLunes());
+        holder.setColorFondo(semanaList[position].rutinas[1], holder.getTxtViewMartes());
 
         if(semanaList[position].estaFinalizada){
            // Snackbar.make(v, "Click en ${repository.ejercicios[position].description}", Snackbar.LENGTH_SHORT).show();
