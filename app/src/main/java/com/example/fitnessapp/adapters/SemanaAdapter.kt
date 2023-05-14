@@ -51,6 +51,7 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
             txtView.text = "Semana " + numeroDeSemana;
         }
 
+        //GET de cada TextView correspondiente a los días de la Semana
         fun getTxtViewLunes () : TextView {
             return view.findViewById(R.id.txtViewLunes);
         }
@@ -58,6 +59,28 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
         fun getTxtViewMartes () : TextView {
             return view.findViewById(R.id.txtViewMartes);
         }
+
+        fun getTxtViewMiercoles () : TextView {
+            return view.findViewById(R.id.txtViewMiercoles);
+        }
+
+        fun getTxtViewJueves () : TextView {
+            return view.findViewById(R.id.txtViewJueves);
+        }
+
+        fun getTxtViewViernes () : TextView {
+            return view.findViewById(R.id.txtViewViernes);
+        }
+
+        fun getTxtViewSabado () : TextView {
+            return view.findViewById(R.id.txtViewSabado);
+        }
+
+        fun getTxtViewDomingo () : TextView {
+            return view.findViewById(R.id.txtViewDomingo);
+        }
+
+
 
         fun setColorFondo(rutina : Rutina, txtViewDia : TextView){
             if(rutina.finalizada){
