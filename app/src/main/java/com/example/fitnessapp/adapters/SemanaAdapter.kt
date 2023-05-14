@@ -9,6 +9,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Ejercicio
+import com.example.fitnessapp.entities.EstadoRutina
 import com.example.fitnessapp.entities.Rutina
 import com.example.fitnessapp.entities.Semana
 import com.google.android.material.snackbar.Snackbar
@@ -83,9 +84,9 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
 
 
         fun setColorFondo(rutina : Rutina, txtViewDia : TextView){
-            if(rutina.finalizada){
+            if(rutina.estado == EstadoRutina.COMPLETADA.value){
                 txtViewDia.setBackgroundResource(R.drawable.circulo_rojo);
-            }else if(rutina.esDescanso){
+            }else if(rutina.estado ==EstadoRutina.ES_DESCANSO.value){
                 txtViewDia.setBackgroundResource(R.drawable.circulo_azul);
             }
             //Faltaría cambiar el color cuando el usuario no haya asistido a la Rutina?

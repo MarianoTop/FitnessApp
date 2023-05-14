@@ -8,8 +8,12 @@ class SemanaRepository {
     var semanas: MutableList<Semana>
     var repositoryRutina1: RutinaRepository= RutinaRepository()
     var repositoryRutina2: RutinaRepository= RutinaRepository()
-    var usuario = Usuario(1,"mariano@gmail.com","Mariano","123", 70.0, 1.70,
-    1,24,"Masculino",1,1,Timestamp(Date().time))
+
+    var mytime= Timestamp(Date().time)
+    var diasDeEntrenamiento =mutableListOf(true,false,false,true,true,false,true)
+    var usuario : Usuario = Usuario("1", "test@gmail.com", "test", "test", 90.0, 180.0, 80, 21, "Masculino", 1, 0,mytime,
+        0,diasDeEntrenamiento)
+
 
     init {
         semanas = mutableListOf()
@@ -22,7 +26,7 @@ class SemanaRepository {
        var dateAPasar = c.time
 
 
-        semanas.add(Semana(1,repositoryRutina1.rutinas,usuario,true, Timestamp(dateAPasar.time)))
+        semanas.add(Semana("1",repositoryRutina1.rutinas, mutableListOf(), usuario, "",true, Timestamp(dateAPasar.time)))
 
         val d = Calendar.getInstance()
         d.set(Calendar.YEAR,2023)
@@ -31,7 +35,7 @@ class SemanaRepository {
 
         var dateAPasar2 = d.time
 
-        semanas.add(Semana(2,repositoryRutina2.rutinas,usuario,false, Timestamp(dateAPasar2.time)))
+        semanas.add(Semana("2",repositoryRutina2.rutinas,mutableListOf(), usuario,"",false, Timestamp(dateAPasar2.time)))
 
 
     }

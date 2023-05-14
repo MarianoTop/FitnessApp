@@ -1,5 +1,6 @@
 package com.example.fitnessapp.utils
 
+import com.example.fitnessapp.entities.EstadoRutina
 import com.example.fitnessapp.entities.Rutina
 import com.example.fitnessapp.entities.Semana
 import java.text.SimpleDateFormat
@@ -37,7 +38,7 @@ class SemanaUtils {
 
             while (contador < semana.rutinas.size && !semanaIncompleta) {
 
-                if (isRutinaDescansoOrFinalizadaOrFalto(semana.rutinas[contador])) {
+                if (isRutinaDescansoOrCompletadaOrAusente(semana.rutinas[contador])) {
                     contador++
                 } else {
                     semanaIncompleta = true
@@ -47,8 +48,9 @@ class SemanaUtils {
             return posicion
         }
 
-        fun isRutinaDescansoOrFinalizadaOrFalto(rutina: Rutina): Boolean {
-            return rutina.esDescanso || rutina.finalizada || rutina.faltoEjercicio
+        fun isRutinaDescansoOrCompletadaOrAusente(rutina: Rutina): Boolean {
+            return rutina.estado ==EstadoRutina.ES_DESCANSO.value || rutina.estado ==EstadoRutina.COMPLETADA.value
+                    || rutina.estado ==EstadoRutina.AUSENTE.value
         }
 
         /**  Sunday is 1, Saturady is 7. */
@@ -87,11 +89,12 @@ class SemanaUtils {
 
         fun validarAusente(rutina: Rutina) {
 
-            if (rutina.esDescanso || rutina.finalizada) {
+            if (rutina.estado==EstadoRutina.ES_DESCANSO.value || rutina.estado==EstadoRutina.COMPLETADA.value) {
 
             } else {
-                rutina.faltoEjercicio = true
+                rutina.estado = EstadoRutina.AUSENTE.value
             }
+
 
         }
 
@@ -112,14 +115,5 @@ class SemanaUtils {
 fun main(args: Array<String>) {
 
 
-    val c = Calendar.getInstance()
-    c.set(Calendar.YEAR,2023)
-    c.set(Calendar.MONTH,Calendar.MAY)
-    c.set(Calendar.DAY_OF_MONTH,24)
-
-
-    val hoy =Date()
-
-    //println(Date())
-    println(SemanaUtils.obtenerFechaDiaLunesDeLaSemana(hoy))
+    println(EstadoRutina.AUSENTE.value)
 }
