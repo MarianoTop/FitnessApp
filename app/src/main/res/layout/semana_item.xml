@@ -15,8 +15,8 @@
 
         <TextView
             android:id="@+id/txtViewMartes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/circulo_gris"
             android:gravity="center"
             android:text="M"
@@ -44,7 +44,7 @@
         <TextView
             android:id="@+id/txtViewLunes"
             android:layout_width="60dp"
-            android:layout_height="59dp"
+            android:layout_height="60dp"
             android:background="@drawable/circulo_gris"
             android:gravity="center"
             android:text="L"
@@ -56,8 +56,8 @@
 
         <TextView
             android:id="@+id/txtViewMiercoles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/circulo_gris"
             android:gravity="center"
             android:text="M"
@@ -69,8 +69,8 @@
 
         <TextView
             android:id="@+id/txtViewDomingo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/circulo_gris"
             android:gravity="center"
             android:text="D"
@@ -82,8 +82,8 @@
 
         <TextView
             android:id="@+id/txtViewViernes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/circulo_gris"
             android:gravity="center"
             android:text="V"
@@ -95,8 +95,8 @@
 
         <TextView
             android:id="@+id/txtViewX"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/circulo_gris"
             android:gravity="center"
             android:text="X"
@@ -108,8 +108,8 @@
 
         <TextView
             android:id="@+id/txtViewJueves"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/circulo_gris"
             android:gravity="center"
             android:text="J"
@@ -121,8 +121,8 @@
 
         <TextView
             android:id="@+id/txtViewSabado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/circulo_gris"
             android:gravity="center"
             android:text="S"
