@@ -14,6 +14,7 @@ class RutinaRepository {
     init {
 
         rutinas= mutableListOf( )
+
         rutinas.add(Rutina(1,   repositoryEjercicios1.ejercicios, "Piernas",true,
         true,false) )
         rutinas.add(Rutina(2,   repositoryEjercicios2.ejercicios, "Brazos",false,
@@ -28,5 +29,6 @@ class RutinaRepository {
             false,false) )
         rutinas.add(Rutina(7,   repositoryEjercicios7.ejercicios, "Pecho",false,
             true,false) )
+
     }
 }

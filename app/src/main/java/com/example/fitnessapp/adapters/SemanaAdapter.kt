@@ -88,6 +88,7 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
             }else if(rutina.esDescanso){
                 txtViewDia.setBackgroundResource(R.drawable.circulo_azul);
             }
+            //Faltaría cambiar el color cuando el usuario no haya asistido a la Rutina?
         }
 
     }
@@ -104,6 +105,11 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
         holder.setTituloSemana(position + 1);
         holder.setColorFondo(semanaList[position].rutinas[0], holder.getTxtViewLunes());
         holder.setColorFondo(semanaList[position].rutinas[1], holder.getTxtViewMartes());
+        holder.setColorFondo(semanaList[position].rutinas[2], holder.getTxtViewMiercoles());
+        holder.setColorFondo(semanaList[position].rutinas[3], holder.getTxtViewJueves());
+        holder.setColorFondo(semanaList[position].rutinas[4], holder.getTxtViewViernes());
+        holder.setColorFondo(semanaList[position].rutinas[5], holder.getTxtViewSabado());
+        holder.setColorFondo(semanaList[position].rutinas[6], holder.getTxtViewDomingo());
 
         if(semanaList[position].estaFinalizada){
            // Snackbar.make(v, "Click en ${repository.ejercicios[position].description}", Snackbar.LENGTH_SHORT).show();
