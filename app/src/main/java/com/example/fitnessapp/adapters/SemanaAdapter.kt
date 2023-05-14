@@ -65,7 +65,9 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
 
         if(semanaList[position].estaFinalizada){
            // Snackbar.make(v, "Click en ${repository.ejercicios[position].description}", Snackbar.LENGTH_SHORT).show();
-
+            holder.getIniciarEjercicioButton().setOnClickListener {
+                onClick(-1)
+            }
         }else{
             holder.getIniciarEjercicioButton().setOnClickListener {
                 onClick(position)

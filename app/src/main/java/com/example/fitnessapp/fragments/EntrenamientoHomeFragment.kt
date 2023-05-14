@@ -47,12 +47,20 @@ class EntrenamientoHomeFragment : Fragment() {
         super.onStart()
 
         semanaAdapter = SemanaAdapter(repositorySemanas.semanas){position ->
-            //Snackbar.make(v, "Click en ${repository.ejercicios[position].description}", Snackbar.LENGTH_SHORT).show();
 
-            var posicionRutinaAEnviar = SemanaUtils.obtenerRutinaPorHacer(repositorySemanas.semanas[position])
-            println(posicionRutinaAEnviar)
-            val action =EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment(repositorySemanas.semanas[position].rutinas[posicionRutinaAEnviar])
-            findNavController().navigate(action)
+
+            if(position == -1){
+                Snackbar.make(v, "Semana no disponible", Snackbar.LENGTH_SHORT).show();
+            }else {
+                var posicionRutinaAEnviar =
+                    SemanaUtils.obtenerRutinaPorHacer(repositorySemanas.semanas[position])
+                println(posicionRutinaAEnviar)
+                val action =
+                    EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment(
+                        repositorySemanas.semanas[position].rutinas[posicionRutinaAEnviar]
+                    )
+                findNavController().navigate(action)
+            }
         };
         recyclerView.layoutManager = LinearLayoutManager(context);
         recyclerView.adapter = semanaAdapter;
