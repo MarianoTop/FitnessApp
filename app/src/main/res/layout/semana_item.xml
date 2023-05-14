@@ -25,10 +25,10 @@
             app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/txtViewTituloSemana"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Semana 1"
+            android:text="Semana "
             android:textColor="@color/white"
             android:textSize="16dp"
             app:layout_columnSpan="4"

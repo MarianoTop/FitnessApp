@@ -41,6 +41,15 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
             return view.findViewById(R.id.btnIniciarEjercicio)
         }
 
+        fun getTituloSemanaTxtView () : TextView {
+            return view.findViewById(R.id.txtViewTituloSemana);
+        }
+
+        fun setTituloSemana (numeroDeSemana : Int) {
+            val txtView = getTituloSemanaTxtView();
+            txtView.text = "Semana " + numeroDeSemana;
+        }
+
     }
 
     //Se instancia el holder. Se copia y pega y se modifica con el contexto en que trabajo.
@@ -51,6 +60,8 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
 
     //Acá se realiza el binding entre el modelo y la vista. Este método itera sobre la lista.
     override fun onBindViewHolder(holder: SemanaHolder, position: Int) {
+
+        holder.setTituloSemana(position + 1);
 
         if(semanaList[position].estaFinalizada){
            // Snackbar.make(v, "Click en ${repository.ejercicios[position].description}", Snackbar.LENGTH_SHORT).show();
