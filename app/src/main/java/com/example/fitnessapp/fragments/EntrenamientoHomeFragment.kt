@@ -92,8 +92,8 @@ class EntrenamientoHomeFragment : Fragment() {
                     semanas.add(semanaObj)
                 }
 
-                //semanaAdapter = SemanaAdapter(repositorySemanas.semanas){position ->
-                semanaAdapter = SemanaAdapter(semanas) {position ->
+                semanaAdapter = SemanaAdapter(repositorySemanas.semanas){position ->
+                //semanaAdapter = SemanaAdapter(semanas) {position ->
 
 
                     if(position == -1){

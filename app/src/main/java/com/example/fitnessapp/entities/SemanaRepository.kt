@@ -20,8 +20,8 @@ class SemanaRepository {
 
         val c = Calendar.getInstance()
         c.set(Calendar.YEAR,2023)
-        c.set(Calendar.MONTH, Calendar.APRIL)
-        c.set(Calendar.DAY_OF_MONTH,24)
+        c.set(Calendar.MONTH, Calendar.MAY)
+        c.set(Calendar.DAY_OF_MONTH,8)
 
        var dateAPasar = c.time
 
@@ -31,7 +31,7 @@ class SemanaRepository {
         val d = Calendar.getInstance()
         d.set(Calendar.YEAR,2023)
         d.set(Calendar.MONTH, Calendar.MAY)
-        d.set(Calendar.DAY_OF_MONTH,1)
+        d.set(Calendar.DAY_OF_MONTH,15)
 
         var dateAPasar2 = d.time
 
