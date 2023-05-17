@@ -11,6 +11,7 @@
         android:id="@+id/imageView2"
         android:layout_width="108dp"
         android:layout_height="98dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/logofitcia"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,6 +30,50 @@
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAltura"
+            android:layout_width="260dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="69dp"
+            android:background="#FDFDFD"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAlturaCampo"></LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewAlturaCampo"
+            android:layout_width="287dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="41dp"
+            android:layout_marginBottom="330dp"
+            android:text="180"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/btnCerrarSesion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAlturaTitulo" />
+
+        <TextView
+            android:id="@+id/textViewAlturaTitulo"
+            android:layout_width="287dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="41dp"
+            android:text="Altura"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textViewAlturaCampo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutPeso" />
 
         <TextView
             android:id="@+id/textViewPesoTitulo"
