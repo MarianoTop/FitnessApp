@@ -31,6 +31,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
+        <TextView
+            android:id="@+id/textViewEdadCampo"
+            android:layout_width="287dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginEnd="42dp"
+            android:text="24"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEdadTitulo" />
+
+        <TextView
+            android:id="@+id/textViewEdadTitulo"
+            android:layout_width="287dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="1dp"
+            android:text="Edad"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textViewEdadCampo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAlturaCampo" />
+
         <LinearLayout
             android:id="@+id/linearLayoutAltura"
             android:layout_width="260dp"
@@ -191,6 +222,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewPesoCampo"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutEdad"
+            android:layout_width="260dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="69dp"
+            android:background="#FDFDFD"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEdadCampo"></LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
