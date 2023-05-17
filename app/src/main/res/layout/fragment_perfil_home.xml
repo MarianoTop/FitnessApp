@@ -32,6 +32,52 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <LinearLayout
+            android:id="@+id/linearLayoutObjetivo"
+            android:layout_width="260dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="69dp"
+            android:background="#FDFDFD"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewObjetivoCampo"></LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewObjetivoCampo"
+            android:layout_width="287dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="1dp"
+            android:text="Bajar de peso"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayoutObjetivo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewObjetivoTitulo" />
+
+        <TextView
+            android:id="@+id/textViewObjetivoTitulo"
+            android:layout_width="287dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="1dp"
+            android:text="Objetivo"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textViewObjetivoCampo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDiasSemanaCampo" />
+
+        <LinearLayout
             android:id="@+id/linearLayoutDiasSemana"
             android:layout_width="260dp"
             android:layout_height="2dp"
