@@ -86,7 +86,7 @@ class EntrenamientoHomeFragment : Fragment() {
                     }
 
                     semanas.add(semanaObj)
-                }
+                }   
                 semanaAdapter = SemanaAdapter(semanas) { position ->
                     //Snackbar.make(v, "Click en ${repository.ejercicios[position].description}", Snackbar.LENGTH_SHORT).show();
 
