@@ -5,13 +5,13 @@
     android:id="@+id/frameLayout22"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.NutricionComidas.ComidaEspecificaFragment">
+    tools:context=".fragments.NutricionComidas.ComidaDetalladaFragment">
 
     <ImageView
         android:id="@+id/imageLogo4"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/logofitcia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         android:id="@+id/textNombreComida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:text="Nombre de la comida a mostrar"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -31,9 +31,9 @@
 
     <ImageView
         android:id="@+id/imageComida"
-        android:layout_width="161dp"
-        android:layout_height="180dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="283dp"
+        android:layout_height="284dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
         android:id="@+id/textIngredientes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:text="INGREDIENTES..."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

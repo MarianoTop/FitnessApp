@@ -43,22 +43,26 @@ class NutricionHomeFragment : Fragment() {
         super.onStart()
 
         buttonDesayunos.setOnClickListener {
-                val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToDesayunosFragment()
+            var titulo = "Desayunos"
+                val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToListaComidasTipoFragment(titulo)
                 findNavController().navigate(action)
         }
 
         buttonAlmuerzos.setOnClickListener {
-                val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToAlmuerzosFragment()
+            var titulo = "Almuerzos"
+                val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToListaComidasTipoFragment(titulo)
                 findNavController().navigate(action)
         }
 
         buttonMeriendas.setOnClickListener {
-                val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToMeriendasFragment()
+            var titulo = "Meriendas"
+                val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToListaComidasTipoFragment(titulo)
                 findNavController().navigate(action)
         }
 
         buttonCenas.setOnClickListener {
-                val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToCenasFragment()
+            var titulo = "Cenas"
+                val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToListaComidasTipoFragment(titulo)
                 findNavController().navigate(action)
         }
 
