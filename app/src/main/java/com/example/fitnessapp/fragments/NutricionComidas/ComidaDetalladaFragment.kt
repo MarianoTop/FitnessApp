@@ -1,5 +1,6 @@
 package com.example.fitnessapp.fragments.NutricionComidas
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fitnessapp.R
+import com.example.fitnessapp.adapters.ComidaAdapter
+import com.example.fitnessapp.adapters.EjercicioAdapter
+import com.example.fitnessapp.adapters.IngredienteAdapter
+import com.example.fitnessapp.entities.ComidasRepository
 
 class ComidaDetalladaFragment : Fragment() {
 
@@ -20,6 +28,10 @@ class ComidaDetalladaFragment : Fragment() {
     lateinit var textNombreComida : TextView
     lateinit var imageComida : ImageView
     lateinit var textIngredientes : TextView
+
+    lateinit var recyclerIngredientes : RecyclerView
+
+    lateinit var adapter : IngredienteAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +44,8 @@ class ComidaDetalladaFragment : Fragment() {
         textIngredientes = v.findViewById(R.id.textIngredientes)
 
         textIngredientes.text = "Ingredientes"  // PARA LOS INGREDIENTES CREO QUE USAR UN RECYCLERVIEW SERIA BUENA IDEA
+
+        recyclerIngredientes = v.findViewById(R.id.recyclerIngredientes)
 
         return v
     }
@@ -47,6 +61,10 @@ class ComidaDetalladaFragment : Fragment() {
             .with(this)
             .load(comida.imagen)
             .into(imageComida);
+
+        adapter= IngredienteAdapter(comida.ingredientes)
+        recyclerIngredientes.layoutManager = LinearLayoutManager(context)
+        recyclerIngredientes.adapter = adapter
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

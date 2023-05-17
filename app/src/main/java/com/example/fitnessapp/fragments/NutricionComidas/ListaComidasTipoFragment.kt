@@ -55,7 +55,7 @@ class ListaComidasTipoFragment : Fragment() {
             contextSent= context as Context
         }
 
-        adapter = ComidaAdapter(contextSent, repository.comidas){ position -> // position ->
+        adapter = ComidaAdapter(contextSent, repository.comidas){ position ->
 
             val action = ListaComidasTipoFragmentDirections.actionListaComidasTipoFragmentToComidaDetalladaFragment(repository.comidas[position])
             findNavController().navigate(action)
