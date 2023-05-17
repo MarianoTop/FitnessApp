@@ -25,9 +25,30 @@
         android:layout_height="592dp"
         android:background="@drawable/black_background_rounded"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="125dp">
+        tools:layout_editor_absoluteY="123dp">
+
+        <TextView
+            android:id="@+id/textViewNombre2"
+            android:layout_width="287dp"
+            android:layout_height="20dp"
+            android:text="Juan"
+            android:textColor="#FFFFFF"
+            android:textStyle="normal"
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="92dp" />
+
+        <TextView
+            android:id="@+id/textViewNombre"
+            android:layout_width="287dp"
+            android:layout_height="20dp"
+            android:text="Nombre"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="72dp" />
 
         <TextView
             android:id="@+id/textViewTitulo"
@@ -53,6 +74,14 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="528dp" />
+
+        <LinearLayout
+            android:layout_width="260dp"
+            android:layout_height="2dp"
+            android:background="#FDFDFD"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="111dp"></LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
