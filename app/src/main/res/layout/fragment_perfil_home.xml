@@ -30,14 +30,17 @@
         tools:layout_editor_absoluteY="125dp">
 
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PERFIL"
+            android:id="@+id/textViewTitulo"
+            android:layout_width="242dp"
+            android:layout_height="42dp"
+            android:text="Información personal"
+            android:textColor="#FDFDFD"
             android:textSize="24sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="146dp"
-            tools:layout_editor_absoluteY="223dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="16dp" />
 
         <Button
             android:id="@+id/btnCerrarSesion"
@@ -46,7 +49,9 @@
             android:backgroundTint="#960000"
             android:text="Cerrar Sesion"
             app:cornerRadius="20dp"
-            tools:layout_editor_absoluteX="108dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="528dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
