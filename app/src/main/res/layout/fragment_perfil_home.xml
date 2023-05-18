@@ -31,6 +31,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
+        <TextView
+            android:id="@+id/textViewInformeCampo"
+            android:layout_width="287dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginEnd="42dp"
+            android:text="Semanales"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewInformeTitulo" />
+
+        <TextView
+            android:id="@+id/textViewInformesCampo"
+            android:layout_width="287dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="1dp"
+            android:text="Bajar de peso"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayoutObjetivo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewObjetivoTitulo" />
+
+        <TextView
+            android:id="@+id/textViewInformeTitulo"
+            android:layout_width="287dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginEnd="42dp"
+            android:text="Informes"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewObjetivoCampo" />
+
         <LinearLayout
             android:id="@+id/linearLayoutObjetivo"
             android:layout_width="260dp"
@@ -318,6 +360,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewEdadCampo"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutInformes"
+            android:layout_width="260dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="69dp"
+            android:background="#FDFDFD"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewInformeCampo"></LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
