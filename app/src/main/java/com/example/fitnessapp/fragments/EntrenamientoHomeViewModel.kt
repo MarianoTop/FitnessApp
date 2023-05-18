@@ -16,7 +16,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class EntrenamientoHomeViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
     var semanas = MutableLiveData<MutableList<Semana>>()
     private val db = Firebase.firestore
 

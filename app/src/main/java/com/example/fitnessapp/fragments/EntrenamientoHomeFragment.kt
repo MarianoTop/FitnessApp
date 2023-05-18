@@ -56,6 +56,7 @@ class EntrenamientoHomeFragment : Fragment() {
     }
 
     override fun onStart() {
+        super.onStart()
         viewModel.semanas.observe(viewLifecycleOwner, Observer { semanas ->
             semanaAdapter = SemanaAdapter(semanas) { position ->
                 if (position == -1) {
@@ -74,7 +75,6 @@ class EntrenamientoHomeFragment : Fragment() {
             recyclerView.adapter = semanaAdapter
             recyclerView.layoutManager = LinearLayoutManager(context);
         })
-        super.onStart()
 
     }
 
