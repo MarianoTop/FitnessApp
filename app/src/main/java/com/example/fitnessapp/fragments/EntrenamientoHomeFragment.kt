@@ -69,7 +69,7 @@ class EntrenamientoHomeFragment : Fragment() {
                         EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment(
                             semanas[position].rutinas[posicionRutinaAEnviar]
                         )
-                    findNavController().navigate(action)
+                    //findNavController().navigate(action)
                 }
             }
             recyclerView.adapter = semanaAdapter

@@ -67,7 +67,7 @@ class ManagerRutinas {
                                 ejerciciosSeleccionados.add(ejercicios.get(index))
                             }
                         }
-                        val rutinaDelDia = Rutina("", ejerciciosSeleccionados, ejerciciosId, musculo, false, false, false, 0, 340.0)
+                        val rutinaDelDia = Rutina("", ejerciciosSeleccionados, ejerciciosId, musculo, 0, 340.0)
 
                         zonaEjercitada.add(musculo)
                         rutinas.add(rutinaDelDia)
