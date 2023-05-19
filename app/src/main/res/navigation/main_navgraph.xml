@@ -84,7 +84,8 @@
             app:destination="@id/ejercicioFragment" />
         <action
             android:id="@+id/action_ejercicioDescansoFragment_to_reporteFinEntrenamientoFragment"
-            app:destination="@id/reporteFinEntrenamientoFragment" />
+            app:destination="@id/reporteFinEntrenamientoFragment"
+            app:popUpTo="@id/entrenamientoHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/reporteFinEntrenamientoFragment"

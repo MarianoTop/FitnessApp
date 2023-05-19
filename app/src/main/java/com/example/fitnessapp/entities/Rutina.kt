@@ -10,11 +10,9 @@ data class Rutina(
     var ejerciciosId: MutableList<String>,
     var grupoMuscular: String,
     // Hay que eliminar los tres de abajo y refactorizar codigo
-    var finalizada: Boolean,
-    var esDescanso: Boolean,
-    var faltoEjercicio: Boolean,
-    var completado: Int, // Valores: 0 falta completar, 1 completada, 2 ausente
+
+    var estado: Int, // Valores: 0 falta completar, 1 completada, 2 ausente, 3 es descanso
     var totalCalorias: Double,
 ):Parcelable {
-    constructor() : this("", mutableListOf(),  mutableListOf(), "", false, false, false, 0, 0.0)
+    constructor() : this("", mutableListOf(),  mutableListOf(), "",  0, 0.0)
 }
