@@ -46,7 +46,7 @@ class NutricionHomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        sharedViewModel.listarComidas()
+        // sharedViewModel.listarComidas()
 
         buttonDesayunos.setOnClickListener {
             titulo = "Desayunos"
