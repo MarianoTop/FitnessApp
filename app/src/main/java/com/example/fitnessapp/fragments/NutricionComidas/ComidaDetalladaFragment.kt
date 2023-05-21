@@ -23,8 +23,6 @@ class ComidaDetalladaFragment : Fragment() {
 
     lateinit var v : View
 
-    private lateinit var viewModel: ComidaDetalladaViewModel
-
     lateinit var textNombreComida : TextView
     lateinit var imageComida : ImageView
     lateinit var textIngredientes : TextView
@@ -66,10 +64,4 @@ class ComidaDetalladaFragment : Fragment() {
         recyclerIngredientes.layoutManager = LinearLayoutManager(context)
         recyclerIngredientes.adapter = adapter
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ComidaDetalladaViewModel::class.java)
-    }
-
 }

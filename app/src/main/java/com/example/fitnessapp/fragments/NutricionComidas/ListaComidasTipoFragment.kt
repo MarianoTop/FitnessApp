@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ import com.example.fitnessapp.R
 import com.example.fitnessapp.adapters.ComidaAdapter
 import com.example.fitnessapp.entities.Comida
 import com.example.fitnessapp.entities.ComidasRepository
+import com.example.fitnessapp.fragments.NutricionViewModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -22,16 +24,17 @@ class ListaComidasTipoFragment : Fragment() {
 
     lateinit var v : View
 
+    private val sharedViewModel : NutricionViewModel by activityViewModels()
+
     lateinit var textTipoComida : TextView
 
     lateinit var recyclerComidas : RecyclerView
-    var repository : ComidasRepository = ComidasRepository()
+
+    // var repository : ComidasRepository = ComidasRepository()
 
     lateinit var adapter : ComidaAdapter
 
-    private lateinit var viewModel : ListaComidasTipoViewModel
-
-    val db = Firebase.firestore
+    lateinit var lista : MutableList<Comida>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,27 +52,28 @@ class ListaComidasTipoFragment : Fragment() {
         super.onStart()
 
         textTipoComida.text = ListaComidasTipoFragmentArgs.fromBundle(requireArguments()).titulo
+        var tipo = ListaComidasTipoFragmentArgs.fromBundle(requireArguments()).tipo
+
+        if (tipo == 0) {
+            lista = sharedViewModel.comidasDesayunoMerienda
+        } else {
+            lista = sharedViewModel.comidasAlmuerzoCena
+        }
 
         lateinit var contextSent : Context
         if(context!=null){
             contextSent= context as Context
         }
 
-        adapter = ComidaAdapter(contextSent, repository.comidas){ position ->
+        adapter = ComidaAdapter(contextSent, lista){ position ->
 
-            val action = ListaComidasTipoFragmentDirections.actionListaComidasTipoFragmentToComidaDetalladaFragment(repository.comidas[position])
+            val action = ListaComidasTipoFragmentDirections.actionListaComidasTipoFragmentToComidaDetalladaFragment(lista[position])
             findNavController().navigate(action)
 
-            //Snackbar.make(v,"Click en ${repository.facturas[position].name}", Snackbar.LENGTH_LONG).show()
+            //Snackbar.make(v,"Click en ${repository.comidas[position].nombre}", Snackbar.LENGTH_LONG).show()
         }
         recyclerComidas.layoutManager = LinearLayoutManager(context)
         recyclerComidas.adapter = adapter
 
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ListaComidasTipoViewModel::class.java)
-    }
-
 }

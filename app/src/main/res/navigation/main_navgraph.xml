@@ -103,6 +103,9 @@
         <argument
             android:name="titulo"
             app:argType="string" />
+        <argument
+            android:name="tipo"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/comidaDetalladaFragment"
