@@ -10,7 +10,7 @@ data class Comida(
     var imagen : String,
     var calorias : Double,
     var ingredientes : MutableList<String>,
-    var tipo : Int, // Valores: 0 desayuno, 1 almuerzo, 2 merienda, 3 cena
+    var tipo : Int, // Valores: 0 desayuno/merienda, 1 almuerzo/cena
 ): Parcelable {
     constructor() : this("", "", "", 0.0, mutableListOf(), 0)
 
