@@ -1,6 +1,7 @@
 package com.example.fitnessapp.fragments
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
 import android.widget.Button
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,10 +20,14 @@ import com.example.fitnessapp.R
 import com.example.fitnessapp.adapters.SemanaAdapter
 import com.example.fitnessapp.entities.*
 import com.example.fitnessapp.utils.SemanaUtils
+import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.*
+import kotlinx.coroutines.tasks.await
 
 class EntrenamientoHomeFragment : Fragment() {
 
@@ -33,7 +40,8 @@ class EntrenamientoHomeFragment : Fragment() {
     //var rutina: Rutina= Rutina(1,repository.ejercicios,"piernas",false, false,false)
     lateinit var semanaAdapter : SemanaAdapter;
     lateinit var recyclerView: RecyclerView;
-    val db = Firebase.firestore
+
+
 
 
     override fun onCreateView(
@@ -43,74 +51,39 @@ class EntrenamientoHomeFragment : Fragment() {
         v = inflater.inflate(R.layout.fragment_entrenamiento_home, container, false)
         recyclerView = v.findViewById(R.id.recyclerViewSemana)
         //btnStartExcercise =v.findViewById(R.id.btn)
+
         return v
     }
 
     override fun onStart() {
         super.onStart()
-        var semanas : MutableList<Semana> = arrayListOf()
-        db.collection("semanas").get().addOnSuccessListener {snapshot ->
-            if(snapshot != null) {
-                for(semana in snapshot) {
-                    var semanaObj : Semana = semana.toObject()
-                    db.collection("usuarios").whereEqualTo("id", semanaObj.usuarioId).get().addOnSuccessListener {usuarioBase ->
-                        if(usuarioBase != null) {
-                            for(usuario in usuarioBase) {
-                                semanaObj.usuario = usuario.toObject()
-                                println(semanaObj.usuario)
-                            }
-                        }
-                    }.addOnFailureListener { exception ->
-                        Log.w(ContentValues.TAG, "Error getting documents: ", exception)
-                    }
-                    db.collection("rutinas").whereIn("id", semanaObj.rutinasId).get().addOnSuccessListener {rutinasObtenidas ->
-                        if(rutinasObtenidas != null) {
-                            for(rutina in rutinasObtenidas) {
-                                var rutinaObj : Rutina = rutina.toObject()
-                                db.collection("ejercicios").whereIn("id", rutinaObj.ejerciciosId).get().addOnSuccessListener {ejerciciosObtenidos ->
-                                    if(ejerciciosObtenidos != null) {
-                                        for(ejercicio in ejerciciosObtenidos) {
-                                            rutinaObj.ejercicios.add(ejercicio.toObject())
-                                            println(rutina)
-                                        }
-                                    }
-                                }.addOnFailureListener { exception ->
-                                    Log.w(ContentValues.TAG, "Error getting documents: ", exception)
-                                }
-                                semanaObj.rutinas.add(rutinaObj)
-                                println(rutina)
-                            }
-                        }
-                    }.addOnFailureListener { exception ->
-                        Log.w(ContentValues.TAG, "Error getting documents: ", exception)
-                    }
-
-                    semanas.add(semanaObj)
-                }
-                semanaAdapter = SemanaAdapter(semanas) { position ->
-                    //Snackbar.make(v, "Click en ${repository.ejercicios[position].description}", Snackbar.LENGTH_SHORT).show();
-
-                    var posicionRutinaAEnviar = SemanaUtils.obtenerRutinaPorHacer(semanas[position])
-                    println("posicion enviada: " + posicionRutinaAEnviar)
-                    val action =EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment(semanas[position].rutinas[posicionRutinaAEnviar])
+        viewModel.semanas.observe(viewLifecycleOwner, Observer { semanas ->
+            semanaAdapter = SemanaAdapter(semanas) { position ->
+                if (position == -1) {
+                    Snackbar.make(v, "Semana no disponible", Snackbar.LENGTH_SHORT).show();
+                } else {
+                    val posicionRutinaAEnviar =
+                        SemanaUtils.obtenerRutinaPorHacer(semanas[position])
+                    println(posicionRutinaAEnviar)
+                    val action =
+                        EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment(
+                            semanas[position].rutinas[posicionRutinaAEnviar]
+                        )
                     findNavController().navigate(action)
-                };
-                recyclerView.layoutManager = LinearLayoutManager(context);
-                recyclerView.adapter = semanaAdapter;
+                }
             }
-        }.addOnFailureListener { exception ->
-            Log.w(ContentValues.TAG, "Error getting documents: ", exception)
-        }
+            recyclerView.adapter = semanaAdapter
+            recyclerView.layoutManager = LinearLayoutManager(context);
+        })
 
-        /*
-        btnStartExcercise.setOnClickListener {
-            val action =EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment(rutina)
-            findNavController().navigate(action)
-
-
-        }
-
-         */
     }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(EntrenamientoHomeViewModel::class.java)
+
+    }
+
+
 
 }
