@@ -66,14 +66,9 @@ class SharedViewModel : ViewModel() {
     suspend fun persistirRutinaCompletada() {
         var rutinaEncontrada: Rutina = Rutina()
         try {
-            println("**** ngresandoo")
 
-            //val rutinaDb = db.collection("rutinas").whereEqualTo("id", rutina.id)
             val rutinaDb = db.collection("rutinas").document(rutina.id)
-
             rutinaDb.update("estado", EstadoRutina.COMPLETADA.value).await()
-
-            println("**** terminoo")
 
         } catch (e: Exception) {
             Log.e(ContentValues.TAG, "Exception thrown: ${e.message}")
