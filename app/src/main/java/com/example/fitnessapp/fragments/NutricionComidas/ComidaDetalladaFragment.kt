@@ -41,7 +41,7 @@ class ComidaDetalladaFragment : Fragment() {
         imageComida = v.findViewById(R.id.imageComida)
         textIngredientes = v.findViewById(R.id.textIngredientes)
 
-        textIngredientes.text = "Ingredientes"  // PARA LOS INGREDIENTES CREO QUE USAR UN RECYCLERVIEW SERIA BUENA IDEA
+        textIngredientes.text = "Ingredientes"
 
         recyclerIngredientes = v.findViewById(R.id.recyclerIngredientes)
 

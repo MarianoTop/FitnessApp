@@ -53,23 +53,23 @@ class ListaComidasTipoFragment : Fragment() {
 
         textTipoComida.text = ListaComidasTipoFragmentArgs.fromBundle(requireArguments()).titulo
         var tipo = ListaComidasTipoFragmentArgs.fromBundle(requireArguments()).tipo
-/*
+
         if (tipo == 0) {
             lista = sharedViewModel.comidasDesayunoMerienda
         } else {
             lista = sharedViewModel.comidasAlmuerzoCena
         }
 
- */
+
 
         lateinit var contextSent : Context
         if(context!=null){
             contextSent= context as Context
         }
 
-        adapter = ComidaAdapter(contextSent, repository.comidas){ position ->
+        adapter = ComidaAdapter(contextSent, lista){ position ->
 
-            val action = ListaComidasTipoFragmentDirections.actionListaComidasTipoFragmentToComidaDetalladaFragment(repository.comidas[position])
+            val action = ListaComidasTipoFragmentDirections.actionListaComidasTipoFragmentToComidaDetalladaFragment(lista[position])
             findNavController().navigate(action)
 
             //Snackbar.make(v,"Click en ${repository.comidas[position].nombre}", Snackbar.LENGTH_LONG).show()

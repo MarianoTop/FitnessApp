@@ -12,11 +12,12 @@ class NutricionViewModel : ViewModel() {
 
     val db = Firebase.firestore
 
-    lateinit var comidasDesayunoMerienda : MutableList<Comida>
-    lateinit var comidasAlmuerzoCena : MutableList<Comida>
+    var comidasDesayunoMerienda : MutableList<Comida> = mutableListOf()
+    var comidasAlmuerzoCena : MutableList<Comida> = mutableListOf()
+    var limite = false
 
     fun listarComidas() {
-
+        println("*** TEST ***")
         db.collection("comidas").get().addOnSuccessListener { comidasObtenidas ->
             if (comidasObtenidas != null) {
                 for (comida in comidasObtenidas) {
@@ -31,5 +32,9 @@ class NutricionViewModel : ViewModel() {
         }.addOnFailureListener { exception ->
             Log.w(ContentValues.TAG, "Error getting documents: ", exception)
         }
+    }
+
+    fun setLimite() {
+        limite = true
     }
 }
