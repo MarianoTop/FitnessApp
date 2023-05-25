@@ -47,10 +47,12 @@ class SemanaUtils {
 
                 if(semana.rutinas[numeroDiaABuscar].estado==EstadoRutina.FALTA_COMPLETAR.value){
                     posicion=numeroDiaABuscar
-                }else if(semana.rutinas[numeroDiaABuscar].estado==EstadoRutina.COMPLETADA.value){
+                }else if(semana.rutinas[numeroDiaABuscar].estado==EstadoRutina.AUSENTE.value){
                     posicion= -2
                 }else if(semana.rutinas[numeroDiaABuscar].estado==EstadoRutina.ES_DESCANSO.value){
                     posicion= -3
+                }else if(semana.rutinas[numeroDiaABuscar].estado==EstadoRutina.COMPLETADA.value){
+                    posicion= -4
                 }
 
             }

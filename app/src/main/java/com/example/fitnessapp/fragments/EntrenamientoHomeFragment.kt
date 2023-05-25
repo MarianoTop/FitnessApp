@@ -68,9 +68,11 @@ class EntrenamientoHomeFragment : Fragment() {
                     if(posicionRutinaAEnviar==-1){
                         Snackbar.make(v, "Semana no disponible", Snackbar.LENGTH_SHORT).show();
                     }else if(posicionRutinaAEnviar==-2){
-                        Snackbar.make(v, "Ya ha finalizado su rutina de hoy", Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(v, "Usted se ha ausentado", Snackbar.LENGTH_SHORT).show();
                     }else if(posicionRutinaAEnviar==-3){
                         Snackbar.make(v, "Hoy es dia de descanso", Snackbar.LENGTH_SHORT).show();
+                    }else if(posicionRutinaAEnviar==-4){
+                        Snackbar.make(v, "Ya ha finalizado su rutina de hoy", Snackbar.LENGTH_SHORT).show();
 
                     }else{
                         println(semanas[position].id)
