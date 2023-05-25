@@ -34,17 +34,28 @@ class SemanaUtils {
 
             var contador: Int = 0
             var posicion: Int = -1
-            var semanaIncompleta: Boolean = false
 
-            while (contador < semana.rutinas.size && !semanaIncompleta) {
-
-                if (isRutinaDescansoOrCompletadaOrAusente(semana.rutinas[contador])) {
-                    contador++
-                } else {
-                    semanaIncompleta = true
-                    posicion = contador
-                }
+            // Si la semana esta finalizada devuelvo -1
+            if(semana.estaFinalizada){
+                return posicion;
             }
+
+            var numeroDiaABuscar= obtenerDia(Date())
+
+            //Si por algun motivo esa rutina esta en null devuelvo -1
+            if(semana.rutinas[numeroDiaABuscar]!=null){
+
+                if(semana.rutinas[numeroDiaABuscar].estado==EstadoRutina.FALTA_COMPLETAR.value){
+                    posicion=numeroDiaABuscar
+                }else if(semana.rutinas[numeroDiaABuscar].estado==EstadoRutina.COMPLETADA.value){
+                    posicion= -2
+                }else if(semana.rutinas[numeroDiaABuscar].estado==EstadoRutina.ES_DESCANSO.value){
+                    posicion= -3
+                }
+
+            }
+
+
             return posicion
         }
 
@@ -53,11 +64,17 @@ class SemanaUtils {
                     || rutina.estado ==EstadoRutina.AUSENTE.value
         }
 
-        /**  Sunday is 1, Saturady is 7. */
+        /**  Lunes es 0, Domingo es 6. */
         fun obtenerDia(date: Date): Int {
             val calendar = Calendar.getInstance()
             calendar.time = date
-            return calendar.get(Calendar.DAY_OF_WEEK)
+            var numero= calendar.get(Calendar.DAY_OF_WEEK)
+            if(numero==1){
+                numero=6
+            }else{
+                numero-=2
+            }
+            return numero
         }
 
         fun validarSemana(semana: Semana) {
@@ -115,5 +132,15 @@ class SemanaUtils {
 fun main(args: Array<String>) {
 
 
-    println(EstadoRutina.AUSENTE.value)
+    val c = Calendar.getInstance()
+    c.set(Calendar.YEAR,2023)
+    c.set(Calendar.MONTH,Calendar.MAY)
+    c.set(Calendar.DAY_OF_MONTH,21)
+
+    val fechaTest= c.time
+
+
+
+
+    println(SemanaUtils.obtenerDia(fechaTest))
 }
