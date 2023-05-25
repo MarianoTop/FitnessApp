@@ -20,13 +20,13 @@ class ComidaAdapter(private val context: Context, var comidas : MutableList<Comi
         init {
             this.view = v
         }
-/*
+
         fun setComidaName(name : String){
 
-            val textName : TextView = view.findViewById(R.id.textName)
+            val textName : TextView = view.findViewById(R.id.textNombre)
             textName.text = name
         }
- */
+
         fun setComidaImage(imagen : String, context : Context ){
 
             val image : ImageView = view.findViewById(R.id.imageComida2)
@@ -49,7 +49,7 @@ class ComidaAdapter(private val context: Context, var comidas : MutableList<Comi
     }
 
     override fun onBindViewHolder(holder: ComidaHolder, position: Int) {
-        //holder.setComidaName(comidas[position].nombre)
+        holder.setComidaName(comidas[position].nombre)
         holder.setComidaImage(comidas[position].imagen, context)
         holder.getCard().setOnClickListener{
             onClick(position)
