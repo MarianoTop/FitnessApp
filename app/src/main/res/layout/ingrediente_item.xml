@@ -4,19 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardIngrediente"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#494848"
+    android:backgroundTint="#494848">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
-        android:layout_marginBottom="7dp">
+        android:layout_marginBottom="7dp"
+        android:background="#494848">
 
         <TextView
             android:id="@+id/textIngrediente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#494848"
             android:text="ingrediente"
+            android:textColor="#FFFFFF"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

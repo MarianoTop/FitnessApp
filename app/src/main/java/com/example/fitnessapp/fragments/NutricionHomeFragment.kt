@@ -46,7 +46,10 @@ class NutricionHomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        // sharedViewModel.listarComidas()
+        if (!sharedViewModel.limite) {
+            sharedViewModel.listarComidas()
+            sharedViewModel.setLimite()
+        }
 
         buttonDesayunos.setOnClickListener {
             titulo = "Desayunos"
@@ -75,7 +78,5 @@ class NutricionHomeFragment : Fragment() {
             val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToListaComidasTipoFragment(titulo, tipo)
             findNavController().navigate(action)
         }
-
-
     }
 }
