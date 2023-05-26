@@ -1,14 +1,22 @@
 package com.example.fitnessapp.fragments
 
+import android.content.ContentValues
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
+import com.example.fitnessapp.entities.Usuario
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 
 class PerfilHomeFragment : Fragment() {
 
@@ -17,6 +25,14 @@ class PerfilHomeFragment : Fragment() {
     lateinit var buttonCerrarSesion : Button
 
     private lateinit var viewModel: PerfilHomeViewModel
+
+    private val db = Firebase.firestore;
+    lateinit var usuario : Usuario;
+    lateinit var editTextNombre: EditText;
+    lateinit var editTextPeso : EditText;
+    lateinit var editTextAltura : EditText;
+    lateinit var editTextEdad : EditText;
+    lateinit var editTextDias : EditText;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +43,11 @@ class PerfilHomeFragment : Fragment() {
         buttonCerrarSesion = v.findViewById(R.id.btnCerrarSesion)
 
         buttonCerrarSesion.text = "Cerrar Sesion"
+        editTextNombre = v.findViewById(R.id.editTextNombre);
+        editTextPeso = v.findViewById(R.id.editTextPeso);
+        editTextAltura = v.findViewById(R.id.editTextAltura);
+        editTextEdad = v.findViewById(R.id.editTextEdad);
+        editTextDias = v.findViewById(R.id.editTextDias);
 
         return v
     }
@@ -34,10 +55,42 @@ class PerfilHomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        val usuarioDB = db.collection("usuarios").document("ssoVgM3jDe2AenUf2xRd")
+        usuarioDB.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data}")
+                    usuario = document.toObject()!!;
+                    Log.d("Usuario casteado:", usuario.nombre)
+                    editTextNombre.setText(usuario.nombre, TextView.BufferType.EDITABLE);
+                    editTextPeso.setText(usuario.peso.toString(), TextView.BufferType.EDITABLE);
+                    editTextAltura.setText(usuario.altura.toString(), TextView.BufferType.EDITABLE);
+                    editTextEdad.setText(usuario.edad.toString(), TextView.BufferType.EDITABLE);
+                    editTextDias.setText(calcularCantidadDiasXSemana(usuario.diasDeEntrenamiento).toString(), TextView.BufferType.EDITABLE);
+                } else {
+                    Log.d(ContentValues.TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(ContentValues.TAG, "get failed with ", exception)
+            }
+
+
+
         buttonCerrarSesion.setOnClickListener {
                 val action = PerfilHomeFragmentDirections.actionPerfilHomeFragmentToMainActivity() // CAMBIAR
                 findNavController().navigate(action)
         }
+    }
+
+    fun calcularCantidadDiasXSemana (semana : MutableList<Boolean>) : Int {
+        var cantidadDias = 0;
+        for (dia in semana){
+            if(dia){
+                cantidadDias++;
+            }
+        }
+        return cantidadDias;
     }
 
 }
