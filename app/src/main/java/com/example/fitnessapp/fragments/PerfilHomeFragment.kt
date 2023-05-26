@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Usuario
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -36,6 +37,8 @@ class PerfilHomeFragment : Fragment() {
     lateinit var editTextObjetivo : EditText;
     lateinit var editTextInforme : EditText;
     lateinit var editTextNivel : EditText;
+    lateinit var editButton:  FloatingActionButton;
+    var modoEdicion=false;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,6 +57,8 @@ class PerfilHomeFragment : Fragment() {
         editTextObjetivo = v.findViewById(R.id.editTextObjetivo);
         editTextInforme = v.findViewById(R.id.editTextInformes);
         editTextNivel = v.findViewById(R.id.editTextNivel);
+        editButton= v.findViewById(R.id.editButton)
+
 
         return v
     }
@@ -84,6 +89,10 @@ class PerfilHomeFragment : Fragment() {
             }
 
 
+        editButton.setOnClickListener{
+
+            cambiarEdit();
+        }
 
         buttonCerrarSesion.setOnClickListener {
                 val action = PerfilHomeFragmentDirections.actionPerfilHomeFragmentToMainActivity() // CAMBIAR
@@ -126,5 +135,15 @@ class PerfilHomeFragment : Fragment() {
         }
         return nivel;
     }
+
+    fun cambiarEdit(){
+
+        if(modoEdicion){
+            editButton.background
+        }
+
+    }
+
+
 
 }
