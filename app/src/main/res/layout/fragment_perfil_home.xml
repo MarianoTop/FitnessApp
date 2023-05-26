@@ -20,7 +20,7 @@
             tools:layout_editor_absoluteX="37dp">
 
             <EditText
-                android:id="@+id/textViewNivelFisicoCampo"
+                android:id="@+id/editTextNivel"
                 android:layout_width="300dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="49dp"
@@ -46,14 +46,14 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textViewNivelFisicoCampo"
+                app:layout_constraintBottom_toTopOf="@+id/editTextNivel"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewInformeCampo" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextInformes" />
 
             <EditText
-                android:id="@+id/textViewInformeCampo"
+                android:id="@+id/editTextInformes"
                 android:layout_width="300dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="49dp"
@@ -78,14 +78,14 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textViewInformeCampo"
+                app:layout_constraintBottom_toTopOf="@+id/editTextInformes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewObjetivoCampo" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextObjetivo" />
 
             <EditText
-                android:id="@+id/textViewObjetivoCampo"
+                android:id="@+id/editTextObjetivo"
                 android:layout_width="300dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="49dp"
@@ -109,14 +109,14 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textViewObjetivoCampo"
+                app:layout_constraintBottom_toTopOf="@+id/editTextObjetivo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewDiasSemanaCampo" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextDias" />
 
             <EditText
-                android:id="@+id/textViewDiasSemanaCampo"
+                android:id="@+id/editTextDias"
                 android:layout_width="300dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="49dp"
@@ -141,14 +141,14 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textViewDiasSemanaCampo"
+                app:layout_constraintBottom_toTopOf="@+id/editTextDias"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewEdadCampo" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextEdad" />
 
             <EditText
-                android:id="@+id/textViewEdadCampo"
+                android:id="@+id/editTextEdad"
                 android:layout_width="300dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="49dp"
@@ -173,14 +173,14 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textViewEdadCampo"
+                app:layout_constraintBottom_toTopOf="@+id/editTextEdad"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewAlturaCampo" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextAltura" />
 
             <EditText
-                android:id="@+id/textViewAlturaCampo"
+                android:id="@+id/editTextAltura"
                 android:layout_width="300dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="49dp"
@@ -205,11 +205,11 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textViewAlturaCampo"
+                app:layout_constraintBottom_toTopOf="@+id/editTextAltura"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewPesoCampo" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextPeso" />
 
             <TextView
                 android:id="@+id/textViewPesoTitulo"
@@ -221,13 +221,13 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textViewPesoCampo"
+                app:layout_constraintBottom_toTopOf="@+id/editTextPeso"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNombreCampo" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
 
             <EditText
-                android:id="@+id/textViewNombreCampo"
+                android:id="@+id/editTextNombre"
                 android:layout_width="300dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="49dp"
@@ -243,7 +243,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewNombreTitulo" />
 
             <EditText
-                android:id="@+id/textViewPesoCampo"
+                android:id="@+id/editTextPeso"
                 android:layout_width="300dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="49dp"
@@ -269,7 +269,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textViewNombreCampo"
+                app:layout_constraintBottom_toTopOf="@+id/editTextNombre"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
@@ -302,7 +302,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNivelFisicoCampo" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextNivel" />
 
             <ImageView
                 android:id="@+id/imageView2"
