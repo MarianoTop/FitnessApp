@@ -33,6 +33,9 @@ class PerfilHomeFragment : Fragment() {
     lateinit var editTextAltura : EditText;
     lateinit var editTextEdad : EditText;
     lateinit var editTextDias : EditText;
+    lateinit var editTextObjetivo : EditText;
+    lateinit var editTextInforme : EditText;
+    lateinit var editTextNivel : EditText;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +51,9 @@ class PerfilHomeFragment : Fragment() {
         editTextAltura = v.findViewById(R.id.editTextAltura);
         editTextEdad = v.findViewById(R.id.editTextEdad);
         editTextDias = v.findViewById(R.id.editTextDias);
+        editTextObjetivo = v.findViewById(R.id.editTextObjetivo);
+        editTextInforme = v.findViewById(R.id.editTextInformes);
+        editTextNivel = v.findViewById(R.id.editTextNivel);
 
         return v
     }
@@ -67,6 +73,9 @@ class PerfilHomeFragment : Fragment() {
                     editTextAltura.setText(usuario.altura.toString(), TextView.BufferType.EDITABLE);
                     editTextEdad.setText(usuario.edad.toString(), TextView.BufferType.EDITABLE);
                     editTextDias.setText(calcularCantidadDiasXSemana(usuario.diasDeEntrenamiento).toString(), TextView.BufferType.EDITABLE);
+                    editTextObjetivo.setText(obtenerObjetivo(usuario.objetivo), TextView.BufferType.EDITABLE);
+                    editTextInforme.setText(obtenerInforme(usuario.reporteMensual), TextView.BufferType.EDITABLE);
+                    editTextNivel.setText(obtenerNivelFisico(usuario.nivelFisico), TextView.BufferType.EDITABLE);
                 } else {
                     Log.d(ContentValues.TAG, "No such document")
                 }
@@ -91,6 +100,32 @@ class PerfilHomeFragment : Fragment() {
             }
         }
         return cantidadDias;
+    }
+
+    fun obtenerObjetivo (numero : Int) : String {
+        var objetivo = "Bajar de peso";
+        if (numero == 1){
+            objetivo = "Aumentar masa muscular";
+        }
+        return objetivo;
+    }
+
+    fun obtenerInforme (numero : Int) : String {
+        var informe = "Semanal";
+        if(numero == 1){
+            informe = "Mensual";
+        }
+        return informe;
+    }
+
+    fun obtenerNivelFisico(numero : Int) : String {
+        var nivel = "Bajo";
+        if(numero == 1){
+            nivel = "Medio";
+        }else if(numero == 2){
+            nivel = "Alto";
+        }
+        return nivel;
     }
 
 }
