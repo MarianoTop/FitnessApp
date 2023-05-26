@@ -67,7 +67,6 @@ class PerfilHomeFragment : Fragment() {
                 if (document != null) {
                     Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data}")
                     usuario = document.toObject()!!;
-                    Log.d("Usuario casteado:", usuario.nombre)
                     editTextNombre.setText(usuario.nombre, TextView.BufferType.EDITABLE);
                     editTextPeso.setText(usuario.peso.toString(), TextView.BufferType.EDITABLE);
                     editTextAltura.setText(usuario.altura.toString(), TextView.BufferType.EDITABLE);
