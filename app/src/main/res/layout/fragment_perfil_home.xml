@@ -29,7 +29,7 @@
                 android:backgroundTint="#FFFFFF"
                 android:text="Bajo"
                 android:textColor="#FFFFFF"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/btnCerrarSesion"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -37,17 +37,18 @@
 
             <TextView
                 android:id="@+id/textViewNivelFisicoTitulo"
-                android:layout_width="287dp"
-                android:layout_height="20dp"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="49dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="75dp"
                 android:text="Nivel fisico"
                 android:textColor="#FFFFFF"
-                android:textSize="18dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textViewNivelFisicoCampo"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewInformeCampo" />
 
@@ -61,7 +62,7 @@
                 android:backgroundTint="#FFFFFF"
                 android:text="Semanales"
                 android:textColor="#FFFFFF"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/textViewNivelFisicoTitulo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,16 +70,17 @@
 
             <TextView
                 android:id="@+id/textViewInformeTitulo"
-                android:layout_width="287dp"
-                android:layout_height="20dp"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="49dp"
                 android:layout_marginEnd="75dp"
                 android:text="Informes"
                 android:textColor="#FFFFFF"
-                android:textSize="18dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textViewInformeCampo"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewObjetivoCampo" />
 
