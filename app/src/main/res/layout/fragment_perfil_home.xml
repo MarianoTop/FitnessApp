@@ -184,6 +184,7 @@
                 android:layout_marginStart="49dp"
                 android:layout_marginEnd="62dp"
                 android:backgroundTint="#FFFFFF"
+                android:inputType="number"
                 android:text="180"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
