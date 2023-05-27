@@ -1,6 +1,7 @@
 package com.example.fitnessapp.fragments
 
 import android.content.ContentValues
+import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Usuario
@@ -66,6 +68,7 @@ class PerfilHomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        cambiarEdit()
         val usuarioDB = db.collection("usuarios").document("ssoVgM3jDe2AenUf2xRd")
         usuarioDB.get()
             .addOnSuccessListener { document ->
@@ -139,8 +142,36 @@ class PerfilHomeFragment : Fragment() {
     fun cambiarEdit(){
 
         if(modoEdicion){
-            editButton.background
+
+           /* https://stackoverflow.com/questions/45825609/programmatically-change-backgroundtint-of-imageview-with-vector-asset-for-backgr*/
+            editButton.backgroundTintList=ContextCompat.getColorStateList(requireContext(), R.color.gray)
+            modoEdicion=false
+            cambiarCamposEditables()
+            println("Se desactiva edicion")
+        }else{
+            editButton.backgroundTintList=ContextCompat.getColorStateList(requireContext(), R.color.red)
+            modoEdicion=true
+            cambiarCamposEditables()
+            println("Se Habilita edicion")
         }
+
+    }
+
+    fun cambiarCamposEditables(){
+
+       // editTextNombre.isFocusable = modoEdicion
+        editTextPeso.isFocusable = modoEdicion
+        editTextAltura.isFocusable = true
+        /*
+
+        editTextAltura = v.findViewById(R.id.editTextAltura);
+        editTextEdad = v.findViewById(R.id.editTextEdad);
+        editTextDias = v.findViewById(R.id.editTextDias);
+        editTextObjetivo = v.findViewById(R.id.editTextObjetivo);
+        editTextInforme = v.findViewById(R.id.editTextInformes);
+        editTextNivel = v.findViewById(R.id.editTextNivel);
+        editButton= v.findViewById(R.id.editButton)
+        */
 
     }
 
