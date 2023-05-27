@@ -13,6 +13,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Usuario
@@ -20,6 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
 
 class PerfilHomeFragment : Fragment() {
 
@@ -27,7 +30,7 @@ class PerfilHomeFragment : Fragment() {
 
     lateinit var buttonCerrarSesion : Button
 
-    private lateinit var viewModel: PerfilHomeViewModel
+    private val viewModel: PerfilHomeViewModel by activityViewModels()
 
     private val db = Firebase.firestore;
     lateinit var usuario : Usuario;
@@ -148,6 +151,9 @@ class PerfilHomeFragment : Fragment() {
             editButton.backgroundTintList=ContextCompat.getColorStateList(requireContext(), R.color.gray)
             modoEdicion=false
             cambiarCamposEditables()
+            viewModel.viewModelScope.launch{
+                viewModel.persistirUsuario(usuario)
+            }
             println("Se desactiva edicion")
         }else{
             editButton.backgroundTintList=ContextCompat.getColorStateList(requireContext(), R.color.red)
