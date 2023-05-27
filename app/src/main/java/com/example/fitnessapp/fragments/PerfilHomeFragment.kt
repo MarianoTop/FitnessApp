@@ -68,7 +68,7 @@ class PerfilHomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        cambiarEdit()
+
         val usuarioDB = db.collection("usuarios").document("ssoVgM3jDe2AenUf2xRd")
         usuarioDB.get()
             .addOnSuccessListener { document ->
@@ -101,6 +101,7 @@ class PerfilHomeFragment : Fragment() {
                 val action = PerfilHomeFragmentDirections.actionPerfilHomeFragmentToMainActivity() // CAMBIAR
                 findNavController().navigate(action)
         }
+        cambiarCamposEditables()
     }
 
     fun calcularCantidadDiasXSemana (semana : MutableList<Boolean>) : Int {
@@ -159,19 +160,31 @@ class PerfilHomeFragment : Fragment() {
 
     fun cambiarCamposEditables(){
 
-       // editTextNombre.isFocusable = modoEdicion
-        editTextPeso.isFocusable = modoEdicion
-        editTextAltura.isFocusable = true
-        /*
+         /* https://stackoverflow.com/questions/7685280/edittext-how-to-enable-disable-input*/
+        editTextNombre.isFocusable = modoEdicion
+        editTextNombre.isFocusableInTouchMode = modoEdicion
 
-        editTextAltura = v.findViewById(R.id.editTextAltura);
-        editTextEdad = v.findViewById(R.id.editTextEdad);
-        editTextDias = v.findViewById(R.id.editTextDias);
-        editTextObjetivo = v.findViewById(R.id.editTextObjetivo);
-        editTextInforme = v.findViewById(R.id.editTextInformes);
-        editTextNivel = v.findViewById(R.id.editTextNivel);
-        editButton= v.findViewById(R.id.editButton)
-        */
+        editTextPeso.isFocusable = modoEdicion
+        editTextPeso.isFocusableInTouchMode = modoEdicion
+
+        editTextAltura.isFocusable = modoEdicion
+        editTextAltura.isFocusableInTouchMode = modoEdicion
+
+        editTextEdad.isFocusable = modoEdicion
+        editTextEdad.isFocusableInTouchMode = modoEdicion
+
+        editTextDias.isFocusable = modoEdicion
+        editTextDias.isFocusableInTouchMode = modoEdicion
+
+        editTextObjetivo.isFocusable = modoEdicion
+        editTextObjetivo.isFocusableInTouchMode = modoEdicion
+
+        editTextInforme.isFocusable = modoEdicion
+        editTextInforme.isFocusableInTouchMode = modoEdicion
+
+        editTextNivel.isFocusable = modoEdicion
+        editTextNivel.isFocusableInTouchMode = modoEdicion
+
 
     }
 
