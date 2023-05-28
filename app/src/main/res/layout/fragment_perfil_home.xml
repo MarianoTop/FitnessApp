@@ -24,7 +24,6 @@
                 android:layout_width="300dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="49dp"
-                android:layout_marginTop="1dp"
                 android:layout_marginEnd="75dp"
                 android:text="Nivel fisico"
                 android:textColor="#FFFFFF"
@@ -34,23 +33,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextInformes" />
-
-            <EditText
-                android:id="@+id/editTextInformes"
-                android:layout_width="300dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="49dp"
-                android:layout_marginEnd="62dp"
-                android:layout_marginBottom="1dp"
-                android:backgroundTint="#FFFFFF"
-                android:text="Semanales"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/textViewNivelFisicoTitulo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewInformeTitulo" />
+                app:layout_constraintTop_toBottomOf="@+id/spinnerInform" />
 
             <TextView
                 android:id="@+id/textViewInformeTitulo"
@@ -62,7 +45,6 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/editTextInformes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -317,6 +299,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewNivelFisicoTitulo" />
+
+            <Spinner
+                android:id="@+id/spinnerInform"
+                android:layout_width="302dp"
+                android:layout_height="36dp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewNivelFisicoTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewInformeTitulo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

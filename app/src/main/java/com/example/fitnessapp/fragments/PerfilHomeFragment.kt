@@ -39,8 +39,8 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
     lateinit var editTextDias : EditText;
     //lateinit var editTextObjetivo : EditText;
     lateinit var spinnerObjetivo : Spinner;
-    lateinit var editTextInforme : EditText;
-
+   //lateinit var editTextInforme : EditText;
+   lateinit var spinnerInforme : Spinner;
     //lateinit var editTextNivel : EditText;
     lateinit var spinnerNivel : Spinner;
 
@@ -67,7 +67,8 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         https://developer.android.com/develop/ui/views/components/spinner
         https://www.youtube.com/watch?v=on_OrrX7Nw4&ab_channel=CodinginFlow*/
         spinnerObjetivo = v.findViewById(R.id.spinnerObj);
-        editTextInforme = v.findViewById(R.id.editTextInformes);
+        //editTextInforme = v.findViewById(R.id.editTextInformes);
+        spinnerInforme = v.findViewById(R.id.spinnerInform);
         //editTextNivel = v.findViewById(R.id.editTextNivel);
         spinnerNivel= v.findViewById(R.id.spinnerNivelFis);
         editButton= v.findViewById(R.id.editButton)
@@ -80,6 +81,14 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         adapterObjective.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerObjetivo.adapter = adapterObjective
         spinnerObjetivo.onItemSelectedListener = this
+
+        val adapterInforme = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.informe, android.R.layout.simple_spinner_item
+        )
+        adapterInforme.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerInforme.adapter = adapterInforme
+        spinnerInforme.onItemSelectedListener = this
 
 
         val adapterNivelFisico = ArrayAdapter.createFromResource(
@@ -112,7 +121,8 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
                     editTextDias.setText(calcularCantidadDiasXSemana(usuario.diasDeEntrenamiento).toString(), TextView.BufferType.EDITABLE);
                     //editTextObjetivo.setText(obtenerObjetivo(usuario.objetivo), TextView.BufferType.EDITABLE);
                     spinnerObjetivo.setSelection(usuario.objetivo)
-                    editTextInforme.setText(obtenerInforme(usuario.reporteMensual), TextView.BufferType.EDITABLE);
+                    //editTextInforme.setText(obtenerInforme(usuario.reporteMensual), TextView.BufferType.EDITABLE);
+                    spinnerInforme.setSelection(usuario.reporteSemanal)
                     //editTextNivel.setText(obtenerNivelFisico(usuario.nivelFisico), TextView.BufferType.EDITABLE);
                     spinnerNivel.setSelection(usuario.nivelFisico)
                 } else {
@@ -216,8 +226,9 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         //editTextObjetivo.isFocusableInTouchMode = modoEdicion
         spinnerObjetivo.isEnabled=modoEdicion
 
-        editTextInforme.isFocusable = modoEdicion
-        editTextInforme.isFocusableInTouchMode = modoEdicion
+       // editTextInforme.isFocusable = modoEdicion
+        //editTextInforme.isFocusableInTouchMode = modoEdicion
+        spinnerInforme.isEnabled=modoEdicion
 
         //editTextNivel.isFocusable = modoEdicion
         //editTextNivel.isFocusableInTouchMode = modoEdicion
@@ -233,6 +244,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         usuario.peso=editTextPeso.text.toString().toDouble()
         usuario.edad=editTextEdad.text.toString().toInt()
         usuario.objetivo=spinnerObjetivo.selectedItemPosition
+        usuario.reporteSemanal=spinnerInforme.selectedItemPosition
         usuario.nivelFisico=spinnerNivel.selectedItemPosition
 
     }
