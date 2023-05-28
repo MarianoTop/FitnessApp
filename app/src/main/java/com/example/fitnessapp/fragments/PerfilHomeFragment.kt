@@ -1,18 +1,14 @@
 package com.example.fitnessapp.fragments
 
 import android.content.ContentValues
-import android.graphics.Color
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
@@ -24,7 +20,8 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 
-class PerfilHomeFragment : Fragment() {
+
+class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
 
     lateinit var v : View
 
@@ -39,10 +36,16 @@ class PerfilHomeFragment : Fragment() {
     lateinit var editTextAltura : EditText;
     lateinit var editTextEdad : EditText;
     lateinit var editTextDias : EditText;
-    lateinit var editTextObjetivo : EditText;
+    //lateinit var editTextObjetivo : EditText;
+    lateinit var spinnerObjetivo : Spinner;
+
+
+
+
     lateinit var editTextInforme : EditText;
     lateinit var editTextNivel : EditText;
     lateinit var editButton:  FloatingActionButton;
+
     var modoEdicion=false;
 
     override fun onCreateView(
@@ -59,13 +62,39 @@ class PerfilHomeFragment : Fragment() {
         editTextAltura = v.findViewById(R.id.editTextAltura);
         editTextEdad = v.findViewById(R.id.editTextEdad);
         editTextDias = v.findViewById(R.id.editTextDias);
-        editTextObjetivo = v.findViewById(R.id.editTextObjetivo);
+        //editTextObjetivo = v.findViewById(R.id.editTextObjetivo);
+        /* Spinner
+        https://developer.android.com/develop/ui/views/components/spinner
+        https://www.youtube.com/watch?v=on_OrrX7Nw4&ab_channel=CodinginFlow*/
+        spinnerObjetivo = v.findViewById(R.id.spinnerObj);
         editTextInforme = v.findViewById(R.id.editTextInformes);
         editTextNivel = v.findViewById(R.id.editTextNivel);
         editButton= v.findViewById(R.id.editButton)
 
+        /*
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.numbers,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinnerObjetivo.adapter = adapter}
+*/
+        val adapterObjective = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.numbers, android.R.layout.simple_spinner_item
+        )
+        adapterObjective.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerObjetivo.setAdapter(adapterObjective)
+        spinnerObjetivo.setOnItemSelectedListener(this)
 
-        return v
+
+
+
+
+            return v
     }
 
     override fun onStart() {
@@ -83,7 +112,7 @@ class PerfilHomeFragment : Fragment() {
                     editTextAltura.setText(usuario.altura.toString(), TextView.BufferType.EDITABLE);
                     editTextEdad.setText(usuario.edad.toString(), TextView.BufferType.EDITABLE);
                     editTextDias.setText(calcularCantidadDiasXSemana(usuario.diasDeEntrenamiento).toString(), TextView.BufferType.EDITABLE);
-                    editTextObjetivo.setText(obtenerObjetivo(usuario.objetivo), TextView.BufferType.EDITABLE);
+                    //editTextObjetivo.setText(obtenerObjetivo(usuario.objetivo), TextView.BufferType.EDITABLE);
                     editTextInforme.setText(obtenerInforme(usuario.reporteMensual), TextView.BufferType.EDITABLE);
                     editTextNivel.setText(obtenerNivelFisico(usuario.nivelFisico), TextView.BufferType.EDITABLE);
                 } else {
@@ -183,8 +212,8 @@ class PerfilHomeFragment : Fragment() {
         editTextDias.isFocusable = modoEdicion
         editTextDias.isFocusableInTouchMode = modoEdicion
 
-        editTextObjetivo.isFocusable = modoEdicion
-        editTextObjetivo.isFocusableInTouchMode = modoEdicion
+        //editTextObjetivo.isFocusable = modoEdicion
+        //editTextObjetivo.isFocusableInTouchMode = modoEdicion
 
         editTextInforme.isFocusable = modoEdicion
         editTextInforme.isFocusableInTouchMode = modoEdicion
@@ -203,6 +232,15 @@ class PerfilHomeFragment : Fragment() {
         usuario.edad=editTextEdad.text.toString().toInt()
     }
 
+    override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
+
+        val text: String = parent.getItemAtPosition(pos).toString()
+        Toast.makeText(parent.context, text, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+
+    }
 
 
 }
