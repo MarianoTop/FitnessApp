@@ -151,6 +151,7 @@ class PerfilHomeFragment : Fragment() {
             editButton.backgroundTintList=ContextCompat.getColorStateList(requireContext(), R.color.gray)
             modoEdicion=false
             cambiarCamposEditables()
+            obtenerDatos()
             viewModel.viewModelScope.launch{
                 viewModel.persistirUsuario(usuario)
             }
@@ -192,6 +193,14 @@ class PerfilHomeFragment : Fragment() {
         editTextNivel.isFocusableInTouchMode = modoEdicion
 
 
+    }
+
+    fun obtenerDatos(){
+
+        usuario.nombre=editTextNombre.text.toString()
+        usuario.altura=editTextAltura.text.toString().toDouble()
+        usuario.peso=editTextPeso.text.toString().toDouble()
+        usuario.edad=editTextEdad.text.toString().toInt()
     }
 
 

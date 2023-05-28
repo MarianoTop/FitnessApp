@@ -24,6 +24,9 @@ class PerfilHomeViewModel : ViewModel() {
             usuarioDb.update(
 
                 "nombre",usuario.nombre,
+
+                "peso",usuario.peso,
+                "altura",usuario.altura,
                 "edad",usuario.edad
 
 
