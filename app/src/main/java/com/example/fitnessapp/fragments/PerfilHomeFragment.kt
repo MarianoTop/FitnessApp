@@ -1,6 +1,7 @@
 package com.example.fitnessapp.fragments
 
 import android.content.ContentValues
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -71,28 +72,14 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         editTextNivel = v.findViewById(R.id.editTextNivel);
         editButton= v.findViewById(R.id.editButton)
 
-        /*
-        ArrayAdapter.createFromResource(
-            requireContext(),
-            R.array.numbers,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinnerObjetivo.adapter = adapter}
-*/
+
         val adapterObjective = ArrayAdapter.createFromResource(
             requireContext(),
-            R.array.numbers, android.R.layout.simple_spinner_item
+            R.array.objetivo, android.R.layout.simple_spinner_item
         )
         adapterObjective.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerObjetivo.setAdapter(adapterObjective)
-        spinnerObjetivo.setOnItemSelectedListener(this)
-
-
-
-
+        spinnerObjetivo.adapter = adapterObjective
+        spinnerObjetivo.onItemSelectedListener = this
 
             return v
     }
@@ -113,6 +100,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
                     editTextEdad.setText(usuario.edad.toString(), TextView.BufferType.EDITABLE);
                     editTextDias.setText(calcularCantidadDiasXSemana(usuario.diasDeEntrenamiento).toString(), TextView.BufferType.EDITABLE);
                     //editTextObjetivo.setText(obtenerObjetivo(usuario.objetivo), TextView.BufferType.EDITABLE);
+                    spinnerObjetivo.setSelection(usuario.objetivo)
                     editTextInforme.setText(obtenerInforme(usuario.reporteMensual), TextView.BufferType.EDITABLE);
                     editTextNivel.setText(obtenerNivelFisico(usuario.nivelFisico), TextView.BufferType.EDITABLE);
                 } else {
@@ -214,6 +202,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
 
         //editTextObjetivo.isFocusable = modoEdicion
         //editTextObjetivo.isFocusableInTouchMode = modoEdicion
+        spinnerObjetivo.isEnabled=modoEdicion
 
         editTextInforme.isFocusable = modoEdicion
         editTextInforme.isFocusableInTouchMode = modoEdicion
@@ -230,10 +219,18 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         usuario.altura=editTextAltura.text.toString().toDouble()
         usuario.peso=editTextPeso.text.toString().toDouble()
         usuario.edad=editTextEdad.text.toString().toInt()
+        usuario.objetivo=spinnerObjetivo.selectedItemPosition
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
-
+        /* https://stackoverflow.com/questions/51839326/change-spinner-text-color*/
+        /* https://stackoverflow.com/questions/15564760/change-the-text-not-background-color-of-a-spinner-when-an-item-is-selected*/
+        /* https://stackoverflow.com/questions/37949024/kotlin-typecastexception-null-cannot-be-cast-to-non-null-type-com-midsizemango*/
+        /* https://developer.android.com/codelabs/basic-android-kotlin-compose-nullability?hl=es-419#1*/
+        var selectedText  =(parent.getChildAt(0) as? TextView)
+        if (selectedText != null) {
+            selectedText.setTextColor(Color.WHITE)
+        }
         val text: String = parent.getItemAtPosition(pos).toString()
         Toast.makeText(parent.context, text, Toast.LENGTH_SHORT).show()
     }

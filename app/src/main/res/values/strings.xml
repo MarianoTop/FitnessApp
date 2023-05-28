@@ -1,10 +1,7 @@
 <resources>
     <string name="app_name">FitnessApp</string>
-    <string-array name="numbers">
-        <item>One</item>
-        <item>Two</item>
-        <item>Three</item>
-        <item>Four</item>
-        <item>Five</item>
+    <string-array name="objetivo">
+        <item>Bajar de peso</item>
+        <item>Aumentar masa muscular</item>
     </string-array>
 </resources>
