@@ -27,7 +27,8 @@ class PerfilHomeViewModel : ViewModel() {
                 "peso",usuario.peso,
                 "altura",usuario.altura,
                 "edad",usuario.edad,
-                "objetivo",usuario.objetivo
+                "objetivo",usuario.objetivo,
+                "nivelFisico",usuario.nivelFisico
 
 
             ).await()

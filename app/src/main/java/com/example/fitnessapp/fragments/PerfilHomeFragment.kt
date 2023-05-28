@@ -39,12 +39,11 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
     lateinit var editTextDias : EditText;
     //lateinit var editTextObjetivo : EditText;
     lateinit var spinnerObjetivo : Spinner;
-
-
-
-
     lateinit var editTextInforme : EditText;
-    lateinit var editTextNivel : EditText;
+
+    //lateinit var editTextNivel : EditText;
+    lateinit var spinnerNivel : Spinner;
+
     lateinit var editButton:  FloatingActionButton;
 
     var modoEdicion=false;
@@ -69,7 +68,8 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         https://www.youtube.com/watch?v=on_OrrX7Nw4&ab_channel=CodinginFlow*/
         spinnerObjetivo = v.findViewById(R.id.spinnerObj);
         editTextInforme = v.findViewById(R.id.editTextInformes);
-        editTextNivel = v.findViewById(R.id.editTextNivel);
+        //editTextNivel = v.findViewById(R.id.editTextNivel);
+        spinnerNivel= v.findViewById(R.id.spinnerNivelFis);
         editButton= v.findViewById(R.id.editButton)
 
 
@@ -81,7 +81,18 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         spinnerObjetivo.adapter = adapterObjective
         spinnerObjetivo.onItemSelectedListener = this
 
-            return v
+
+        val adapterNivelFisico = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.nivel, android.R.layout.simple_spinner_item
+        )
+        adapterNivelFisico.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerNivel.adapter = adapterNivelFisico
+        spinnerNivel.onItemSelectedListener = this
+
+
+
+        return v
     }
 
     override fun onStart() {
@@ -102,7 +113,8 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
                     //editTextObjetivo.setText(obtenerObjetivo(usuario.objetivo), TextView.BufferType.EDITABLE);
                     spinnerObjetivo.setSelection(usuario.objetivo)
                     editTextInforme.setText(obtenerInforme(usuario.reporteMensual), TextView.BufferType.EDITABLE);
-                    editTextNivel.setText(obtenerNivelFisico(usuario.nivelFisico), TextView.BufferType.EDITABLE);
+                    //editTextNivel.setText(obtenerNivelFisico(usuario.nivelFisico), TextView.BufferType.EDITABLE);
+                    spinnerNivel.setSelection(usuario.nivelFisico)
                 } else {
                     Log.d(ContentValues.TAG, "No such document")
                 }
@@ -207,8 +219,9 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         editTextInforme.isFocusable = modoEdicion
         editTextInforme.isFocusableInTouchMode = modoEdicion
 
-        editTextNivel.isFocusable = modoEdicion
-        editTextNivel.isFocusableInTouchMode = modoEdicion
+        //editTextNivel.isFocusable = modoEdicion
+        //editTextNivel.isFocusableInTouchMode = modoEdicion
+        spinnerNivel.isEnabled=modoEdicion
 
 
     }
@@ -220,6 +233,8 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         usuario.peso=editTextPeso.text.toString().toDouble()
         usuario.edad=editTextEdad.text.toString().toInt()
         usuario.objetivo=spinnerObjetivo.selectedItemPosition
+        usuario.nivelFisico=spinnerNivel.selectedItemPosition
+
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
@@ -231,8 +246,8 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         if (selectedText != null) {
             selectedText.setTextColor(Color.WHITE)
         }
-        val text: String = parent.getItemAtPosition(pos).toString()
-        Toast.makeText(parent.context, text, Toast.LENGTH_SHORT).show()
+        //val text: String = parent.getItemAtPosition(pos).toString()
+        //Toast.makeText(parent.context, text, Toast.LENGTH_SHORT).show()
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {

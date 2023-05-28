@@ -19,22 +19,6 @@
             android:background="@drawable/black_background_rounded"
             tools:layout_editor_absoluteX="37dp">
 
-            <EditText
-                android:id="@+id/editTextNivel"
-                android:layout_width="300dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="49dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="62dp"
-                android:backgroundTint="#FFFFFF"
-                android:text="Bajo"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/btnCerrarSesion"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNivelFisicoTitulo" />
-
             <TextView
                 android:id="@+id/textViewNivelFisicoTitulo"
                 android:layout_width="300dp"
@@ -46,7 +30,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/editTextNivel"
+                app:layout_constraintBottom_toTopOf="@+id/spinnerNivelFis"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -278,7 +262,7 @@
                 android:id="@+id/btnCerrarSesion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="1dp"
                 android:layout_marginBottom="15dp"
                 android:backgroundTint="#960000"
                 android:text="Cerrar Sesion"
@@ -286,7 +270,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextNivel" />
+                app:layout_constraintTop_toBottomOf="@+id/spinnerNivelFis" />
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -324,6 +308,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewObjetivoTitulo" />
+
+            <Spinner
+                android:id="@+id/spinnerNivelFis"
+                android:layout_width="306dp"
+                android:layout_height="35dp"
+                app:layout_constraintBottom_toTopOf="@+id/btnCerrarSesion"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNivelFisicoTitulo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
