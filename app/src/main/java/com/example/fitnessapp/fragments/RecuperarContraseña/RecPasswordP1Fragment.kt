@@ -1,7 +1,9 @@
 package com.example.fitnessapp.fragments.RecuperarContraseña
 
+import android.content.ContentValues.TAG
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +11,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
 import com.example.fitnessapp.fragments.Registro.SharedRegistrarseViewModel
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class RecPasswordP1Fragment : Fragment() {
 
@@ -43,8 +48,26 @@ class RecPasswordP1Fragment : Fragment() {
         super.onStart()
 
         buttonContinuar.setOnClickListener {
-            val action = RecPasswordP1FragmentDirections.actionRecPasswordP1FragmentToRecPasswordP2Fragment()
-            findNavController().navigate(action)
+            if(editTextEmail.text.toString().isEmpty()) {
+                Toast.makeText(this.getContext(), "Debe completar el email.", Toast.LENGTH_SHORT,).show()
+            } else {
+            Firebase.auth.sendPasswordResetEmail(editTextEmail.text.toString())
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this.getContext(), "Se ha enviado un email al correo ingresado.", Toast.LENGTH_SHORT,).show()
+                    } else {
+                        /*Parece redundante, pero esta hecho asi porque sino daría un mensaje de error distinto cuando se ingresa un email no registrado, y eso
+                        es un problema de seguridad ya que podriamos estar invitando a que por fuerza bruta puedan sacar todos los emails registrados de nuestra app o, como
+                        minimo, que frente a un posible ataque, se aseguren si hay una cuenta hecha con un email o no.
+                         */
+                        Toast.makeText(this.getContext(), "Se ha enviado un email al correo ingresado.", Toast.LENGTH_SHORT,).show()
+                    }
+                }
+            }
+            //val action = RecPasswordP1FragmentDirections.actionRecPasswordP1FragmentToRecPasswordP2Fragment()
+            //findNavController().navigate(action)
+
+
         }
 
 

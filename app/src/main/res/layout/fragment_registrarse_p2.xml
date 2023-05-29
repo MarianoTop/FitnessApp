@@ -7,16 +7,121 @@
     android:layout_height="match_parent"
     tools:context=".fragments.Registro.RegistrarseP2Fragment">
 
-    <TextView
-        android:id="@+id/textView5"
+    <Button
+        android:id="@+id/btnIngresar3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HOMBRE O MUJER"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="#960000"
+        android:text="Continuar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textBienvenida3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Indique su genero"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageLogo3" />
+
+    <ImageView
+        android:id="@+id/imageLogo3"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/logofitcia"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageMale"
+        android:layout_width="104dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/gender_male_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageFemale"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBienvenida3"
+        app:layout_constraintVertical_bias="0.272" />
+
+    <ImageView
+        android:id="@+id/imageFemale"
+        android:layout_width="104dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="272dp"
+        android:src="@drawable/gender_female_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageOther"
+        app:layout_constraintStart_toEndOf="@+id/imageMale"
+        app:layout_constraintTop_toBottomOf="@+id/textBienvenida3"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageOther"
+        android:layout_width="104dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="355dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="272dp"
+        android:src="@drawable/gender_lgbt_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageFemale"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnMasculino"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#969695"
+        android:text="Masculino"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageMale" />
+
+    <Button
+        android:id="@+id/btnFemenino"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#969695"
+        android:text="Femenino"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/btnMasculino"
+        app:layout_constraintTop_toBottomOf="@+id/imageFemale" />
+
+    <Button
+        android:id="@+id/btnOtro"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="7dp"
+        android:backgroundTint="#969695"
+        android:text="Otro"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toEndOf="@+id/btnFemenino"
+        app:layout_constraintTop_toBottomOf="@+id/imageOther" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
