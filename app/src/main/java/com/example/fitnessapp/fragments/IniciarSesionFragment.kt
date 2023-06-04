@@ -19,6 +19,7 @@ import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Ejercicio
 import com.example.fitnessapp.entities.Rutina
 import com.example.fitnessapp.entities.Usuario
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.toObject
@@ -87,7 +88,8 @@ class IniciarSesionFragment : Fragment() {
                             IniciarSesionFragmentDirections.actionIniciarSesionFragmentToMainActivity2()
                         findNavController().navigate(action)
                     } else {
-                        Toast.makeText(requireContext(), "Usuario o contraseña incorrectos.", Toast.LENGTH_SHORT,).show()
+
+                        Snackbar.make(v, "Usuario o contraseña incorrectos.", Snackbar.LENGTH_SHORT).show();
                     }
                 })
             }
