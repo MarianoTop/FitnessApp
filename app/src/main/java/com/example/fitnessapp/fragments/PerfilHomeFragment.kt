@@ -296,7 +296,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         if (TextUtils.isEmpty(peso)) {
             this.editTextPeso.error = "Requerido"
             esValido = false
-        }else if(Integer.parseInt(peso) < 25 || Integer.parseInt(peso) > 180){
+        }else if(peso.toDouble() < 25 || peso.toDouble()> 180){
             this.editTextPeso.error = "Peso invalido";
             esValido = false;
         }
@@ -307,7 +307,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         if (TextUtils.isEmpty(altura)) {
             this.editTextAltura.error = "Requerido"
             esValido = false
-        }else if(Integer.parseInt(altura) < 120 || Integer.parseInt(altura) > 240){
+        }else if(altura.toDouble() < 1.20 || altura.toDouble() > 2.40){
             this.editTextAltura.error = "Altura invalida";
             esValido = false;
         } else this.editTextAltura.error = null
