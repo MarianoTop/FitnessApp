@@ -274,20 +274,25 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
     //Validación de los campos
     private fun validarCamposDelPerfil(): Boolean {
         var esValido = true
-
+        //Validación campo vacío
         if (TextUtils.isEmpty(this.editTextNombre.text)) {
             // Si la propiedad error tiene valor, se muestra el aviso.
             this.editTextNombre.error = "Requerido"
             esValido = false
         } else this.editTextNombre.error = null
 
-
+        //Validación campo vacío
         if (TextUtils.isEmpty(this.editTextPeso.text.toString())) {
             this.editTextPeso.error = "Requerido"
             esValido = false
         } else this.editTextPeso.error = null
 
+        //Validación campo vacío
+        if (TextUtils.isEmpty(this.editTextAltura.text.toString())) {
+            this.editTextAltura.error = "Requerido"
+            esValido = false
+        } else this.editTextAltura.error = null
+
         return esValido
     }
-
 }
