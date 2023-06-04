@@ -196,11 +196,13 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
                     viewModel.persistirUsuario(usuario)
                 }
                 println("Se desactiva edicion")
+                this.buttonCerrarSesion.isEnabled = true;
             }
         }else{
             editButton.backgroundTintList=ContextCompat.getColorStateList(requireContext(), R.color.red)
             modoEdicion=true
             cambiarCamposEditables()
+            this.buttonCerrarSesion.isEnabled = false;
             println("Se Habilita edicion")
         }
 
