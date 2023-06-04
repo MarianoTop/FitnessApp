@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
 
@@ -13,12 +14,15 @@ class NutricionHomeFragment : Fragment() {
 
     lateinit var v: View
 
-    private lateinit var viewModel: NutricionHomeViewModel
+    private val sharedViewModel : NutricionViewModel by activityViewModels()
 
     lateinit var buttonDesayunos : Button
     lateinit var buttonAlmuerzos : Button
     lateinit var buttonMeriendas : Button
     lateinit var buttonCenas : Button
+    lateinit var titulo : String
+
+    var tipo : Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,26 +46,37 @@ class NutricionHomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        if (!sharedViewModel.limite) {
+            sharedViewModel.listarComidas()
+            sharedViewModel.setLimite()
+        }
+
         buttonDesayunos.setOnClickListener {
-                val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToDesayunosFragment()
-                findNavController().navigate(action)
+            titulo = "Desayunos"
+            tipo = 0
+            val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToListaComidasTipoFragment(titulo, tipo)
+            findNavController().navigate(action)
         }
 
         buttonAlmuerzos.setOnClickListener {
-                val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToAlmuerzosFragment()
-                findNavController().navigate(action)
+            titulo = "Almuerzos"
+            tipo = 1
+            val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToListaComidasTipoFragment(titulo, tipo)
+            findNavController().navigate(action)
         }
 
         buttonMeriendas.setOnClickListener {
-                val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToMeriendasFragment()
-                findNavController().navigate(action)
+            titulo = "Meriendas"
+            tipo = 0
+            val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToListaComidasTipoFragment(titulo, tipo)
+            findNavController().navigate(action)
         }
 
         buttonCenas.setOnClickListener {
-                val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToCenasFragment()
-                findNavController().navigate(action)
+            titulo = "Cenas"
+            tipo = 1
+            val action = NutricionHomeFragmentDirections.actionNutricionHomeFragmentToListaComidasTipoFragment(titulo, tipo)
+            findNavController().navigate(action)
         }
-
-
     }
 }

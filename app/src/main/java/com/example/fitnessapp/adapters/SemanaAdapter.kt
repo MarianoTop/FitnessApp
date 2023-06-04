@@ -88,8 +88,9 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
                 txtViewDia.setBackgroundResource(R.drawable.circulo_rojo);
             }else if(rutina.estado ==EstadoRutina.ES_DESCANSO.value){
                 txtViewDia.setBackgroundResource(R.drawable.circulo_azul);
+            }else if(rutina.estado ==EstadoRutina.AUSENTE.value){
+                txtViewDia.setBackgroundResource(R.drawable.circulo_amarillo);
             }
-            //Faltaría cambiar el color cuando el usuario no haya asistido a la Rutina?
         }
 
     }

@@ -5,30 +5,312 @@
     android:id="@+id/frameLayout8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#494848"
     tools:context=".fragments.PerfilHomeFragment">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PERFIL"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnCerrarSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="#960000"
-        android:text="Cerrar Sesion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/black_background_rounded"
+            tools:layout_editor_absoluteX="37dp">
+
+            <TextView
+                android:id="@+id/textViewNivelFisicoTitulo"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="75dp"
+                android:text="Nivel fisico"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/spinnerNivelFis"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerInform" />
+
+            <TextView
+                android:id="@+id/textViewInformeTitulo"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="75dp"
+                android:text="Informes"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerObj" />
+
+            <TextView
+                android:id="@+id/textViewObjetivoTitulo"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="75dp"
+                android:text="Objetivo"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDias" />
+
+            <EditText
+                android:id="@+id/editTextDias"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="62dp"
+                android:backgroundTint="#FFFFFF"
+                android:inputType="number"
+                android:text="4"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewObjetivoTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDiasSemanaTitulo" />
+
+            <TextView
+                android:id="@+id/textViewDiasSemanaTitulo"
+                android:layout_width="320dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="75dp"
+                android:text="Dias de ejercicio por semana"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/editTextDias"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextEdad" />
+
+            <EditText
+                android:id="@+id/editTextEdad"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="62dp"
+                android:backgroundTint="#FFFFFF"
+                android:inputType="number"
+                android:text="24"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewDiasSemanaTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewEdadTitulo" />
+
+            <TextView
+                android:id="@+id/textViewEdadTitulo"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="75dp"
+                android:text="Edad"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/editTextEdad"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextAltura" />
+
+            <EditText
+                android:id="@+id/editTextAltura"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="62dp"
+                android:backgroundTint="#FFFFFF"
+                android:inputType="numberDecimal"
+                android:text="180"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewEdadTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAlturaTitulo" />
+
+            <TextView
+                android:id="@+id/textViewAlturaTitulo"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="75dp"
+                android:text="Altura"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/editTextAltura"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPeso" />
+
+            <TextView
+                android:id="@+id/textViewPesoTitulo"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="62dp"
+                android:text="Peso "
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/editTextPeso"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
+
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="62dp"
+                android:backgroundTint="#FFFFFF"
+                android:text="Juan"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toTopOf="@+id/textViewPesoTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNombreTitulo" />
+
+            <EditText
+                android:id="@+id/editTextPeso"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="62dp"
+                android:backgroundTint="#FFFFFF"
+                android:inputType="numberDecimal"
+                android:text="95"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toTopOf="@+id/textViewAlturaTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPesoTitulo" />
+
+            <TextView
+                android:id="@+id/textViewNombreTitulo"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="62dp"
+                android:text="Nombre"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/editTextNombre"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
+
+            <TextView
+                android:id="@+id/textViewTitulo"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="85dp"
+                android:layout_marginEnd="85dp"
+                android:layout_marginBottom="15dp"
+                android:text="Información personal"
+                android:textColor="#FDFDFD"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textViewNombreTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+            <Button
+                android:id="@+id/btnCerrarSesion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="#960000"
+                android:text="Cerrar Sesion"
+                app:cornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerNivelFis" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="80dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="170dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="171dp"
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/logofitcia"
+                app:layout_constraintBottom_toTopOf="@+id/textViewTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/editButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@android:drawable/ic_menu_edit"
+                app:backgroundTint="@color/gray"
+                app:layout_constraintBottom_toTopOf="@+id/textViewTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.545"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.527" />
+
+            <Spinner
+                android:id="@+id/spinnerObj"
+                android:layout_width="305dp"
+                android:layout_height="44dp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewInformeTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewObjetivoTitulo" />
+
+            <Spinner
+                android:id="@+id/spinnerNivelFis"
+                android:layout_width="306dp"
+                android:layout_height="35dp"
+                app:layout_constraintBottom_toTopOf="@+id/btnCerrarSesion"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNivelFisicoTitulo" />
+
+            <Spinner
+                android:id="@+id/spinnerInform"
+                android:layout_width="302dp"
+                android:layout_height="36dp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewNivelFisicoTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewInformeTitulo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,17 +20,8 @@
         android:label="fragment_rutina_alimenticia_home"
         tools:layout="@layout/fragment_nutricion_home" >
         <action
-            android:id="@+id/action_nutricionHomeFragment_to_desayunosFragment"
-            app:destination="@id/desayunosFragment" />
-        <action
-            android:id="@+id/action_nutricionHomeFragment_to_almuerzosFragment"
-            app:destination="@id/almuerzosFragment" />
-        <action
-            android:id="@+id/action_nutricionHomeFragment_to_meriendasFragment"
-            app:destination="@id/meriendasFragment" />
-        <action
-            android:id="@+id/action_nutricionHomeFragment_to_cenasFragment"
-            app:destination="@id/cenasFragment" />
+            android:id="@+id/action_nutricionHomeFragment_to_listaComidasTipoFragment"
+            app:destination="@id/listaComidasTipoFragment" />
     </fragment>
     <fragment
         android:id="@+id/perfilHomeFragment"
@@ -102,44 +93,27 @@
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
     <fragment
-        android:id="@+id/comidaEspecificaFragment"
-        android:name="com.example.fitnessapp.fragments.NutricionComidas.ComidaEspecificaFragment"
-        android:label="fragment_comida_especifica"
-        tools:layout="@layout/fragment_comida_especifica" />
-    <fragment
-        android:id="@+id/desayunosFragment"
-        android:name="com.example.fitnessapp.fragments.NutricionComidas.DesayunosFragment"
-        android:label="fragment_desayunos"
-        tools:layout="@layout/fragment_desayunos" >
+        android:id="@+id/listaComidasTipoFragment"
+        android:name="com.example.fitnessapp.fragments.NutricionComidas.ListaComidasTipoFragment"
+        android:label="fragment_lista_comidas_tipo"
+        tools:layout="@layout/fragment_lista_comidas_tipo" >
         <action
-            android:id="@+id/action_desayunosFragment_to_comidaEspecificaFragment"
-            app:destination="@id/comidaEspecificaFragment" />
+            android:id="@+id/action_listaComidasTipoFragment_to_comidaDetalladaFragment"
+            app:destination="@id/comidaDetalladaFragment" />
+        <argument
+            android:name="titulo"
+            app:argType="string" />
+        <argument
+            android:name="tipo"
+            app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/almuerzosFragment"
-        android:name="com.example.fitnessapp.fragments.NutricionComidas.AlmuerzosFragment"
-        android:label="fragment_almuerzos"
-        tools:layout="@layout/fragment_almuerzos" >
-        <action
-            android:id="@+id/action_almuerzosFragment_to_comidaEspecificaFragment"
-            app:destination="@id/comidaEspecificaFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/meriendasFragment"
-        android:name="com.example.fitnessapp.fragments.NutricionComidas.MeriendasFragment"
-        android:label="fragment_meriendas"
-        tools:layout="@layout/fragment_meriendas" >
-        <action
-            android:id="@+id/action_meriendasFragment_to_comidaEspecificaFragment"
-            app:destination="@id/comidaEspecificaFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/cenasFragment"
-        android:name="com.example.fitnessapp.fragments.NutricionComidas.CenasFragment"
-        android:label="fragment_cenas"
-        tools:layout="@layout/fragment_cenas" >
-        <action
-            android:id="@+id/action_cenasFragment_to_comidaEspecificaFragment"
-            app:destination="@id/comidaEspecificaFragment" />
+        android:id="@+id/comidaDetalladaFragment"
+        android:name="com.example.fitnessapp.fragments.NutricionComidas.ComidaDetalladaFragment"
+        android:label="fragment_comida_detallada"
+        tools:layout="@layout/fragment_comida_detallada" >
+        <argument
+            android:name="comida"
+            app:argType="com.example.fitnessapp.entities.Comida" />
     </fragment>
 </navigation>

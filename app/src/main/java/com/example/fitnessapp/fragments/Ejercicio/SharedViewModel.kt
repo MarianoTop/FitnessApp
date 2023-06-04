@@ -1,16 +1,25 @@
 package com.example.fitnessapp.fragments.Ejercicio
 
+import android.content.ContentValues
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.fitnessapp.entities.Ejercicio
 import com.example.fitnessapp.entities.EstadoRutina
 import com.example.fitnessapp.entities.Rutina
 import com.example.fitnessapp.entities.Usuario
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import java.sql.Timestamp
 import java.util.*
 
 class SharedViewModel : ViewModel() {
 
     lateinit var rutina : Rutina
+    private val db = Firebase.firestore
     var diasDeEntrenamiento =mutableListOf(true,false,false,true,true,false,true)
 
     init {
@@ -50,12 +59,23 @@ class SharedViewModel : ViewModel() {
         return rutina.ejercicios[posActual-1]
     }
 
-    fun rutinaFinalizada() {
+    fun rutinaCompletada() {
         rutina.estado = EstadoRutina.COMPLETADA.value
     }
 
-    fun rutinaCompletada() {
-        rutina.estado = EstadoRutina.COMPLETADA.value
+    suspend fun persistirRutinaCompletada() {
+        var rutinaEncontrada: Rutina = Rutina()
+        try {
+
+            val rutinaDb = db.collection("rutinas").document(rutina.id)
+            rutinaDb.update("estado", EstadoRutina.COMPLETADA.value).await()
+
+        } catch (e: Exception) {
+            Log.e(ContentValues.TAG, "Exception thrown: ${e.message}")
+
+        }
+
+
     }
 
     fun sumaCalorias() {

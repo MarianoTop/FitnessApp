@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">FitnessApp</string>
+    <string-array name="objetivo">
+        <item>Bajar de peso</item>
+        <item>Aumentar masa muscular</item>
+    </string-array>
+
+    <string-array name="nivel">
+        <item>Bajo</item>
+        <item>Medio</item>
+        <item>Alto</item>
+    </string-array>
+    <string-array name="informe">
+        <item>Semanal</item>
+        <item>Mensual</item>
+    </string-array>
 </resources>

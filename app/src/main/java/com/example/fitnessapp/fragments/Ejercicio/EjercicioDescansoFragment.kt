@@ -10,10 +10,12 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.fitnessapp.R
 import com.example.fitnessapp.fragments.Ejercicio.EjercicioDescansoFragmentDirections
+import kotlinx.coroutines.launch
 
 class EjercicioDescansoFragment : Fragment() {
 
@@ -89,9 +91,13 @@ class EjercicioDescansoFragment : Fragment() {
             if (textContador.text == "0") {
                 if (posActual.toString() == sharedViewModel.cantEjercicios()) {
                     sharedViewModel.resetearPos()
-                    sharedViewModel.rutinaFinalizada()
+
                     sharedViewModel.rutinaCompletada()
                     sharedViewModel.guardarTiempoFin()
+
+                    sharedViewModel.viewModelScope.launch{
+                        sharedViewModel.persistirRutinaCompletada()
+                    }
 
                     val action =
                         EjercicioDescansoFragmentDirections.actionEjercicioDescansoFragmentToReporteFinEntrenamientoFragment()
