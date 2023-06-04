@@ -275,11 +275,16 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
     private fun validarCamposDelPerfil(): Boolean {
         var esValido = true
         //Validación campo vacío
-        if (TextUtils.isEmpty(this.editTextNombre.text)) {
+        val nombre : String = this.editTextNombre.text.toString();
+        if (TextUtils.isEmpty(nombre)) {
             // Si la propiedad error tiene valor, se muestra el aviso.
             this.editTextNombre.error = "Requerido"
             esValido = false
-        } else this.editTextNombre.error = null
+        }else if(nombre.length < 3 || nombre.length > 10){
+            this.editTextNombre.error = "Entre 3 y 10 caracteres";
+            esValido = false;
+        }
+        else this.editTextNombre.error = null
 
         //Validación campo vacío
         val peso : String = this.editTextPeso.text.toString();
