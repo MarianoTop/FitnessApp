@@ -15,7 +15,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
-import com.example.fitnessapp.activities.MainActivity
 import com.example.fitnessapp.entities.Usuario
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.ktx.firestore
@@ -282,14 +281,13 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
             esValido = false
         } else this.editTextNombre.error = null
 
-        /*
-        if (TextUtils.isEmpty(binding.etPassword.text.toString())) {
-            binding.etPassword.error = "Requerido"
+
+        if (TextUtils.isEmpty(this.editTextPeso.text.toString())) {
+            this.editTextPeso.error = "Requerido"
             esValido = false
-        } else binding.etPassword.error = null
-        */
+        } else this.editTextPeso.error = null
+
         return esValido
     }
-
 
 }
