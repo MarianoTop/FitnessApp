@@ -294,11 +294,12 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         } else this.editTextAltura.error = null
 
         //Validación campo vacío
-        if (TextUtils.isEmpty(this.editTextEdad.text.toString())){
+        val edad : String = this.editTextEdad.text.toString();
+        if (TextUtils.isEmpty(edad)){
             this.editTextEdad.error = "Requerido";
             esValido = false
-        } else if(Integer.parseInt(this.editTextEdad.text.toString()) < 1 ||
-            Integer.parseInt(this.editTextEdad.text.toString()) > 99){
+            //Validación 0 > edad < 100
+        } else if(Integer.parseInt(edad) < 1 || Integer.parseInt(edad) > 99){
             this.editTextEdad.error = "Edad invalida";
             esValido = false
         }
