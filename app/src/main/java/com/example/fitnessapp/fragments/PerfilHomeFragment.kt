@@ -3,6 +3,7 @@ package com.example.fitnessapp.fragments
 import android.content.ContentValues
 import android.graphics.Color
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -185,16 +186,17 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
     fun cambiarEdit(){
 
         if(modoEdicion){
-
-           /* https://stackoverflow.com/questions/45825609/programmatically-change-backgroundtint-of-imageview-with-vector-asset-for-backgr*/
-            editButton.backgroundTintList=ContextCompat.getColorStateList(requireContext(), R.color.gray)
-            modoEdicion=false
-            cambiarCamposEditables()
-            obtenerDatos()
-            viewModel.viewModelScope.launch{
-                viewModel.persistirUsuario(usuario)
+            if(this.validarCamposDelPerfil()) {
+                /* https://stackoverflow.com/questions/45825609/programmatically-change-backgroundtint-of-imageview-with-vector-asset-for-backgr*/
+                editButton.backgroundTintList=ContextCompat.getColorStateList(requireContext(), R.color.gray)
+                modoEdicion=false
+                cambiarCamposEditables()
+                obtenerDatos()
+                viewModel.viewModelScope.launch {
+                    viewModel.persistirUsuario(usuario)
+                }
+                println("Se desactiva edicion")
             }
-            println("Se desactiva edicion")
         }else{
             editButton.backgroundTintList=ContextCompat.getColorStateList(requireContext(), R.color.red)
             modoEdicion=true
@@ -264,6 +266,25 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
 
+    }
+
+    //Validación de los campos
+    private fun validarCamposDelPerfil(): Boolean {
+        var esValido = true
+
+        if (TextUtils.isEmpty(this.editTextNombre.text)) {
+            // Si la propiedad error tiene valor, se muestra el aviso.
+            this.editTextNombre.error = "Requerido"
+            esValido = false
+        } else this.editTextNombre.error = null
+
+        /*
+        if (TextUtils.isEmpty(binding.etPassword.text.toString())) {
+            binding.etPassword.error = "Requerido"
+            esValido = false
+        } else binding.etPassword.error = null
+        */
+        return esValido
     }
 
 
