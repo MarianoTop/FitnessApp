@@ -288,9 +288,13 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         } else this.editTextPeso.error = null
 
         //Validación campo vacío
-        if (TextUtils.isEmpty(this.editTextAltura.text.toString())) {
+        val altura : String = this.editTextAltura.text.toString();
+        if (TextUtils.isEmpty(altura)) {
             this.editTextAltura.error = "Requerido"
             esValido = false
+        }else if(Integer.parseInt(altura) < 120 || Integer.parseInt(altura) > 240){
+            this.editTextAltura.error = "Altura invalida";
+            esValido = false;
         } else this.editTextAltura.error = null
 
         //Validación campo vacío
