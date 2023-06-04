@@ -76,7 +76,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
 
         val adapterObjective = ArrayAdapter.createFromResource(
             requireContext(),
-            R.array.objetivo, android.R.layout.simple_spinner_item
+            R.array.objetivo, R.layout.simple_spinner_item
         )
         adapterObjective.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerObjetivo.adapter = adapterObjective
@@ -84,7 +84,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
 
         val adapterInforme = ArrayAdapter.createFromResource(
             requireContext(),
-            R.array.informe, android.R.layout.simple_spinner_item
+            R.array.informe, R.layout.simple_spinner_item
         )
         adapterInforme.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerInforme.adapter = adapterInforme
@@ -93,7 +93,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
 
         val adapterNivelFisico = ArrayAdapter.createFromResource(
             requireContext(),
-            R.array.nivel, android.R.layout.simple_spinner_item
+            R.array.nivel, R.layout.simple_spinner_item
         )
         adapterNivelFisico.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerNivel.adapter = adapterNivelFisico
@@ -250,14 +250,55 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
+       /* La unica manera de lograrlo sin bugs fue como indica este link*/
+
+         /* Link: https://stackoverflow.com/questions/6159113/android-where-is-the-spinner-widgets-text-color-attribute-hiding?lq=1*/
+
+
         /* https://stackoverflow.com/questions/51839326/change-spinner-text-color*/
         /* https://stackoverflow.com/questions/15564760/change-the-text-not-background-color-of-a-spinner-when-an-item-is-selected*/
         /* https://stackoverflow.com/questions/37949024/kotlin-typecastexception-null-cannot-be-cast-to-non-null-type-com-midsizemango*/
         /* https://developer.android.com/codelabs/basic-android-kotlin-compose-nullability?hl=es-419#1*/
+        /* https://stackoverflow.com/questions/31515854/how-to-change-text-color-in-spinner-without-using-textview*/
+        /* https://stackoverflow.com/questions/6159113/android-where-is-the-spinner-widgets-text-color-attribute-hiding?lq=1*/
+
+    /*
         var selectedText  =(parent.getChildAt(0) as? TextView)
         if (selectedText != null) {
+            selectedText.text = spinnerObjetivo.selectedItem.toString()
             selectedText.setTextColor(Color.WHITE)
-        }
+
+        }*/
+
+
+        /*
+         when (parent.id) {
+             R.id.spinnerObj->{
+                 var selectedText  =(parent.getChildAt(pos) as? TextView)
+                 if (selectedText != null) {
+                     selectedText.text = spinnerObjetivo.selectedItem.toString()
+                     selectedText.setTextColor(Color.WHITE)
+                 }
+             }
+             R.id.spinnerInform->{
+                 var selectedText  =(parent.getChildAt(pos) as? TextView)
+                 if (selectedText != null) {
+                     selectedText.text = spinnerInforme.selectedItem.toString()
+                     selectedText.setTextColor(Color.WHITE)
+                 }
+             }
+             R.id.spinnerNivelFis->{
+                 var selectedText  =(parent.getChildAt(pos) as? TextView)
+                 if (selectedText != null) {
+                     selectedText.text = spinnerNivel.selectedItem.toString()
+                     selectedText.setTextColor(Color.WHITE)
+                 }
+             }
+
+
+
+         }
+*/
         //val text: String = parent.getItemAtPosition(pos).toString()
         //Toast.makeText(parent.context, text, Toast.LENGTH_SHORT).show()
     }
