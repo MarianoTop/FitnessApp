@@ -282,10 +282,15 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         } else this.editTextNombre.error = null
 
         //Validación campo vacío
-        if (TextUtils.isEmpty(this.editTextPeso.text.toString())) {
+        val peso : String = this.editTextPeso.text.toString();
+        if (TextUtils.isEmpty(peso)) {
             this.editTextPeso.error = "Requerido"
             esValido = false
-        } else this.editTextPeso.error = null
+        }else if(Integer.parseInt(peso) < 25 || Integer.parseInt(peso) > 180){
+            this.editTextPeso.error = "Peso invalido";
+            esValido = false;
+        }
+        else this.editTextPeso.error = null
 
         //Validación campo vacío
         val altura : String = this.editTextAltura.text.toString();
