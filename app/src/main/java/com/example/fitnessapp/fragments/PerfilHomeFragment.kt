@@ -21,6 +21,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 
 class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
@@ -280,8 +282,11 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
             // Si la propiedad error tiene valor, se muestra el aviso.
             this.editTextNombre.error = "Requerido"
             esValido = false
-        }else if(nombre.length < 3 || nombre.length > 10){
+        }else if(nombre.length < 3 || nombre.length > 10) {
             this.editTextNombre.error = "Entre 3 y 10 caracteres";
+            esValido = false;
+        }else if(!Pattern.compile("^[a-zA-Z ]+\$").matcher(nombre).matches()){
+            this.editTextNombre.error = "Caracteres invalidos";
             esValido = false;
         }
         else this.editTextNombre.error = null
