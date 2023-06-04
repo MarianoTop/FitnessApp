@@ -15,6 +15,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
+import com.example.fitnessapp.activities.MainActivity
 import com.example.fitnessapp.entities.Usuario
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.ktx.firestore
@@ -197,6 +198,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
                 }
                 println("Se desactiva edicion")
                 this.buttonCerrarSesion.isEnabled = true;
+                Toast.makeText(this.context, "Todo correcto", Toast.LENGTH_SHORT).show();
             }
         }else{
             editButton.backgroundTintList=ContextCompat.getColorStateList(requireContext(), R.color.red)
