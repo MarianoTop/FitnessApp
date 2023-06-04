@@ -8,12 +8,12 @@
     tools:context=".fragments.Registro.RegistrarseP2Fragment">
 
     <Button
-        android:id="@+id/btnIngresar3"
+        android:id="@+id/btnSiguiente1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
         android:backgroundTint="#960000"
-        android:text="Continuar"
+        android:text="Siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
