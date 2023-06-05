@@ -3,6 +3,7 @@ package com.example.fitnessapp.fragments
 import android.content.ContentValues
 import android.graphics.Color
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 
 class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
@@ -185,20 +188,24 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
     fun cambiarEdit(){
 
         if(modoEdicion){
-
-           /* https://stackoverflow.com/questions/45825609/programmatically-change-backgroundtint-of-imageview-with-vector-asset-for-backgr*/
-            editButton.backgroundTintList=ContextCompat.getColorStateList(requireContext(), R.color.gray)
-            modoEdicion=false
-            cambiarCamposEditables()
-            obtenerDatos()
-            viewModel.viewModelScope.launch{
-                viewModel.persistirUsuario(usuario)
+            if(this.validarCamposDelPerfil()) {
+                /* https://stackoverflow.com/questions/45825609/programmatically-change-backgroundtint-of-imageview-with-vector-asset-for-backgr*/
+                editButton.backgroundTintList=ContextCompat.getColorStateList(requireContext(), R.color.gray)
+                modoEdicion=false
+                cambiarCamposEditables()
+                obtenerDatos()
+                viewModel.viewModelScope.launch {
+                    viewModel.persistirUsuario(usuario)
+                }
+                println("Se desactiva edicion")
+                this.buttonCerrarSesion.isEnabled = true;
+                Toast.makeText(this.context, "Todo correcto", Toast.LENGTH_SHORT).show();
             }
-            println("Se desactiva edicion")
         }else{
             editButton.backgroundTintList=ContextCompat.getColorStateList(requireContext(), R.color.red)
             modoEdicion=true
             cambiarCamposEditables()
+            this.buttonCerrarSesion.isEnabled = false;
             println("Se Habilita edicion")
         }
 
@@ -307,5 +314,57 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
 
     }
 
+    //Validación de los campos
+    private fun validarCamposDelPerfil(): Boolean {
+        var esValido = true
+        //Validación campo vacío
+        val nombre : String = this.editTextNombre.text.toString();
+        if (TextUtils.isEmpty(nombre)) {
+            // Si la propiedad error tiene valor, se muestra el aviso.
+            this.editTextNombre.error = "Requerido"
+            esValido = false
+        }else if(nombre.length < 3 || nombre.length > 10) {
+            this.editTextNombre.error = "Entre 3 y 10 caracteres";
+            esValido = false;
+        }else if(!Pattern.compile("^[a-zA-Z ]+\$").matcher(nombre).matches()){
+            this.editTextNombre.error = "Caracteres invalidos";
+            esValido = false;
+        }
+        else this.editTextNombre.error = null
 
+        //Validación campo vacío
+        val peso : String = this.editTextPeso.text.toString();
+        if (TextUtils.isEmpty(peso)) {
+            this.editTextPeso.error = "Requerido"
+            esValido = false
+        }else if(peso.toDouble() < 25 || peso.toDouble()> 180){
+            this.editTextPeso.error = "Peso invalido";
+            esValido = false;
+        }
+        else this.editTextPeso.error = null
+
+        //Validación campo vacío
+        val altura : String = this.editTextAltura.text.toString();
+        if (TextUtils.isEmpty(altura)) {
+            this.editTextAltura.error = "Requerido"
+            esValido = false
+        }else if(altura.toDouble() < 1.20 || altura.toDouble() > 2.40){
+            this.editTextAltura.error = "Altura invalida";
+            esValido = false;
+        } else this.editTextAltura.error = null
+
+        //Validación campo vacío
+        val edad : String = this.editTextEdad.text.toString();
+        if (TextUtils.isEmpty(edad)){
+            this.editTextEdad.error = "Requerido";
+            esValido = false
+            //Validación 0 > edad < 100
+        } else if(Integer.parseInt(edad) < 1 || Integer.parseInt(edad) > 99){
+            this.editTextEdad.error = "Edad invalida";
+            esValido = false
+        }
+        else this.editTextEdad.error = null
+
+        return esValido
+    }
 }

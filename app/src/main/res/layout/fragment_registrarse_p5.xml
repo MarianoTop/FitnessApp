@@ -7,16 +7,112 @@
     android:layout_height="match_parent"
     tools:context=".fragments.Registro.RegistrarseP5Fragment">
 
-    <TextView
-        android:id="@+id/textView8"
+    <Button
+        android:id="@+id/btnSiguiente3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NIVEL FISICO E INFORMES"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="#960000"
+        android:text="Finalizar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textEdad3" />
 
+    <TextView
+        android:id="@+id/textNivelPersonal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="¿Cuál es tu nivel fisico?"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageLogo10" />
+
+    <TextView
+        android:id="@+id/textInformes"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="¿Le gustaría recibir informes semanales o mensuales?"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnNivelMedio" />
+
+    <ImageView
+        android:id="@+id/imageLogo10"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/logofitcia"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnNivelBajo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="28dp"
+        android:text="Bajo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnNivelMedio"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNivelPersonal"
+        app:layout_constraintVertical_bias="0.086" />
+
+    <Button
+        android:id="@+id/btnInformesSemanales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="28dp"
+        android:text="Semanales"
+        app:layout_constraintEnd_toStartOf="@+id/btnInformesSemanales2"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInformes" />
+
+    <Button
+        android:id="@+id/btnInformesSemanales2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="64dp"
+        android:text="Semanales"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInformes" />
+
+    <Button
+        android:id="@+id/btnNivelMedio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:text="Medio"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnNivelAlto"
+        app:layout_constraintTop_toBottomOf="@+id/textNivelPersonal"
+        app:layout_constraintVertical_bias="0.086" />
+
+    <Button
+        android:id="@+id/btnNivelAlto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:text="Alto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNivelPersonal"
+        app:layout_constraintVertical_bias="0.086" />
 </androidx.constraintlayout.widget.ConstraintLayout>
