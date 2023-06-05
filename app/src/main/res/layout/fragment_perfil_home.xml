@@ -10,7 +10,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="69dp"
+        tools:layout_editor_absoluteY="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
@@ -55,6 +57,7 @@
                 android:layout_width="300dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="49dp"
+                android:layout_marginTop="55dp"
                 android:layout_marginEnd="75dp"
                 android:text="Objetivo"
                 android:textColor="#FFFFFF"
@@ -62,22 +65,6 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDias" />
-
-            <EditText
-                android:id="@+id/editTextDias"
-                android:layout_width="300dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="49dp"
-                android:layout_marginEnd="62dp"
-                android:backgroundTint="#FFFFFF"
-                android:inputType="number"
-                android:text="4"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/textViewObjetivoTitulo"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewDiasSemanaTitulo" />
 
@@ -91,7 +78,6 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/editTextDias"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -309,6 +295,93 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewInformeTitulo" />
+
+            <ToggleButton
+                android:id="@+id/toggleLunes2"
+                android:layout_width="42dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:text="L"
+                android:textOff="L"
+                android:textOn="L"
+                app:layout_constraintBottom_toTopOf="@+id/textViewObjetivoTitulo"
+                app:layout_constraintEnd_toStartOf="@+id/toggleMartes2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDiasSemanaTitulo"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ToggleButton
+                android:id="@+id/toggleMartes2"
+                android:layout_width="42dp"
+                android:layout_height="wrap_content"
+                android:text="M"
+                android:textOff="M"
+                android:textOn="M"
+                app:layout_constraintBottom_toTopOf="@+id/textViewObjetivoTitulo"
+                app:layout_constraintEnd_toStartOf="@+id/toggleMiercoles2"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDiasSemanaTitulo"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ToggleButton
+                android:id="@+id/toggleMiercoles2"
+                android:layout_width="42dp"
+                android:layout_height="wrap_content"
+                android:text="M"
+                android:textOff="M"
+                android:textOn="M"
+                app:layout_constraintBottom_toTopOf="@+id/textViewObjetivoTitulo"
+                app:layout_constraintEnd_toStartOf="@+id/toggleJueves2"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDiasSemanaTitulo"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ToggleButton
+                android:id="@+id/toggleViernes2"
+                android:layout_width="42dp"
+                android:layout_height="wrap_content"
+                android:text="V"
+                android:textOff="V"
+                android:textOn="V"
+                app:layout_constraintBottom_toTopOf="@+id/textViewObjetivoTitulo"
+                app:layout_constraintEnd_toStartOf="@+id/toggleSabado2"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDiasSemanaTitulo"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ToggleButton
+                android:id="@+id/toggleSabado2"
+                android:layout_width="42dp"
+                android:layout_height="wrap_content"
+                android:text="S"
+                android:textOff="S"
+                android:textOn="S"
+                app:layout_constraintBottom_toTopOf="@+id/textViewObjetivoTitulo"
+                app:layout_constraintEnd_toStartOf="@+id/toggleDomingo2"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDiasSemanaTitulo"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ToggleButton
+                android:id="@+id/toggleDomingo2"
+                android:layout_width="42dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="72dp"
+                android:text="D"
+                android:textOff="D"
+                android:textOn="D"
+                app:layout_constraintBottom_toTopOf="@+id/textViewObjetivoTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDiasSemanaTitulo"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ToggleButton
+                android:id="@+id/toggleJueves2"
+                android:layout_width="42dp"
+                android:layout_height="wrap_content"
+                android:text="J"
+                android:textOff="J"
+                android:textOn="J"
+                app:layout_constraintBottom_toTopOf="@+id/textViewObjetivoTitulo"
+                app:layout_constraintEnd_toStartOf="@+id/toggleViernes2"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDiasSemanaTitulo"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
