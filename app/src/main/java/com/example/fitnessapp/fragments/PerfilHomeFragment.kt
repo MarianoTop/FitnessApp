@@ -1,6 +1,8 @@
 package com.example.fitnessapp.fragments
 
+import android.app.Activity
 import android.content.ContentValues
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
@@ -8,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -197,6 +200,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
                 viewModel.viewModelScope.launch {
                     viewModel.persistirUsuario(usuario)
                 }
+                hideKeyboard()
                 println("Se desactiva edicion")
                 this.buttonCerrarSesion.isEnabled = true;
                 Toast.makeText(this.context, "Todo correcto", Toast.LENGTH_SHORT).show();
@@ -367,4 +371,20 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
 
         return esValido
     }
+
+
+    fun Fragment.hideKeyboard() {
+        view?.let { activity?.hideKeyboard(it) }
+    }
+
+    fun Activity.hideKeyboard() {
+        hideKeyboard(currentFocus ?: View(this))
+    }
+
+    fun Context.hideKeyboard(view: View) {
+        /* https://stackoverflow.com/questions/41790357/close-hide-the-android-soft-keyboard-with-kotlin*/
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
 }
