@@ -1,9 +1,6 @@
 package com.example.fitnessapp.fragments.RecuperarContraseña
 
-import android.content.ContentValues.TAG
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,13 +10,11 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
-import com.example.fitnessapp.fragments.Registro.SharedRegistrarseViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class RecPasswordP1Fragment : Fragment() {
+class RecPasswordFragment : Fragment() {
 
     lateinit var v : View
 
@@ -33,14 +28,14 @@ class RecPasswordP1Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        v = inflater.inflate(R.layout.fragment_rec_password_p1, container, false)
+        v = inflater.inflate(R.layout.fragment_rec_password, container, false)
 
         textTitle = v.findViewById(R.id.textTitle3)
         editTextEmail = v.findViewById(R.id.editTextEmail1)
         buttonContinuar = v.findViewById(R.id.btnContinuar)
 
         textTitle.text = "Ingrese su email"
-        buttonContinuar.text = "Continuar"
+        buttonContinuar.text = "Cambiar contraseña"
 
         return v
     }
@@ -64,13 +59,8 @@ class RecPasswordP1Fragment : Fragment() {
                     }
                 }
             }
-            //val action = RecPasswordP1FragmentDirections.actionRecPasswordP1FragmentToRecPasswordP2Fragment()
-            //findNavController().navigate(action)
-
-
+            // val action = RecPasswordFragmentDirections.actionRecPasswordFragmentToIniciarSesionFragment()
+            // findNavController().navigate(action)
         }
-
-
     }
-
 }
