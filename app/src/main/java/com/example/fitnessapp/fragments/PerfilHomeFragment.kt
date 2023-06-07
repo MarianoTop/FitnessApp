@@ -1,6 +1,8 @@
 package com.example.fitnessapp.fragments
 
+import android.app.Activity
 import android.content.ContentValues
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
@@ -8,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -17,10 +20,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Usuario
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -34,6 +40,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
     private val viewModel: PerfilHomeViewModel by activityViewModels()
 
     private val db = Firebase.firestore;
+    private  var auth = Firebase.auth
     lateinit var usuario : Usuario;
     lateinit var editTextNombre: EditText;
     lateinit var editTextPeso : EditText;
@@ -94,7 +101,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
 
         val adapterObjective = ArrayAdapter.createFromResource(
             requireContext(),
-            R.array.objetivo, android.R.layout.simple_spinner_item
+            R.array.objetivo, R.layout.simple_spinner_item
         )
         adapterObjective.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerObjetivo.adapter = adapterObjective
@@ -102,7 +109,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
 
         val adapterInforme = ArrayAdapter.createFromResource(
             requireContext(),
-            R.array.informe, android.R.layout.simple_spinner_item
+            R.array.informe, R.layout.simple_spinner_item
         )
         adapterInforme.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerInforme.adapter = adapterInforme
@@ -111,7 +118,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
 
         val adapterNivelFisico = ArrayAdapter.createFromResource(
             requireContext(),
-            R.array.nivel, android.R.layout.simple_spinner_item
+            R.array.nivel, R.layout.simple_spinner_item
         )
         adapterNivelFisico.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerNivel.adapter = adapterNivelFisico
@@ -126,7 +133,9 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         super.onStart()
 
 
-        val usuarioDB = db.collection("usuarios").document("ssoVgM3jDe2AenUf2xRd")
+        val usuarioDB = db.collection("usuarios").document(auth.uid!!)
+        //val usuarioDB = db.collection("usuarios").whereEqualTo("id", auth.uid)
+        //val usuariosDb = db.collection("usuarios").whereEqualTo("id", id).get().await()
         usuarioDB.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
@@ -220,6 +229,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
                 viewModel.viewModelScope.launch {
                     viewModel.persistirUsuario(usuario)
                 }
+                hideKeyboard()
                 println("Se desactiva edicion")
                 this.buttonCerrarSesion.isEnabled = true;
                 Toast.makeText(this.context, "Todo correcto", Toast.LENGTH_SHORT).show();
@@ -294,14 +304,55 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
+       /* La unica manera de lograrlo sin bugs fue como indica este link*/
+
+         /* Link: https://stackoverflow.com/questions/6159113/android-where-is-the-spinner-widgets-text-color-attribute-hiding?lq=1*/
+
+
         /* https://stackoverflow.com/questions/51839326/change-spinner-text-color*/
         /* https://stackoverflow.com/questions/15564760/change-the-text-not-background-color-of-a-spinner-when-an-item-is-selected*/
         /* https://stackoverflow.com/questions/37949024/kotlin-typecastexception-null-cannot-be-cast-to-non-null-type-com-midsizemango*/
         /* https://developer.android.com/codelabs/basic-android-kotlin-compose-nullability?hl=es-419#1*/
+        /* https://stackoverflow.com/questions/31515854/how-to-change-text-color-in-spinner-without-using-textview*/
+        /* https://stackoverflow.com/questions/6159113/android-where-is-the-spinner-widgets-text-color-attribute-hiding?lq=1*/
+
+    /*
         var selectedText  =(parent.getChildAt(0) as? TextView)
         if (selectedText != null) {
+            selectedText.text = spinnerObjetivo.selectedItem.toString()
             selectedText.setTextColor(Color.WHITE)
-        }
+
+        }*/
+
+
+        /*
+         when (parent.id) {
+             R.id.spinnerObj->{
+                 var selectedText  =(parent.getChildAt(pos) as? TextView)
+                 if (selectedText != null) {
+                     selectedText.text = spinnerObjetivo.selectedItem.toString()
+                     selectedText.setTextColor(Color.WHITE)
+                 }
+             }
+             R.id.spinnerInform->{
+                 var selectedText  =(parent.getChildAt(pos) as? TextView)
+                 if (selectedText != null) {
+                     selectedText.text = spinnerInforme.selectedItem.toString()
+                     selectedText.setTextColor(Color.WHITE)
+                 }
+             }
+             R.id.spinnerNivelFis->{
+                 var selectedText  =(parent.getChildAt(pos) as? TextView)
+                 if (selectedText != null) {
+                     selectedText.text = spinnerNivel.selectedItem.toString()
+                     selectedText.setTextColor(Color.WHITE)
+                 }
+             }
+
+
+
+         }
+*/
         //val text: String = parent.getItemAtPosition(pos).toString()
         //Toast.makeText(parent.context, text, Toast.LENGTH_SHORT).show()
     }
@@ -363,4 +414,20 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
 
         return esValido
     }
+
+
+    fun Fragment.hideKeyboard() {
+        view?.let { activity?.hideKeyboard(it) }
+    }
+
+    fun Activity.hideKeyboard() {
+        hideKeyboard(currentFocus ?: View(this))
+    }
+
+    fun Context.hideKeyboard(view: View) {
+        /* https://stackoverflow.com/questions/41790357/close-hide-the-android-soft-keyboard-with-kotlin*/
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
 }

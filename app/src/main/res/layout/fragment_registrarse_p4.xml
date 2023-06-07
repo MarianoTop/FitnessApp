@@ -7,16 +7,176 @@
     android:layout_height="match_parent"
     tools:context=".fragments.Registro.RegistrarseP4Fragment">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OBJETIVO Y DIAS SEMANA "
-        android:textSize="24sp"
-        android:textStyle="bold"
+    <Button
+        android:id="@+id/btnSiguiente"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#960000"
+        android:text="Siguiente"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toggleJueves"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textObjetivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:text="¿Cuál es tu objetivo?"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageLogo9" />
+
+    <TextView
+        android:id="@+id/textInfoPersonal2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="¿Que días de la semana querés entrenar?"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBajarPeso" />
+
+    <ToggleButton
+        android:id="@+id/toggleMartes"
+        android:layout_width="54dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="L"
+        android:textOff="M"
+        android:textOn="M"
+        app:layout_constraintEnd_toStartOf="@+id/toggleMiercoles"
+        app:layout_constraintStart_toEndOf="@+id/toggleLunes"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2" />
+
+    <ToggleButton
+        android:id="@+id/toggleViernes"
+        android:layout_width="54dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="L"
+        android:textOff="V"
+        android:textOn="V"
+        app:layout_constraintEnd_toStartOf="@+id/toggleSabado"
+        app:layout_constraintStart_toEndOf="@+id/toggleJueves"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2" />
+
+    <ToggleButton
+        android:id="@+id/toggleJueves"
+        android:layout_width="54dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="L"
+        android:textOff="J"
+        android:textOn="J"
+        app:layout_constraintEnd_toStartOf="@+id/toggleViernes"
+        app:layout_constraintStart_toEndOf="@+id/toggleMiercoles"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2" />
+
+    <ToggleButton
+        android:id="@+id/toggleMiercoles"
+        android:layout_width="54dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="L"
+        android:textOff="M"
+        android:textOn="M"
+        app:layout_constraintEnd_toStartOf="@+id/toggleJueves"
+        app:layout_constraintStart_toEndOf="@+id/toggleMartes"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2" />
+
+    <ToggleButton
+        android:id="@+id/toggleSabado"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="L"
+        android:textOff="S"
+        android:textOn="S"
+        app:layout_constraintEnd_toStartOf="@+id/toggleDomingo"
+        app:layout_constraintStart_toEndOf="@+id/toggleViernes"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2" />
+
+    <ToggleButton
+        android:id="@+id/toggleLunes"
+        android:layout_width="54dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="L"
+        android:textOff="L"
+        android:textOn="L"
+        app:layout_constraintEnd_toStartOf="@+id/toggleMartes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2" />
+
+    <ToggleButton
+        android:id="@+id/toggleDomingo"
+        android:layout_width="54dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="10dp"
+        android:text="L"
+        android:textOff="D"
+        android:textOn="D"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/toggleSabado"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2" />
+
+    <ImageView
+        android:id="@+id/imageLogo9"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/logofitcia"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnBajarPeso"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="5dp"
+        android:backgroundTint="#969695"
+        android:insetLeft="10dp"
+        android:text="Bajar de peso"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btnGanarMasa"
+        app:layout_constraintTop_toBottomOf="@+id/textObjetivo" />
+
+    <Button
+        android:id="@+id/btnGanarMasa"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#969695"
+        android:insetRight="10dp"
+        android:text="Ganar masa muscular"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.203"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textObjetivo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
