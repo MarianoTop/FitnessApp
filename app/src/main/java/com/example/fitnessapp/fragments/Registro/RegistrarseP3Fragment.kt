@@ -46,7 +46,7 @@ class RegistrarseP3Fragment : Fragment() {
             if(validarCamposDelPerfil()) {
                 sharedViewModel.usuario.nombre = textNombre.text.toString()
                 sharedViewModel.usuario.altura = textAltura.text.toString().toDouble()
-                sharedViewModel.usuario.peso = textAltura.text.toString().toDouble()
+                sharedViewModel.usuario.peso = textPeso.text.toString().toDouble()
                 sharedViewModel.usuario.edad = textEdad.text.toString().toInt()
                 val action = RegistrarseP3FragmentDirections.actionRegistrarseP3FragmentToRegistrarseP4Fragment()
                 findNavController().navigate(action)
