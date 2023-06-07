@@ -91,7 +91,7 @@ class IniciarSesionFragment : Fragment() {
                             val action = IniciarSesionFragmentDirections.actionIniciarSesionFragmentToMainActivity2()
                             findNavController().navigate(action)
                         } else {
-                            val action = IniciarSesionFragmentDirections.actionIniciarSesionFragmentToRegistrarseP2Fragment()
+                            val action = IniciarSesionFragmentDirections.actionIniciarSesionFragmentToRegistrarseP1Fragment()
                             findNavController().navigate(action)
                         }
                     } else {
