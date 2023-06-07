@@ -39,12 +39,13 @@ class EntrenamientoHomeViewModel : ViewModel() {
                     i++
                 }
             }
+            /*
             if(!haySemana) {
                 println("llamando manager rutina")
                 val manager = ManagerRutinas()
                 manager.crearSemana(usuario, SemanaUtils.obtenerFechaDiaLunesDeLaSemana(Date()))
                 semanasDb = getSemanas()
-            }
+            }*/
             for(semana in semanasDb) {
                 semana.usuario = usuario
                 semana.usuarioId = usuario.id
