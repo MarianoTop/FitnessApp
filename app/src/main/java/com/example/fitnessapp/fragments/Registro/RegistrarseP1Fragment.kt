@@ -74,5 +74,10 @@ class RegistrarseP1Fragment : Fragment() {
                 }
             }
         }
+
+        btnIniciarSesion.setOnClickListener {
+            val action = RegistrarseP1FragmentDirections.actionRegistrarseP1FragmentToRegistrarseP2Fragment()
+            findNavController().navigate(action)
+        }
     }
 }
