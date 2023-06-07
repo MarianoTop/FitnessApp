@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_iniciarSesionFragment_to_recPasswordP1Fragment"
             app:destination="@id/recPasswordP1Fragment" />
+        <action
+            android:id="@+id/action_iniciarSesionFragment_to_registrarseP2Fragment"
+            app:destination="@id/registrarseP2Fragment" />
     </fragment>
     <fragment
         android:id="@+id/registrarseP1Fragment"

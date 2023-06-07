@@ -22,28 +22,10 @@ import kotlinx.coroutines.tasks.await
 
 class IniciarSesionViewModel : ViewModel() {
     private lateinit var auth: FirebaseAuth
-    private lateinit var db : FirebaseFirestore
-    var usuario = MutableLiveData<Usuario?>()
-
+    private val db = Firebase.firestore
 
     init {
         auth = Firebase.auth
-        db = Firebase.firestore
-    }
-
-    fun obtenerUsuario(email: String, contrasenia: String)
-    {
-        viewModelScope.launch{
-            val userAuth = iniciarSesion(email, contrasenia)
-            println("AUTH : " + userAuth)
-            if(userAuth != null) {
-                val user = getUsuarioPorId(userAuth.uid)
-                println("USUARIO : " + user)
-                usuario.postValue(user)
-            } else {
-                usuario.postValue(null)
-            }
-        }
     }
 
     suspend fun iniciarSesion(email: String, contrasenia: String): FirebaseUser? {
@@ -59,21 +41,15 @@ class IniciarSesionViewModel : ViewModel() {
         }
     }
 
-    suspend fun getUsuarioPorId(id : String): Usuario? {
-        try {
-            val usuariosDb = db.collection("usuarios").whereEqualTo("id", id).get().await()
-            var usuario = Usuario()
-            for(usuarioDb in usuariosDb)
-            {
-                usuario = usuarioDb.toObject()
-            }
-            return usuario
+    suspend fun buscarUsuarioEnDB(documento: String) : Boolean {
+        return try {
+            val usuariosDb = db.collection("usuarios").document(documento).get().await()
+            return (usuariosDb.exists())
         } catch (e: Exception)
         {
             Log.e(ContentValues.TAG, "Exception thrown: ${e.message}")
-            return null
+            return false
         }
-
     }
 
 }

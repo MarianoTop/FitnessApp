@@ -3,6 +3,7 @@ package com.example.fitnessapp.entities
 import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.util.Log
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -14,6 +15,7 @@ class ManagerRutinas {
     val db = Firebase.firestore
 
     fun crearSemana(usuario: Usuario, fechaInicio : Date) {
+        println("--- CREANDO SEMANA ---")
         val gruposMusculares: MutableList<String> = mutableListOf()
         gruposMusculares.add("Piernas")
         gruposMusculares.add("Pecho")
@@ -22,20 +24,11 @@ class ManagerRutinas {
         val rutinas : MutableList<Rutina> = mutableListOf()
         val zonaEjercitada : MutableList<String> = mutableListOf()
 
-        var indiceUltimoEjercicio : Int = 0
-        for(dia in usuario.diasDeEntrenamiento.indices)
-        {
-            if(usuario.diasDeEntrenamiento.get(dia))
-            {
-                indiceUltimoEjercicio = dia
-            }
-        }
-
         for(indiceDia in usuario.diasDeEntrenamiento.indices)
         {
-
             if(usuario.diasDeEntrenamiento.get(indiceDia))
             {
+                println("Dia de ejercicio " + indiceDia)
                 var musculo = ""
                 do {
                     musculo = gruposMusculares.get(Random.nextInt(gruposMusculares.size))
@@ -72,14 +65,21 @@ class ManagerRutinas {
                         zonaEjercitada.add(musculo)
                         rutinas.add(rutinaDelDia)
 
-                        if(indiceDia == indiceUltimoEjercicio)
+                        if(indiceDia == usuario.diasDeEntrenamiento.size - 1)
                         {
                             val nuevaSemana = Semana("", rutinas, mutableListOf(), usuario, usuario.id, false, fechaInicio)
                             for(i in nuevaSemana.rutinas.indices)
                             {
-                                val rutinaRef = db.collection("rutinas").document()
                                 val rutina = nuevaSemana.rutinas.get(i)
-                                rutina.id = rutinaRef.id
+                                var rutinaRef : DocumentReference
+                                if(rutina.id.isNotEmpty())
+                                {
+                                    rutinaRef = db.collection("rutinas").document(rutina.id)
+                                }
+                                else {
+                                    rutinaRef = db.collection("rutinas").document()
+                                    rutina.id = rutinaRef.id
+                                }
                                 rutinaRef.set(rutina).addOnSuccessListener {
                                     nuevaSemana.rutinasId.add(rutinaRef.id)
                                     if(i == nuevaSemana.rutinas.size - 1)
@@ -102,8 +102,52 @@ class ManagerRutinas {
                     Log.w(ContentValues.TAG, "Error getting documents: ", exception)
                 }
             }
+            else
+            {
+                println("Descanso " + indiceDia)
+                val descanso = Rutina()
+                descanso.id = "descanso"
+                descanso.totalCalorias = 0.0
+                rutinas.add(descanso)
+                println("INDICE DIA: " + indiceDia + " || dias de entrenamiento: " + usuario.diasDeEntrenamiento.size)
+                if(indiceDia == usuario.diasDeEntrenamiento.size - 1)
+                {
+                    println("PERSISTIENDO")
+                    val nuevaSemana = Semana("", rutinas, mutableListOf(), usuario, usuario.id, false, fechaInicio)
+                    for(i in nuevaSemana.rutinas.indices)
+                    {
+                        val rutina = nuevaSemana.rutinas.get(i)
+                        var rutinaRef : DocumentReference
+                        if(rutina.id.isNotEmpty())
+                        {
+                            rutinaRef = db.collection("rutinas").document(rutina.id)
+                        }
+                        else {
+                            rutinaRef = db.collection("rutinas").document()
+                            rutina.id = rutinaRef.id
+                        }
+                        println("ANTES DE GUARDAR")
+                        rutinaRef.set(rutina).addOnSuccessListener {
+                            println("Rutina guardada ok. i = " + i + " rutinas.size = " + nuevaSemana.rutinas.size + " ID : " + rutina.id)
+                            nuevaSemana.rutinasId.add(rutinaRef.id)
+                            if(i == nuevaSemana.rutinas.size - 1)
+                            {
+                                println("PERSISTIENDO 2")
+                                val semanaRef = db.collection("semanas").document()
+                                nuevaSemana.id = semanaRef.id
+                                semanaRef.set(nuevaSemana).addOnSuccessListener {
+                                    Log.d(TAG, "DocumentSnapshot successfully written!")
+                                }.addOnFailureListener {
+                                        e -> Log.w(TAG, "Error writing document", e)
+                                }
+                            }
+                        }.addOnFailureListener { e ->
+                            Log.w(TAG, "Error writing document", e)
+                        }
+                    }
+                }
+            }
         }
-
     }
 
     fun calcularCantidadDeRepeticiones(ejercicio: Ejercicio, usuario: Usuario) : Int

@@ -48,71 +48,95 @@
         android:id="@+id/toggleMartes"
         android:layout_width="54dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="L"
         android:textOff="M"
         android:textOn="M"
-        tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="481dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnSiguiente"
+        app:layout_constraintEnd_toStartOf="@+id/toggleMiercoles"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ToggleButton
         android:id="@+id/toggleViernes"
         android:layout_width="54dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="L"
         android:textOff="V"
         android:textOn="V"
-        tools:layout_editor_absoluteX="232dp"
-        tools:layout_editor_absoluteY="481dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnSiguiente"
+        app:layout_constraintEnd_toStartOf="@+id/toggleSabado"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ToggleButton
         android:id="@+id/toggleJueves"
         android:layout_width="54dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="94dp"
         android:text="L"
         android:textOff="J"
         android:textOn="J"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="481dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnSiguiente"
+        app:layout_constraintEnd_toStartOf="@+id/toggleViernes"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2" />
 
     <ToggleButton
         android:id="@+id/toggleMiercoles"
         android:layout_width="54dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="L"
         android:textOff="M"
         android:textOn="M"
-        tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="481dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnSiguiente"
+        app:layout_constraintEnd_toStartOf="@+id/toggleJueves"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ToggleButton
         android:id="@+id/toggleSabado"
         android:layout_width="55dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="L"
         android:textOff="S"
         android:textOn="S"
-        tools:layout_editor_absoluteX="286dp"
-        tools:layout_editor_absoluteY="481dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnSiguiente"
+        app:layout_constraintEnd_toStartOf="@+id/toggleDomingo"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ToggleButton
         android:id="@+id/toggleLunes"
         android:layout_width="54dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="L"
         android:textOff="L"
         android:textOn="L"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="481dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnSiguiente"
+        app:layout_constraintEnd_toStartOf="@+id/toggleMartes"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ToggleButton
         android:id="@+id/toggleDomingo"
         android:layout_width="54dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:text="L"
         android:textOff="D"
         android:textOn="D"
-        tools:layout_editor_absoluteX="341dp"
-        tools:layout_editor_absoluteY="481dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnSiguiente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoPersonal2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageLogo9"

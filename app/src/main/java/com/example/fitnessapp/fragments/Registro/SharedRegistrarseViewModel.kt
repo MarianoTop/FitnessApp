@@ -14,27 +14,16 @@ class SharedRegistrarseViewModel : ViewModel() {
 
     private val db = Firebase.firestore
     private val auth = Firebase.auth
+    val usuario = Usuario()
 
-    suspend fun persistirUsuario(usuario: Usuario) {
+    suspend fun persistirUsuario(usuario: Usuario): Boolean {
+        usuario.id = auth.uid!!
         try {
-            /*https://stackoverflow.com/questions/57924683/firebase-transaction-to-update-multiple-fields-in-a-document-at-once*/
-            println(usuario.id)
-            val usuarioDb = db.collection("usuarios").document(usuario.id)
-            usuarioDb.update(
-
-                "nombre",usuario.nombre,
-                "peso",usuario.peso,
-                "altura",usuario.altura,
-                "edad",usuario.edad,
-                "objetivo",usuario.objetivo,
-                "reporteSemanal",usuario.reporteSemanal,
-                "nivelFisico",usuario.nivelFisico
-
-            ).await()
-
+            val usuarioDb = db.collection("usuarios").document(auth.uid!!).set(usuario)
+            return true
         } catch (e: Exception) {
             Log.e(ContentValues.TAG, "Exception thrown: ${e.message}")
-
+            return false
         }
     }
 

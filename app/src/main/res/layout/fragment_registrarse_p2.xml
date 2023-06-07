@@ -7,18 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.Registro.RegistrarseP2Fragment">
 
-    <Button
-        android:id="@+id/btnSiguiente1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="#960000"
-        android:text="Siguiente"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/textBienvenida3"
         android:layout_width="wrap_content"

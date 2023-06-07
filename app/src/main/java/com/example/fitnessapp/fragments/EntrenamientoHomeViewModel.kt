@@ -5,27 +5,47 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.fitnessapp.entities.Ejercicio
-import com.example.fitnessapp.entities.Rutina
-import com.example.fitnessapp.entities.Semana
-import com.example.fitnessapp.entities.Usuario
+import com.example.fitnessapp.entities.*
+import com.example.fitnessapp.utils.SemanaUtils
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import java.util.*
 
 class EntrenamientoHomeViewModel : ViewModel() {
     var semanas = MutableLiveData<MutableList<Semana>>()
     private val db = Firebase.firestore
+    private val auth = Firebase.auth
 
     init{
         val semanasDetalladas : MutableList<Semana> = mutableListOf()
 
         viewModelScope.launch {
-            val semanasDb = getSemanas()
+            val usuario = getUsuario(auth.uid!!)
+            var semanasDb = getSemanas()
+            println("SEMANEITOR " + semanasDb)
+            var haySemana = false
+            println("HAY SEMANA: " + haySemana)
+            if(semanasDb.size == 0) {
+                haySemana = false
+                println("HAY SEMANA SIZE 0: " + haySemana)
+            } else {
+                var i = 0
+                while (i < semanasDb.size && !haySemana) {
+                    haySemana = !semanasDb.get(i).estaFinalizada
+                    i++
+                }
+            }
+            if(!haySemana) {
+                println("llamando manager rutina")
+                val manager = ManagerRutinas()
+                manager.crearSemana(usuario, SemanaUtils.obtenerFechaDiaLunesDeLaSemana(Date()))
+                semanasDb = getSemanas()
+            }
             for(semana in semanasDb) {
-                val usuario = getUsuarioDeLaSemana(semana)
                 semana.usuario = usuario
                 semana.usuarioId = usuario.id
                 val rutinasDb = getRutinasPorSemana(semana)
@@ -47,7 +67,7 @@ class EntrenamientoHomeViewModel : ViewModel() {
     suspend fun getSemanas(): MutableList<Semana> {
         val semanas = mutableListOf<Semana>()
         return try {
-            val semanasDb = db.collection("semanas").get().await()
+            val semanasDb = db.collection("semanas").whereEqualTo("usuarioId", auth.uid!!).get().await()
             for(semana in semanasDb)
             {
                 semanas.add(semana.toObject())
@@ -58,22 +78,20 @@ class EntrenamientoHomeViewModel : ViewModel() {
             return semanas
         }
     }
-    suspend fun getUsuarioDeLaSemana(semanaObj : Semana): Usuario {
+    suspend fun getUsuario(userId : String): Usuario {
         var usuario : Usuario = Usuario()
         return try {
-            val usuariosDb = db.collection("usuarios").whereEqualTo("id", semanaObj.usuarioId).get().await()
-            for(usuarioDb in usuariosDb)
-            {
-                usuario = usuarioDb.toObject()
-            }
+            val usuarioDb = db.collection("usuarios").document(userId).get().await()
+            usuario = usuarioDb.toObject()!!
+            println("USUARIO ---- " + usuario)
             return usuario
         } catch (e: Exception)
         {
             Log.e(ContentValues.TAG, "Exception thrown: ${e.message}")
             return usuario
         }
-
     }
+
     suspend fun getRutinasPorSemana(semanaObj : Semana): MutableList<Rutina> {
         val rutinas : MutableList<Rutina> = mutableListOf()
         return try {

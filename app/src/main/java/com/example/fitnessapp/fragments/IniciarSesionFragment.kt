@@ -14,6 +14,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Ejercicio
@@ -24,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class IniciarSesionFragment : Fragment() {
@@ -80,18 +82,22 @@ class IniciarSesionFragment : Fragment() {
                 Toast.makeText( this.getContext(), "Debe introducir la contraseña.", Toast.LENGTH_SHORT,).show()
             }
             else {
-                viewModel.obtenerUsuario(editTextEmail.text.toString(), editTextContraseña.text.toString())
-                viewModel.usuario.observe(viewLifecycleOwner, Observer { usuario: Usuario? ->
-                    println("----- usuario coso: " + usuario)
+                var usuario : String?
+                viewModel.viewModelScope.launch {
+                    val usuario = viewModel.iniciarSesion(editTextEmail.text.toString(), editTextContraseña.text.toString())
                     if (usuario != null) {
-                        val action =
-                            IniciarSesionFragmentDirections.actionIniciarSesionFragmentToMainActivity2()
-                        findNavController().navigate(action)
+                        if(viewModel.buscarUsuarioEnDB(usuario.uid))
+                        {
+                            val action = IniciarSesionFragmentDirections.actionIniciarSesionFragmentToMainActivity2()
+                            findNavController().navigate(action)
+                        } else {
+                            val action = IniciarSesionFragmentDirections.actionIniciarSesionFragmentToRegistrarseP2Fragment()
+                            findNavController().navigate(action)
+                        }
                     } else {
-
                         Snackbar.make(v, "Usuario o contraseña incorrectos.", Snackbar.LENGTH_SHORT).show();
                     }
-                })
+                }
             }
         }
 
