@@ -9,11 +9,12 @@
 
     <Button
         android:id="@+id/btnSiguiente3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="#960000"
         android:text="Finalizar"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,8 +24,9 @@
         android:id="@+id/textNivelPersonal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="55dp"
         android:text="¿Cuál es tu nivel fisico?"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,14 +36,16 @@
 
     <TextView
         android:id="@+id/textInformes"
-        android:layout_width="200dp"
+        android:layout_width="286dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="37dp"
         android:text="¿Le gustaría recibir informes semanales o mensuales?"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnNivelMedio" />
 
@@ -62,22 +66,26 @@
         android:id="@+id/btnNivelBajo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="22dp"
+        android:backgroundTint="#969695"
         android:text="Bajo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnNivelMedio"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textNivelPersonal"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.026" />
 
     <Button
         android:id="@+id/btnInformesSemanales"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#969695"
+        android:insetRight="10dp"
         android:text="Semanales"
         app:layout_constraintEnd_toStartOf="@+id/btnInformesMensuales"
         app:layout_constraintHorizontal_bias="0.09"
@@ -88,31 +96,39 @@
         android:id="@+id/btnInformesMensuales"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:backgroundTint="#969695"
+        android:insetLeft="10dp"
         android:text="Mensuales"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInformes" />
 
     <Button
         android:id="@+id/btnNivelMedio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#969695"
         android:text="Medio"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnNivelAlto"
         app:layout_constraintTop_toBottomOf="@+id/textNivelPersonal"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.026" />
 
     <Button
         android:id="@+id/btnNivelAlto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="42dp"
+        android:backgroundTint="#969695"
         android:text="Alto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textNivelPersonal"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.027" />
 </androidx.constraintlayout.widget.ConstraintLayout>

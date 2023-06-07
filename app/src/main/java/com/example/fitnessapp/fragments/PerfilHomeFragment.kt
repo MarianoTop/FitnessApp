@@ -20,10 +20,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Usuario
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -37,6 +40,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
     private val viewModel: PerfilHomeViewModel by activityViewModels()
 
     private val db = Firebase.firestore;
+    private  var auth = Firebase.auth
     lateinit var usuario : Usuario;
     lateinit var editTextNombre: EditText;
     lateinit var editTextPeso : EditText;
@@ -114,7 +118,9 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         super.onStart()
 
 
-        val usuarioDB = db.collection("usuarios").document("ssoVgM3jDe2AenUf2xRd")
+        val usuarioDB = db.collection("usuarios").document(auth.uid!!)
+        //val usuarioDB = db.collection("usuarios").whereEqualTo("id", auth.uid)
+        //val usuariosDb = db.collection("usuarios").whereEqualTo("id", id).get().await()
         usuarioDB.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
