@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_registrarseP1Fragment_to_registrarseP2Fragment"
             app:destination="@id/registrarseP2Fragment" />
+        <action
+            android:id="@+id/action_registrarseP1Fragment_to_iniciarSesionFragment"
+            app:destination="@id/iniciarSesionFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrarseP2Fragment"
