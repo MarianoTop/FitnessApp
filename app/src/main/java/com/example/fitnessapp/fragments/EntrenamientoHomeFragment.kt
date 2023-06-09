@@ -1,17 +1,11 @@
 package com.example.fitnessapp.fragments
 
-import android.content.ContentValues
-import android.content.ContentValues.TAG
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
-import android.widget.Button
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,14 +14,7 @@ import com.example.fitnessapp.R
 import com.example.fitnessapp.adapters.SemanaAdapter
 import com.example.fitnessapp.entities.*
 import com.example.fitnessapp.utils.SemanaUtils
-import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.firestore.QuerySnapshot
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.*
-import kotlinx.coroutines.tasks.await
 
 class EntrenamientoHomeFragment : Fragment() {
 
@@ -64,7 +51,6 @@ class EntrenamientoHomeFragment : Fragment() {
                 } else {
                     val posicionRutinaAEnviar =
                         SemanaUtils.obtenerRutinaPorHacer(semanas[position])
-                    println(posicionRutinaAEnviar)
                     if(posicionRutinaAEnviar==-1){
                         Snackbar.make(v, "Semana no disponible", Snackbar.LENGTH_SHORT).show();
                     }else if(posicionRutinaAEnviar==-2){
@@ -75,11 +61,9 @@ class EntrenamientoHomeFragment : Fragment() {
                         Snackbar.make(v, "Ya ha finalizado su rutina de hoy", Snackbar.LENGTH_SHORT).show();
 
                     }else{
-                        println(semanas[position].id)
-                        println(semanas[position].rutinas[posicionRutinaAEnviar].id)
                         val action =
                             EntrenamientoHomeFragmentDirections.actionEntrenamientoHomeFragmentToPrevisualizacionEjercicioFragment(
-                                semanas[position].rutinas[posicionRutinaAEnviar]
+                                semanas[position].rutinas[posicionRutinaAEnviar], viewModel.usuarioApp.nivelFisico
                             )
                         findNavController().navigate(action)
                     }

@@ -53,14 +53,17 @@ class PrevisualizacionEjercicioFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+
+        val Rutina = PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).rutina
+        val nivelFisico = PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).nivelFisico
+
+        viewModel.setEjercicios(Rutina.ejercicios)
+        viewModel.calcularCantRepeticiones(nivelFisico)
+
         viewModel.cantRepeticiones.observe(viewLifecycleOwner, Observer { result ->
             txtCantRepeticiones.text= "cantidad de repeticiones: ${result.toString()}"
         })
-
-        val Rutina = PrevisualizacionEjercicioFragmentArgs.fromBundle(requireArguments()).rutina
-
-        viewModel.setEjercicios(Rutina.ejercicios)
-
 
         lateinit var contextSent :Context
          if(context!=null){

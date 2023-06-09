@@ -103,7 +103,8 @@ class SemanaAdapter(var semanaList : MutableList<Semana>, var onClick : (Int) ->
 
     //Acá se realiza el binding entre el modelo y la vista. Este método itera sobre la lista.
     override fun onBindViewHolder(holder: SemanaHolder, position: Int) {
-
+        println("LO QUE LLEGA:")
+        println(semanaList)
         holder.setTituloSemana(position + 1);
         holder.setColorFondo(semanaList[position].rutinas[0], holder.getTxtViewLunes());
         holder.setColorFondo(semanaList[position].rutinas[1], holder.getTxtViewMartes());

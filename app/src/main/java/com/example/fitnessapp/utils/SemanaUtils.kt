@@ -4,7 +4,10 @@ import com.example.fitnessapp.entities.EstadoRutina
 import com.example.fitnessapp.entities.Rutina
 import com.example.fitnessapp.entities.Semana
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.ZoneId
 import java.util.*
+
 
 class SemanaUtils {
 
@@ -79,48 +82,61 @@ class SemanaUtils {
             return numero
         }
 
-        fun validarSemana(semana: Semana) {
 
-            val fechaActual = Date()
+        fun validarSemana(semana: Semana) {
+            val fechaHoy = Date()
+            val fechaActual = Calendar.getInstance()
+            fechaActual.time = Date(fechaHoy.time)
+            fechaActual.set(Calendar.HOUR_OF_DAY, 0)
+            fechaActual.set(Calendar.MINUTE, 0)
+            fechaActual.set(Calendar.SECOND, 0)
+            fechaActual.set(Calendar.MILLISECOND, 0)
+
             val fechaSemana = Date(semana.fechaInicio.time)
             val c = Calendar.getInstance()
             c.time = fechaSemana
-
+            c.set(Calendar.HOUR_OF_DAY, 0)
+            c.set(Calendar.MINUTE, 0)
+            c.set(Calendar.SECOND, 0)
+            c.set(Calendar.MILLISECOND, 0)
 
             var contador: Int = 0
             var laFechaEsMayor = false
 
-
             while (contador < semana.rutinas.size && !laFechaEsMayor) {
                 var fechaRutina = c.time
+                println("FECHA RUTINA: " + fechaRutina + " - FECHA SEMANA: " + fechaSemana + " - FECHA ACTUAL: " + fechaActual.time)
 
-                if (fechaActual.after(fechaRutina)) {
+                if (fechaActual.time.after(fechaRutina)) {
                     validarAusente(semana.rutinas[contador])
-
                 } else {
                     laFechaEsMayor = true
                 }
                 c.add(Calendar.DAY_OF_YEAR, 1)
+                contador++
             }
-
-
+            if(!laFechaEsMayor) {
+                semana.estaFinalizada = true
+            }
         }
+
 
         fun validarAusente(rutina: Rutina) {
 
-            if (rutina.estado==EstadoRutina.ES_DESCANSO.value || rutina.estado==EstadoRutina.COMPLETADA.value) {
-
-            } else {
+            if (rutina.estado!=EstadoRutina.ES_DESCANSO.value && rutina.estado!=EstadoRutina.COMPLETADA.value) {
+                println("La rutina está ausente.")
                 rutina.estado = EstadoRutina.AUSENTE.value
             }
-
-
         }
 
         fun obtenerFechaDiaLunesDeLaSemana(date: Date): Date {
 
             val c = Calendar.getInstance()
             c.time = date
+            c.set(Calendar.HOUR_OF_DAY, 0)
+            c.set(Calendar.MINUTE, 0)
+            c.set(Calendar.SECOND, 0)
+            c.set(Calendar.MILLISECOND, 0)
 
             while (c.get(Calendar.DAY_OF_WEEK) != 2) {
                 c.add(Calendar.DAY_OF_YEAR, -1)

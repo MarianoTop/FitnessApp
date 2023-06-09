@@ -18,11 +18,25 @@ class PrevisualizacionEjercicioViewModel : ViewModel() {
     private lateinit var rutinaAPasar: Rutina
 
     init{
-        changeCantRepeticiones(500)
+
     }
     fun changeCantRepeticiones(qty:Int){
                 cantRepeticiones.value=qty
             }
+
+    fun calcularCantRepeticiones(nivelFisico : Int) {
+        var resultado = 3
+        if(nivelFisico == 0) {
+            resultado = 3
+        } else if (nivelFisico == 1) {
+            resultado = 5
+        } else if (nivelFisico == 2) {
+            resultado = 7
+        } else {
+            resultado = 3
+        }
+        changeCantRepeticiones(resultado)
+    }
     fun setEjercicios (ejercicios: MutableList<Ejercicio>){
         this.ejercicios=ejercicios
     }

@@ -43,6 +43,9 @@
         <argument
             android:name="rutina"
             app:argType="com.example.fitnessapp.entities.Rutina" />
+        <argument
+            android:name="nivelFisico"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/ejercicioComienzaFragment"
