@@ -175,6 +175,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         }
 
         buttonCerrarSesion.setOnClickListener {
+                auth.signOut();
                 val action = PerfilHomeFragmentDirections.actionPerfilHomeFragmentToMainActivity() // CAMBIAR
                 findNavController().navigate(action)
         }
