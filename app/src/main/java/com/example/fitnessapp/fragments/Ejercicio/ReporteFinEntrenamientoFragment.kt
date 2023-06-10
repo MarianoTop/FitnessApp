@@ -89,14 +89,6 @@ class ReporteFinEntrenamientoFragment : Fragment() {
                 Log.w(TAG, "Error al agregar sesión", e)
             }
 
-        val rutinaRef = db.collection("rutinas").document(sharedViewModel.rutina.id)
-        rutinaRef.update("estado",1).addOnSuccessListener { response ->
-                Log.d(TAG, "Se cambio el estado de la rutina correctamente.")
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error al agregar sesión", e)
-            }
-
         // Navegación de vuelta a EntrenamientoHomeFragment
 
         btnTerminar.setOnClickListener(){
