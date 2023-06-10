@@ -7,19 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.Registro.RegistrarseP2Fragment">
 
-    <Button
-        android:id="@+id/btnSiguiente1"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="#960000"
-        android:text="Siguiente"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/textBienvenida3"
         android:layout_width="wrap_content"
@@ -99,8 +86,10 @@
         android:backgroundTint="#969695"
         android:text="Masculino"
         android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageMale" />
+        app:layout_constraintTop_toBottomOf="@+id/imageMale"
+        app:layout_constraintVertical_bias="0.01" />
 
     <Button
         android:id="@+id/btnFemenino"
@@ -109,12 +98,12 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
         android:backgroundTint="#969695"
         android:text="Femenino"
         android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSiguiente1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnOtro"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toEndOf="@+id/btnMasculino"
         app:layout_constraintTop_toBottomOf="@+id/imageFemale"
         app:layout_constraintVertical_bias="0.0" />
