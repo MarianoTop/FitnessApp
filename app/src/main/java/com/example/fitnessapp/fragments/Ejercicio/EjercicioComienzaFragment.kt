@@ -56,7 +56,7 @@ class EjercicioComienzaFragment : Fragment() {
         startTimeCounter()
 
         sharedViewModel.asignarRutina(
-            PrevisualizacionEjercicioFragmentArgs.fromBundle(
+            EjercicioComienzaFragmentArgs.fromBundle(
                 requireArguments()
             ).rutina)
 
