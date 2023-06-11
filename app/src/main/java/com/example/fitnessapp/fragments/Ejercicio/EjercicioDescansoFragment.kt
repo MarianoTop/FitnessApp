@@ -128,12 +128,12 @@ class EjercicioDescansoFragment : Fragment() {
     private fun duracionEntrenamiento() {
         object : CountDownTimer(99999999,1000) {
             override fun onTick(millisUntilFinished: Long) {
-                sharedViewModel.totalTiempo =+ counterGlobal.toDouble()
+                //sharedViewModel.totalTiempo =+ counterGlobal.toDouble()
                 counterGlobal++
             }
 
             override fun onFinish() {
-                sharedViewModel.totalTiempo = counterGlobal.toDouble()
+                //sharedViewModel.totalTiempo = counterGlobal.toDouble()
             }
         }.start()
     }
