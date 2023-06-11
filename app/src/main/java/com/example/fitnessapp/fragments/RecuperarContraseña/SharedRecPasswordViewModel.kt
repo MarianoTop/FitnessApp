@@ -9,8 +9,5 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
 
 class SharedRecPasswordViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
-
-
 
 }

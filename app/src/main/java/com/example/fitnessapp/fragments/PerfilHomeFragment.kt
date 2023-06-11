@@ -20,10 +20,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Usuario
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -37,18 +40,27 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
     private val viewModel: PerfilHomeViewModel by activityViewModels()
 
     private val db = Firebase.firestore;
+    private  var auth = Firebase.auth
     lateinit var usuario : Usuario;
     lateinit var editTextNombre: EditText;
     lateinit var editTextPeso : EditText;
     lateinit var editTextAltura : EditText;
     lateinit var editTextEdad : EditText;
-    lateinit var editTextDias : EditText;
+    //lateinit var editTextDias : EditText;
     //lateinit var editTextObjetivo : EditText;
     lateinit var spinnerObjetivo : Spinner;
    //lateinit var editTextInforme : EditText;
    lateinit var spinnerInforme : Spinner;
     //lateinit var editTextNivel : EditText;
     lateinit var spinnerNivel : Spinner;
+    lateinit var toggleLunes : ToggleButton;
+    lateinit var toggleMartes : ToggleButton;
+    lateinit var toggleMiercoles : ToggleButton;
+    lateinit var toggleJueves : ToggleButton;
+    lateinit var toggleViernes : ToggleButton;
+    lateinit var toggleSabado : ToggleButton;
+    lateinit var toggleDomingo : ToggleButton;
+
 
     lateinit var editButton:  FloatingActionButton;
 
@@ -67,7 +79,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         editTextPeso = v.findViewById(R.id.editTextPeso);
         editTextAltura = v.findViewById(R.id.editTextAltura);
         editTextEdad = v.findViewById(R.id.editTextEdad);
-        editTextDias = v.findViewById(R.id.editTextDias);
+        //editTextDias = v.findViewById(R.id.editTextDias);
         //editTextObjetivo = v.findViewById(R.id.editTextObjetivo);
         /* Spinner
         https://developer.android.com/develop/ui/views/components/spinner
@@ -78,6 +90,13 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         //editTextNivel = v.findViewById(R.id.editTextNivel);
         spinnerNivel= v.findViewById(R.id.spinnerNivelFis);
         editButton= v.findViewById(R.id.editButton)
+        toggleLunes = v.findViewById(R.id.toggleLunes2)
+        toggleMartes = v.findViewById(R.id.toggleMartes2)
+        toggleMiercoles = v.findViewById(R.id.toggleMiercoles2)
+        toggleJueves = v.findViewById(R.id.toggleJueves2)
+        toggleViernes = v.findViewById(R.id.toggleViernes2)
+        toggleSabado = v.findViewById(R.id.toggleSabado2)
+        toggleDomingo = v.findViewById(R.id.toggleDomingo2)
 
 
         val adapterObjective = ArrayAdapter.createFromResource(
@@ -114,7 +133,9 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         super.onStart()
 
 
-        val usuarioDB = db.collection("usuarios").document("ssoVgM3jDe2AenUf2xRd")
+        val usuarioDB = db.collection("usuarios").document(auth.uid!!)
+        //val usuarioDB = db.collection("usuarios").whereEqualTo("id", auth.uid)
+        //val usuariosDb = db.collection("usuarios").whereEqualTo("id", id).get().await()
         usuarioDB.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
@@ -124,13 +145,21 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
                     editTextPeso.setText(usuario.peso.toString(), TextView.BufferType.EDITABLE);
                     editTextAltura.setText(usuario.altura.toString(), TextView.BufferType.EDITABLE);
                     editTextEdad.setText(usuario.edad.toString(), TextView.BufferType.EDITABLE);
-                    editTextDias.setText(calcularCantidadDiasXSemana(usuario.diasDeEntrenamiento).toString(), TextView.BufferType.EDITABLE);
+                    //editTextDias.setText(calcularCantidadDiasXSemana(usuario.diasDeEntrenamiento).toString(), TextView.BufferType.EDITABLE);
                     //editTextObjetivo.setText(obtenerObjetivo(usuario.objetivo), TextView.BufferType.EDITABLE);
                     spinnerObjetivo.setSelection(usuario.objetivo)
                     //editTextInforme.setText(obtenerInforme(usuario.reporteMensual), TextView.BufferType.EDITABLE);
                     spinnerInforme.setSelection(usuario.reporteSemanal)
                     //editTextNivel.setText(obtenerNivelFisico(usuario.nivelFisico), TextView.BufferType.EDITABLE);
                     spinnerNivel.setSelection(usuario.nivelFisico)
+                    println("TRAin -- " + usuario.diasDeEntrenamiento)
+                    toggleLunes.isChecked = usuario.diasDeEntrenamiento[0]
+                    toggleMartes.isChecked = usuario.diasDeEntrenamiento[1]
+                    toggleMiercoles.isChecked = usuario.diasDeEntrenamiento[2]
+                    toggleJueves.isChecked = usuario.diasDeEntrenamiento[3]
+                    toggleViernes.isChecked = usuario.diasDeEntrenamiento[4]
+                    toggleSabado.isChecked = usuario.diasDeEntrenamiento[5]
+                    toggleDomingo.isChecked = usuario.diasDeEntrenamiento[6]
                 } else {
                     Log.d(ContentValues.TAG, "No such document")
                 }
@@ -146,6 +175,7 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         }
 
         buttonCerrarSesion.setOnClickListener {
+                auth.signOut();
                 val action = PerfilHomeFragmentDirections.actionPerfilHomeFragmentToMainActivity() // CAMBIAR
                 findNavController().navigate(action)
         }
@@ -230,8 +260,8 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         editTextEdad.isFocusable = modoEdicion
         editTextEdad.isFocusableInTouchMode = modoEdicion
 
-        editTextDias.isFocusable = modoEdicion
-        editTextDias.isFocusableInTouchMode = modoEdicion
+        //editTextDias.isFocusable = modoEdicion
+        //editTextDias.isFocusableInTouchMode = modoEdicion
 
         //editTextObjetivo.isFocusable = modoEdicion
         //editTextObjetivo.isFocusableInTouchMode = modoEdicion
@@ -245,7 +275,13 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         //editTextNivel.isFocusableInTouchMode = modoEdicion
         spinnerNivel.isEnabled=modoEdicion
 
-
+        toggleLunes.isClickable = modoEdicion
+        toggleMartes.isClickable = modoEdicion
+        toggleMiercoles.isClickable = modoEdicion
+        toggleJueves.isClickable = modoEdicion
+        toggleViernes.isClickable = modoEdicion
+        toggleSabado.isClickable = modoEdicion
+        toggleDomingo.isClickable = modoEdicion
     }
 
     fun obtenerDatos(){
@@ -257,7 +293,15 @@ class PerfilHomeFragment : Fragment() ,AdapterView.OnItemSelectedListener {
         usuario.objetivo=spinnerObjetivo.selectedItemPosition
         usuario.reporteSemanal=spinnerInforme.selectedItemPosition
         usuario.nivelFisico=spinnerNivel.selectedItemPosition
-
+        val dias : MutableList<Boolean> = mutableListOf()
+        dias.add(toggleLunes.isChecked)
+        dias.add(toggleMartes.isChecked)
+        dias.add(toggleMiercoles.isChecked)
+        dias.add(toggleJueves.isChecked)
+        dias.add(toggleViernes.isChecked)
+        dias.add(toggleSabado.isChecked)
+        dias.add(toggleDomingo.isChecked)
+        usuario.diasDeEntrenamiento = dias
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {

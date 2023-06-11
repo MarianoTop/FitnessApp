@@ -29,7 +29,8 @@ class PerfilHomeViewModel : ViewModel() {
                 "edad",usuario.edad,
                 "objetivo",usuario.objetivo,
                 "reporteSemanal",usuario.reporteSemanal,
-                "nivelFisico",usuario.nivelFisico
+                "nivelFisico",usuario.nivelFisico,
+                "diasDeEntrenamiento", usuario.diasDeEntrenamiento
 
 
             ).await()

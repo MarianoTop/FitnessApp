@@ -102,7 +102,7 @@ class IniciarSesionFragment : Fragment() {
         }
 
         buttonRecuperarContraseña.setOnClickListener {
-            val action = IniciarSesionFragmentDirections.actionIniciarSesionFragmentToRecPasswordP1Fragment()
+            val action = IniciarSesionFragmentDirections.actionIniciarSesionFragmentToRecPasswordFragment()
             findNavController().navigate(action)
         }
 

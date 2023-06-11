@@ -34,8 +34,8 @@
             android:id="@+id/action_iniciarSesionFragment_to_registrarseP1Fragment"
             app:destination="@id/registrarseP1Fragment" />
         <action
-            android:id="@+id/action_iniciarSesionFragment_to_recPasswordP1Fragment"
-            app:destination="@id/recPasswordP1Fragment" />
+            android:id="@+id/action_iniciarSesionFragment_to_recPasswordFragment"
+            app:destination="@id/recPasswordFragment" />
         <action
             android:id="@+id/action_iniciarSesionFragment_to_registrarseP2Fragment"
             app:destination="@id/registrarseP2Fragment" />
@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_registrarseP1Fragment_to_registrarseP2Fragment"
             app:destination="@id/registrarseP2Fragment" />
+        <action
+            android:id="@+id/action_registrarseP1Fragment_to_iniciarSesionFragment"
+            app:destination="@id/iniciarSesionFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrarseP2Fragment"
@@ -86,30 +89,12 @@
             app:destination="@id/mainActivity2" />
     </fragment>
     <fragment
-        android:id="@+id/recPasswordP1Fragment"
-        android:name="com.example.fitnessapp.fragments.RecuperarContraseña.RecPasswordP1Fragment"
-        android:label="fragment_rec_password_p1"
-        tools:layout="@layout/fragment_rec_password_p1" >
+        android:id="@+id/recPasswordFragment"
+        android:name="com.example.fitnessapp.fragments.RecuperarContraseña.RecPasswordFragment"
+        android:label="fragment_rec_password"
+        tools:layout="@layout/fragment_rec_password" >
         <action
-            android:id="@+id/action_recPasswordP1Fragment_to_recPasswordP2Fragment"
-            app:destination="@id/recPasswordP2Fragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/recPasswordP2Fragment"
-        android:name="com.example.fitnessapp.fragments.RecuperarContraseña.RecPasswordP2Fragment"
-        android:label="fragment_rec_password_p2"
-        tools:layout="@layout/fragment_rec_password_p2" >
-        <action
-            android:id="@+id/action_recPasswordP2Fragment_to_recPasswordP3Fragment"
-            app:destination="@id/recPasswordP3Fragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/recPasswordP3Fragment"
-        android:name="com.example.fitnessapp.fragments.RecuperarContraseña.RecPasswordP3Fragment"
-        android:label="fragment_rec_password_p3"
-        tools:layout="@layout/fragment_rec_password_p3" >
-        <action
-            android:id="@+id/action_recPasswordP3Fragment_to_iniciarSesionFragment"
+            android:id="@+id/action_recPasswordFragment_to_iniciarSesionFragment"
             app:destination="@id/iniciarSesionFragment" />
     </fragment>
 </navigation>

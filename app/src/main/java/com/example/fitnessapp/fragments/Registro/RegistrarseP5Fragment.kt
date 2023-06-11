@@ -56,8 +56,10 @@ class RegistrarseP5Fragment : Fragment() {
         }
         btnSemanal.setOnClickListener {
             reporteSemanal = 1
+            reporteMensual = 0
         }
         btnMensual.setOnClickListener {
+            reporteSemanal = 0
             reporteMensual = 1
         }
         btnFinalizar.setOnClickListener {
