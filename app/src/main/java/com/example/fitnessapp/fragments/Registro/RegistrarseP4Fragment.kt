@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -52,9 +53,13 @@ class RegistrarseP4Fragment : Fragment() {
         super.onStart()
         btnGanarMasa.setOnClickListener {
             objetivo = "Masa"
+            btnGanarMasa.setBackgroundColor(0xff960000.toInt())
+            btnBajarPeso.setBackgroundColor(0xff969695.toInt())
         }
         btnBajarPeso.setOnClickListener{
             objetivo = "Peso"
+            btnGanarMasa.setBackgroundColor(0xff969695.toInt())
+            btnBajarPeso.setBackgroundColor(0xff960000.toInt())
         }
         btnSiguiente.setOnClickListener {
             if(validar()) {
@@ -74,6 +79,11 @@ class RegistrarseP4Fragment : Fragment() {
     }
 
     private fun validar() : Boolean{
+        if(objetivo == "") {
+            Toast.makeText(context, "Debe seleccionar un objetivo.", Toast.LENGTH_SHORT,).show()
+        } else if (!toggleLunes.isChecked && !toggleMartes.isChecked && !toggleMiercoles.isChecked && !toggleJueves.isChecked && !toggleViernes.isChecked && !toggleSabado.isChecked && !toggleDomingo.isChecked) {
+            Toast.makeText(context, "Debe seleccionar al menos un día para entrenar.", Toast.LENGTH_SHORT,).show()
+        }
         return objetivo != "" && (toggleLunes.isChecked || toggleMartes.isChecked || toggleMiercoles.isChecked || toggleJueves.isChecked || toggleViernes.isChecked || toggleSabado.isChecked || toggleDomingo.isChecked)
     }
 

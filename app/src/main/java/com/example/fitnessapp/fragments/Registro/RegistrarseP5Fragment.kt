@@ -47,38 +47,57 @@ class RegistrarseP5Fragment : Fragment() {
         super.onStart()
         btnNivelBajo.setOnClickListener {
             nivel = 0
+            btnNivelBajo.setBackgroundColor(0xff960000.toInt())
+            btnNivelMedio.setBackgroundColor(0xff969695.toInt())
+            btnNivelAlto.setBackgroundColor(0xff969695.toInt())
         }
         btnNivelMedio.setOnClickListener {
             nivel = 1
+            btnNivelBajo.setBackgroundColor(0xff969695.toInt())
+            btnNivelMedio.setBackgroundColor(0xff960000.toInt())
+            btnNivelAlto.setBackgroundColor(0xff969695.toInt())
         }
         btnNivelAlto.setOnClickListener {
             nivel = 2
+            btnNivelBajo.setBackgroundColor(0xff969695.toInt())
+            btnNivelMedio.setBackgroundColor(0xff969695.toInt())
+            btnNivelAlto.setBackgroundColor(0xff960000.toInt())
         }
         btnSemanal.setOnClickListener {
             reporteSemanal = 1
             reporteMensual = 0
+            btnMensual.setBackgroundColor(0xff969695.toInt())
+            btnSemanal.setBackgroundColor(0xff960000.toInt())
         }
         btnMensual.setOnClickListener {
             reporteSemanal = 0
             reporteMensual = 1
+            btnSemanal.setBackgroundColor(0xff969695.toInt())
+            btnMensual.setBackgroundColor(0xff960000.toInt())
         }
         btnFinalizar.setOnClickListener {
-            if(nivel != -1)
+            if(nivel == -1)
+            {
+                Toast.makeText(context, "Debe seleccionar su nivel fisico", Toast.LENGTH_SHORT,).show()
+            } else if (reporteSemanal == 0 && reporteMensual == 0)
+            {
+                Toast.makeText(context, "Debe elegir que reporte desea", Toast.LENGTH_SHORT,).show()
+            }
+            else
             {
                 sharedViewModel.usuario.nivelFisico = nivel
                 sharedViewModel.usuario.reporteSemanal = reporteSemanal
                 sharedViewModel.usuario.reporteMensual = reporteMensual
-            }
-            sharedViewModel.viewModelScope.launch {
-                if(sharedViewModel.persistirUsuario(sharedViewModel.usuario)) {
-                    val action = RegistrarseP5FragmentDirections.actionRegistrarseP5FragmentToMainActivity2()
-                    findNavController().navigate(action)
-                }
-                else {
-                    Toast.makeText(context, "Ocurrio un error completando el perfil.", Toast.LENGTH_SHORT,).show()
+                sharedViewModel.viewModelScope.launch {
+                    if(sharedViewModel.persistirUsuario(sharedViewModel.usuario)) {
+                        val action = RegistrarseP5FragmentDirections.actionRegistrarseP5FragmentToMainActivity2()
+                        findNavController().navigate(action)
+                    }
+                    else {
+                        Toast.makeText(context, "Ocurrio un error completando el perfil.", Toast.LENGTH_SHORT,).show()
+                    }
                 }
             }
         }
-
     }
 }
