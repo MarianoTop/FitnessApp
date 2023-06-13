@@ -138,7 +138,7 @@ class SemanaUtils {
             c.set(Calendar.SECOND, 0)
             c.set(Calendar.MILLISECOND, 0)
 
-            while (c.get(Calendar.DAY_OF_WEEK) != 2) {
+            while (c.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
                 c.add(Calendar.DAY_OF_YEAR, -1)
             }
 
