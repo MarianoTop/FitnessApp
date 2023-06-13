@@ -23,7 +23,6 @@ class ReporteFinEntrenamientoFragment : Fragment() {
 
     lateinit var imageLogo : ImageView
     lateinit var textTitle : TextView
-    lateinit var textDia : TextView
     lateinit var textInfo1 : TextView
     lateinit var textInfo2 : TextView
     lateinit var textCalorias : TextView
@@ -46,7 +45,6 @@ class ReporteFinEntrenamientoFragment : Fragment() {
 
         imageLogo = v.findViewById(R.id.imageLogo)
         textTitle = v.findViewById(R.id.textTitle)
-        textDia = v.findViewById(R.id.textDia)
         textInfo1 = v.findViewById(R.id.textInfo1)
         textInfo2 = v.findViewById(R.id.textInfo2)
         textCalorias = v.findViewById(R.id.textNroCal)
