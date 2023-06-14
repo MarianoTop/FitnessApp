@@ -29,6 +29,8 @@ class RegistrarseP1Fragment : Fragment() {
     lateinit var editTextPw2: EditText
     lateinit var btnContinuar: Button
     lateinit var btnIniciarSesion : Button
+    var minCaracteres = 6
+    var maxCaracteres = 20
 
 
 
@@ -55,15 +57,20 @@ class RegistrarseP1Fragment : Fragment() {
             }
             else {
                 if(editTextPw1.text.toString() == editTextPw2.text.toString()) {
-                    var usuarioCreado : Boolean
-                    sharedViewModel.viewModelScope.launch {
+                    if (editTextPw1.text.length > minCaracteres && editTextPw1.text.length < maxCaracteres) {
+                        var usuarioCreado : Boolean
+                        sharedViewModel.viewModelScope.launch {
                         usuarioCreado = sharedViewModel.crearUsuario(editTextMail.text.toString(), editTextPw1.text.toString())
                         if(usuarioCreado) {
                             val action = RegistrarseP1FragmentDirections.actionRegistrarseP1FragmentToRegistrarseP2Fragment()
                             findNavController().navigate(action)
                         } else {
-                            Toast.makeText(context, "Ocurrio un error creando la cuenta.", Toast.LENGTH_SHORT,).show()
+                            Toast.makeText(context, "Ocurrió un error creando la cuenta.", Toast.LENGTH_SHORT,).show()
                         }
+                    }
+                    }
+                    else {
+                        Toast.makeText(this.getContext(), "Las contraseñas deben tener un mínimo de 6 y un máximo de 20 caracteres.", Toast.LENGTH_SHORT,).show()
                     }
                 }
                 else {
