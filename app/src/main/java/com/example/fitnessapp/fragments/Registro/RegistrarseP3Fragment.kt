@@ -56,7 +56,8 @@ class RegistrarseP3Fragment : Fragment() {
 
     private fun validarCamposDelPerfil(): Boolean {
         var esValido = true
-        //Validación campo vacío
+
+        //Validación del nombre
         val nombre : String = this.textNombre.text.toString();
         if (TextUtils.isEmpty(nombre)) {
             // Si la propiedad error tiene valor, se muestra el aviso.
@@ -71,7 +72,7 @@ class RegistrarseP3Fragment : Fragment() {
         }
         else this.textNombre.error = null
 
-        //Validación campo vacío
+        //Validación del peso
         val peso : String = this.textPeso.text.toString();
         if (TextUtils.isEmpty(peso)) {
             this.textPeso.error = "Requerido"
@@ -82,7 +83,7 @@ class RegistrarseP3Fragment : Fragment() {
         }
         else this.textPeso.error = null
 
-        //Validación campo vacío
+        //Validación de la altura
         val altura : String = this.textAltura.text.toString();
         if (TextUtils.isEmpty(altura)) {
             this.textAltura.error = "Requerido"
@@ -92,7 +93,7 @@ class RegistrarseP3Fragment : Fragment() {
             esValido = false;
         } else this.textAltura.error = null
 
-        //Validación campo vacío
+        //Validación de la edad
         val edad : String = this.textEdad.text.toString();
         if (TextUtils.isEmpty(edad)){
             this.textEdad.error = "Requerido";

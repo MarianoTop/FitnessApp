@@ -59,9 +59,6 @@ class RegistrarseP1Fragment : Fragment() {
                     sharedViewModel.viewModelScope.launch {
                         usuarioCreado = sharedViewModel.crearUsuario(editTextMail.text.toString(), editTextPw1.text.toString())
                         if(usuarioCreado) {
-                            usuarioCreado.let {
-                                val completoPerfil = false
-                            }
                             val action = RegistrarseP1FragmentDirections.actionRegistrarseP1FragmentToRegistrarseP2Fragment()
                             findNavController().navigate(action)
                         } else {

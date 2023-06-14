@@ -79,12 +79,18 @@ class RegistrarseP4Fragment : Fragment() {
     }
 
     private fun validar() : Boolean{
+        var resultado1 = true
+        var resultado2 = true
+
         if(objetivo == "") {
             Toast.makeText(context, "Debe seleccionar un objetivo.", Toast.LENGTH_SHORT,).show()
+            resultado1 = false
         } else if (!toggleLunes.isChecked && !toggleMartes.isChecked && !toggleMiercoles.isChecked && !toggleJueves.isChecked && !toggleViernes.isChecked && !toggleSabado.isChecked && !toggleDomingo.isChecked) {
             Toast.makeText(context, "Debe seleccionar al menos un día para entrenar.", Toast.LENGTH_SHORT,).show()
+            resultado2 = false
+
         }
-        return objetivo != "" && (toggleLunes.isChecked || toggleMartes.isChecked || toggleMiercoles.isChecked || toggleJueves.isChecked || toggleViernes.isChecked || toggleSabado.isChecked || toggleDomingo.isChecked)
+        return (resultado1 && resultado2)
     }
 
     private fun obtenerDiasDeEntrenamiento() : MutableList<Boolean> {

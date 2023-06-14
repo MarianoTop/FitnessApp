@@ -19,14 +19,13 @@ class SharedRegistrarseViewModel : ViewModel() {
     suspend fun persistirUsuario(usuario: Usuario): Boolean {
         usuario.id = auth.uid!!
         try {
-            val usuarioDb = db.collection("usuarios").document(auth.uid!!).set(usuario)
+            db.collection("usuarios").document(auth.uid!!).set(usuario).await()
             return true
         } catch (e: Exception) {
             Log.e(ContentValues.TAG, "Exception thrown: ${e.message}")
             return false
         }
     }
-
 
     suspend fun crearUsuario(email : String, password : String): Boolean {
         var response = false
