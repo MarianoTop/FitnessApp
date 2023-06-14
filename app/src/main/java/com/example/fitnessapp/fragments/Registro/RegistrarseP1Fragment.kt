@@ -29,9 +29,8 @@ class RegistrarseP1Fragment : Fragment() {
     lateinit var editTextPw2: EditText
     lateinit var btnContinuar: Button
     lateinit var btnIniciarSesion : Button
-    var minCaracteres = 6
-    var maxCaracteres = 20
-
+    val minCaracteres = 6
+    val maxCaracteres = 20
 
 
     override fun onCreateView(
