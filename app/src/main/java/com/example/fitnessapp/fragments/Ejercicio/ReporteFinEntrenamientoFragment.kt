@@ -10,12 +10,16 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.fitnessapp.R
 import com.example.fitnessapp.entities.Sesion
+import com.example.fitnessapp.fragments.Registro.RegistrarseP5FragmentDirections
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
 
 class ReporteFinEntrenamientoFragment : Fragment() {
 
@@ -78,7 +82,11 @@ class ReporteFinEntrenamientoFragment : Fragment() {
 
         // Agregamos objeto Sesión a la colección sesiones de la BD
         // Al hacer add() se genera ID único
+        sharedViewModel.viewModelScope.launch {
+            sharedViewModel.crearSesion(sesion)
+        }
 
+        /*
         sesiones.add(sesion)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "Sesion agregada con el id: ${documentReference.id}")
@@ -86,6 +94,7 @@ class ReporteFinEntrenamientoFragment : Fragment() {
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error al agregar sesión", e)
             }
+         */
 
         // Navegación de vuelta a EntrenamientoHomeFragment
 
